@@ -1,0 +1,169 @@
+<!--
+    Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
+    
+    Copyright (c) 2019 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
+    
+    Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
+    More information about the license at LICENSE.txt to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+    A full notice can be found at NOTICE.txt to the root of the program,
+    and you should see README.txt as well for other information.
+-->
+
+<!-- HTML FILE EXPLAINING THE RULES OF THE GAME PLANT, CSS INCLUDED IN THE <HEAD> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Plant Rules</title>
+        <style type="text/css">
+            body {
+                margin: 10;
+                padding : 10;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 20px;
+                background-color: #eee;
+                color: #444;
+            }
+            h1 {
+                margin-left: 20px;
+                border-bottom: 5px solid #35e252;
+            }
+            h2 {
+                margin-left: 20px;
+                text-decoration: underline #35e252;
+                width: 250px;
+            }
+            table {
+                border: 3px solid #888;
+                border-radius: 5px;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            tr {
+                border-bottom: 2px solid #999;
+            }
+            tr:nth-child(even) {background-color: #ddd;}
+            tr:nth-child(odd) {background-color: #eee;}
+            th {
+                padding: 5px;
+                border-right: 2px solid #999;
+                background-color: rgba(30,30,30,0.2);
+                width: 220px;
+            }
+            th:nth-child(2),td:nth-child(2) {
+                color:#03b4e0;
+            }
+            th:nth-child(3),td:nth-child(3) {
+                color:#11e234;
+            }
+            td {
+                padding: 5px;
+                border-right: 2px solid #999;
+            }
+            .courrier {
+                font-family: 'Courier New', Courier, monospace;
+                line-height: 0px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Plant Rules</h1>
+        <ul>
+            <li>Players : 2</li>
+            <li>Terrain grid size : 21x21</li>
+            <li>Dice : 3,4,5,6 (each has the same probability to be taken)</li>
+            <li>Start : top center & bottom center</li>
+            <li><h2>How to play :</h2>
+                <ul>
+                    <li>The gray dot indicates where you will start from creating a new stem. Click on a case to set it as the start. Available cases are shown with darker dots on your plant.</li>
+                    <li>Use Z,Q,S,D to move and draw the stem.</li>
+                    <li>You've drawn a preview only of your action, if it pleases you, use the Space Bar to validate. Otherwise click again on the start case, or choose another one to reset your stem and make a new one.</li>
+                    <li>After validating it's automatically the turn of the other player. The steps are the same.</li>
+                </ul>
+            </li>
+            <li><h2>Rules of moving :</h2>
+                <ul>
+                    <li>Players plays after each other.</li>
+                    <li>There are 20 turns in total. (1 turn = player 1 and player 2 have played)</li>
+                    <li>Once the dice is dropped, the player choose where to start from one of his stems, then make his plant grow as much as disposed movements allow.</li>
+                    <li>The player can choose his movements, cancel it and try again before validating.</li>
+                    <li>Moving :
+                        <table>
+                            <tr>
+                                <th>Moving Direction</th>
+                                <th>Top Player (Blue)</th>
+                                <th>Bottom Player (Green)</th>
+                            </tr>
+                            <tr>
+                                <th>TOP</th>
+                                <td>impossible</td>
+                                <td>no limit</td>
+                            </tr>
+                            <tr>
+                                <th>BOTTOM</th>
+                                <td>no limit</td>
+                                <td>impossible</td>
+                            </tr>
+                            <tr>
+                                <th>LEFT</th>
+                                <td>cannot be twice done</td>
+                                <td>cannot be twice done</td>
+                            </tr>
+                            <tr>
+                                <th>RIGHT</th>
+                                <td>cannot be twice done</td>
+                                <td>cannot be twice done</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>A stem cannot do more than 8 cases.</li>
+                    <li>When a stem is 8 cases long, a flower appear on the 8th case of the stem, keeping safe for the player cases arround
+                        (Those cases are reserved but not counted into the score, those still has to be taken by the plant!). This is done using this pattern :
+                        <br><span class="courrier">O O # O O</span>
+		                <br><span class="courrier">O # # # O</span>
+		                <br><span class="courrier"># # F # #</span>
+		                <br><span class="courrier">O # # # O</span>
+		                <br><span class="courrier">O O # O O</span>
+		                <br>→ "F" is the flower, "#" is reserved, "O" a classic case.
+                    </li>
+                    <li>It is possible to start a new stem from another stem but not from a flower. Only one stem per turn can be created.</li>
+                    <li>A case cannot contain the 2 players at the same time. Meaning if one player take that case, the other one cannot access to that case anymore!</li>
+                    <li>A stem cannot be continued if no others movements are available. If while moving the player get stuck,
+                        movements left cannot be used.</li>
+                </ul>
+            </li>
+            <li><h2>Bonus points :</h2>
+                <ul>
+                    <li>By doing some special actions, it is possible to gain additional points. Those bonus can be decisive, you can use them at your advantage,
+                        and conbine them to gain a lot of points in a single actions. Here are the bonus you can gain :
+                        <ul>
+                            <li>Making a flower offer 2 points.</li>
+                            <li>Taking cases that are touching the opposite side from your start (so on the side where the opponent started) give 1 additional point for each of them.</li>
+                            <li>For each flower aura case placed where the opponent made a stem, you <u><b>steal</b></u> 1 point to your opponent !</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><h2>End of the game :</h2>
+                <ul>
+                    <li>If all the turns are ended, or if one of the players is completely stuck at his turn, the game is ended.</li>
+                    <li>The player who taken the most cases win!</li>
+                </ul>
+            </li>
+            <li><h2>Some advice :</h2>
+                <ul>
+                    <li>Corners are strategic zones : They are complicated to defend, your opponent can't go there, it can give bonus and if you block your opponent you get the whole side for you! 
+                        This can be useful to secure yourself from being blocked.</li>
+                    <li>Flowers can give more points than you think. It can give over 10 points if it's incredibly well placed! However it's harder starting stems near flowers.</li>
+                    <li>The start of the game is already decisive. If you don't defend yourself and your side you can quickly be traped...</li>
+                    <li>Moving laterally is a pain, so prevent that by planning from the bottom your lateral movements.</li>
+                    <li>Being blocked externally but not internally can be very dangerous! As you can only do small movements and your space is limited, your opponent can get bonus after bonus, and make the gap 
+                        between you and him bigger and bigger.
+                    </li>
+                </ul>
+            </li>
+            <p><strong>Good luck and may the best win!</strong></p>
+        </ul>
+    </body>
+</html>

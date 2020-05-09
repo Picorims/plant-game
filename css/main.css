@@ -1,0 +1,753 @@
+/* Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
+    
+Copyright (c) 2019 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
+
+Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
+More information about the license at LICENSE.txt to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+A full notice can be found at NOTICE.txt to the root of the program,
+and you should see README.txt as well for other information. */
+
+/*PLANT GAME CSS WHICH BESIDE THE CANVAS, MANAGE THE GRAPHIC DISPLAY OF HTML ELEMENTS*/
+@font-face {
+    font-family: "candela";
+    src: url("../assets/font/candela/CandelaBook.otf") format("truetype");
+}
+@font-face {
+    font-family: "averia_sans";
+    src: url("../assets/font/averia_sans/AveriaSans-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "comfortaa";
+    src: url("../assets/font/comfortaa/Comfortaa-Regular.ttf") format("truetype");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    background-image: radial-gradient(ellipse at center, #78e676, 0, #082f08 75%);
+    background-repeat: none;
+    overflow: hidden;
+}
+body, button {
+    /* font-family:"averia_sans"; */
+    font-family: "candela";
+    /* font-family: "comfortaa"; */
+    outline: 0;
+    user-select: none;
+}
+#fps_display {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+
+
+/*LOADING SCREEN SCENE*/
+#loading_screen {
+    z-index: 100;
+    position: fixed;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    top: 0;
+    left: 0;
+    background-color: #222222;
+}
+@keyframes FadeIn {
+    from {background-color: #222222;}
+    to {background-color: #eeeeee;}
+}
+@keyframes FadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+/*loading item animation*/
+#loading_item {
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
+    opacity: 1;
+}
+.LA_ball_vertical_anim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+}
+#LA_ball_vertical_anim_1 {animation: 1s ease-in-out 0.25s LoadingVertical infinite;}
+#LA_ball_vertical_anim_2 {animation: 1s ease-in-out 0.75s LoadingVertical infinite;}
+.LA_ball_horizontal_anim {
+    width: 15px;
+    height: 15px;
+}
+#LA_ball_horizontal_anim_1 {animation: 2s ease-in-out 0s LoadingHorizontal infinite;}
+#LA_ball_horizontal_anim_2 {animation: 2s ease-in-out 1s LoadingHorizontal infinite;}
+.LA_ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: #35e252;
+    box-shadow: 0px 0px 10px #21fa46;
+}
+#LA_ball_1 {animation: 2s ease-in-out 0.25s LoadingBallEffect infinite;}
+#LA_ball_2 {animation: 2s ease-in-out 1.25s LoadingBallEffect infinite;}
+@keyframes LoadingVertical {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes LoadingHorizontal {
+    0% {
+        transform: translateX(-20px);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(-20px);
+    }
+}
+@keyframes LoadingBallEffect {
+    0% {
+        background-color: #35e252;
+        box-shadow: 0px 0px 10px #21fa46;
+        opacity: 1;
+    }
+    25% {
+        background-color: #35e252;
+        box-shadow: 0px 0px 50px #21fa46;
+        opacity: 1;
+    }
+    50% {
+        background-color: #35bfe2;
+        box-shadow: 0px 0px 10px #21cffa;
+        opacity: 1;
+    }
+    75% {
+        background-color: #35bfe2;
+        box-shadow: 0px 0px 50px #21cffa;
+        opacity: 1;
+    }
+    100% {
+        background-color: #35e252;
+        box-shadow: 0px 0px 10px #21fa46;
+        opacity: 1;
+    }
+}
+/*end of loading item animation*/
+#init_message {
+    text-align: center;
+    color: #eeeeee;
+    margin-top:0;/*defined in JS*/
+    --top-under-window: 0;/*defined in JS*/
+    --animation-length: 0;/*defined in JS*/
+}
+.character_animated_shadow {
+    display: inline-flex;
+}
+.character_animated_shadow::after {
+    content: '';
+    position: absolute;
+    width: 100%;/*defined in menu.js*/
+    height: 4px;
+    top: 80%;
+    left: 0;
+    border-radius: 100%;
+    background-color:rgba(117, 235, 143, 0.2);
+    box-shadow: 0px 0px 10px rgba(117, 235, 143, 0.2);
+    animation: var(--animation-length) LetterShadowAnimation var(--animation-delay);
+}
+@keyframes LetterAnimation {
+    0% {animation-timing-function: cubic-bezier(.18,.89,.32,1.28);}
+    15% {
+        transform: translate(0,0);
+        color: #eeeeee;
+        text-shadow: 0px 0px 0px #8bec9b,
+                     0px 0px 0px #21fa46;
+    }
+    20% {
+        color: #35e252;
+        text-shadow: 0px 0px 100px #8bec9b,
+                     0px 0px 20px #21fa46;
+    }
+    85% {
+        animation-timing-function: cubic-bezier(.6,-0.28,.74,.05);
+        transform: translate(0,0);
+        color: #4CAF50;
+        text-shadow: none;
+    }
+    100% {
+        transform: translate(0,var(--top-under-window));/*defined in menu.js, the var is created in #init_message*/
+        color: #4CAF50;
+    }
+}
+@keyframes LetterShadowAnimation {
+    0% {
+        background-color: transparent;
+        box-shadow: 0px 0px 0px transparent;
+    }
+    15% {background-color:rgba(5, 236, 55, 0);
+        box-shadow: 0px 0px 0px rgba(5, 236, 55, 0.2);}
+    20% {background-color:rgba(5, 236, 55, 0.2);
+        box-shadow: 0px 0px 10px rgba(5, 236, 55, 0.2);}
+    85% {
+        background-color:rgba(117, 235, 143, 0.1);
+        box-shadow: 0px 0px 10px rgba(117, 235, 143, 0.1);
+    }
+    87% {
+        background-color: transparent;
+        box-shadow: 0px 0px 0px transparent;
+    }
+    100% {
+        background-color: transparent;
+        box-shadow: 0px 0px 0px transparent;
+    }
+}
+
+/*BACKGROUND GRAPHISM HANDLER*/
+#background_graphism_handler {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+#shadow_effect {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(ellipse at center, rgba(27,64,15,0) 0, rgba(27,64,15,.7) 100%),
+                      radial-gradient(ellipse at center, rgba(187, 181, 132, 0) 0, rgba(204, 187, 33, 0.1) 100%);
+}
+#svg_filters {
+    position: fixed;
+    width: 0;
+    height: 0;
+}
+
+
+/*MAIN MENU SCENE*/
+#main_menu {
+    z-index: 20;
+    position: absolute;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    padding-top:0;/*defined in JS*/
+    text-align: center;
+}
+#game_logo_object {
+    width: 650px;
+}
+@keyframes LogoSizeReduction {
+    from {transform: scale(1.5,1.5);}
+    to {transform: scale(1,1);}
+}
+/*FIX LE A QUI A LA PLUS COURTE TIGE PAS IMBRIQUEE DANS LE SOL*/
+@keyframes LetterDraw {
+    80% {
+        /* stroke-dasharray: 100% 0; */
+        stroke-dashoffset: 0;
+        fill: transparent;
+        stroke-width: 0.5px;
+    }
+    90% {
+        /* stroke-dasharray: 100% 0; */
+        stroke-dashoffset: 0;
+        fill: #fff;
+        stroke-width: 0px;
+    }
+    100% {
+        /* stroke-dasharray: 100% 0; */
+        stroke-dashoffset: 0;
+        fill: #fff;
+        stroke-width: 0px;
+    }
+}
+.main_menu_button {
+    width: 200px;
+    height: 50px;
+    margin-top: 0px;
+    background-color: #cccccc;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999999;
+    border: 2px solid #aaaaaa;
+}
+.leave_button {
+    color: #eeeeee;
+    width: 300px;
+    height: 100px;
+    border-radius: 2px 100%;/*EXPLANATION AT BOTTOM (1)*/
+    transform : rotate(-5deg);
+    background: linear-gradient(100deg, #3edc61, #31c251);
+    border: solid #47e068;
+    border-width: 7px 2px 3px 10px;/*top-L top-R bottom-L bottom-R*/
+    font-size: 25px;
+    text-shadow: 0px 0px 15px #238e3a;
+    transition: 0.2s;
+}
+.leave_button::before {
+    display: inline-block;
+    position: absolute;
+    content:'';
+    left: 0px;
+    top: 42px;
+    width: 285px;
+    height: 5px;
+    background:linear-gradient(to right, #50ea72, #3cd35d);
+    border-radius: 100%;
+    transform: rotate(16.5deg);
+    z-index: -1;
+}
+.leave_button::after {
+    display: inline-block;
+    position: absolute;
+    content:'';
+    right: -23px;
+    bottom: -8px;
+    width: 25px;/*+3 from border = 28*/
+    height: 5px;/*+1 +1 from border = 7*/
+    background:linear-gradient(to bottom, #39d25b, #31c251);
+    border-radius: 5px 2px 5px 2px / 2px 5px 2px 5px;/*EXPLANATION AT BOTTOM (1)*/
+    transform: rotate(30deg);
+    border: solid #47e068;
+    border-width: 1px 5px 1px 0px;/*top-L top-R bottom-L bottom-R*/
+}
+.leave_button:hover {
+    box-shadow: 0px 0px 2px 3px #f5e274c2;
+    transform: scale(1.05,1.05) rotate(-3deg);
+}
+.leave_button:active {
+    box-shadow: 0px 0px 2px 3px #f5e274c2;
+    transform: scale(0.95,0.95) rotate(-3deg);
+    background: linear-gradient(280deg, #3edc61, #31c251);
+}
+.leave_button:active::before {
+    background:linear-gradient(to left, #50ea72, #3cd35d);
+}
+#quit_warning_menu {
+    position: absolute;
+    text-align: center;
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+    top: 0;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    background-color: #cccccc;
+    color: #666666;
+    border: 2px solid  #aaaaaa;
+    font-size: 18px;
+}
+.quit_button {
+    width: 100px;
+    height: 40px;
+    margin-top: 30px;
+    background-color: #eeeeee;
+    color: #999999;
+    font-size: 18px;
+    border: 2px solid #cccccc;
+}
+
+
+
+/*TUTORIAL*/
+#tutorial {
+    z-index: 20;
+    position: absolute;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    padding-top:0;/*defined in JS*/
+    text-align: center;
+}
+/* Slideshow container */
+#slideshow {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    margin-top: 3%;
+    padding: 0;
+    background-color: #eeeeee;
+    text-align: center;
+    overflow: hidden;
+    color: #666666;
+}
+/* Next and previous buttons */
+#prev_slide_button, #next_slide_button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 100px;
+    padding: 0;
+    margin-top: -50px;
+    font-weight: bold;
+    font-size: 70px;
+    background-color: #666666;
+    color: #eeeeee;
+    border: 0px;
+}
+/* Previous button to the left */
+#prev_slide_button {
+    left: 0;
+}
+/* Next button to the right */
+#next_slide_button {
+    right: 0;
+}
+.slide {
+    width: 95%;
+    height: 95%;
+    margin: 0;
+    padding-top: 2.5%;
+    padding-left: 2.5%;
+}
+/* Text */
+.slide_text {
+    color: #666666;
+    font-size: 20px;
+    position: absolute;
+    bottom: 100px;
+    width: 95%;
+    text-align: center;
+}
+/* Number of the page */
+.page_number {
+    color: #666666;
+    font-size: 30px;
+    padding: 20px 10px;
+    position: absolute;
+    top: 0;
+}
+/* Dot Container */
+#dot_container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+/* Dots */
+.slide_dot {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin: 0 2px;
+    background-color: #eeeeee;
+    border-radius: 50%;
+    display: inline-block;
+}
+.slide_dot:hover {
+    transition: 0.1s;
+    background-color: #999;
+    transform: scale(1.3,1.3);
+}
+
+
+
+/*OPTIONS MENU SCENE*/
+#options_menu {
+    z-index: 20;
+    position: absolute;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    padding-top: 100px;
+    text-align: center;
+}
+.option_container {
+    position: relative;
+    width: 960px;
+    height: 80px;
+    background-image: url("../assets/textures/range_bar_track.svg");
+    background-size: 100% 100%;
+    margin: 20px;
+    margin-left: 0;/*defined in JS*/
+}
+.option_title {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    margin-left: 20px;
+    font-size: 27px;
+    font-weight: bold;
+    color: transparent;
+    background-color: rgb(189,89,7);
+    text-shadow: 0px 0px 1px rgba(241, 193, 132, 0.8);
+    -webkit-background-clip: text;
+    background-clip:text;
+    transform: rotate(-4deg);
+}
+.option_item {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #cccccc;
+    transition: 0.4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+input:checked+.slider {
+    background-color: #4CAF50;
+}
+input:focus+.slider {
+    box-shadow: 0 0 1px #4CAF50;
+}
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+.range {
+    -webkit-appearance: none;
+    top: 35px;
+    width: 400px;
+    height: 15px;
+    background: #e49550;
+    box-shadow: inset 0px 0px 5px #864710;
+    border-radius: 60% 20% 80% 30%/80% 30% 80% 30%;/*EXPLANATION AT BOTTOM (1)*/
+    outline: none;
+}
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+#controls_container {
+    display: inline-flex;
+    justify-content: flex-end;
+    padding: 35px;
+}
+#controls_container button, #controls_container input {
+    margin-right: 30px;
+}
+
+
+/*CREDITS SCENE*/
+#credits {
+    z-index: 20;
+    position: fixed;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    top: 0;
+    left: 0;/*defined in JS*/
+    background-color: rgba(150,150,150,0.5);
+}
+#credits_window {
+    position: absolute;
+    width: 70%;
+    height: 80%;
+    top: 0;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    padding: 20px;
+    background-color: #eeeeee;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#game_version {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #999999;
+}
+#close_credits_button {
+    position: sticky;
+    width: 40px;
+    height: 40px;
+    top: 0; /*for sticky to work*/
+    margin-left: 0;/*defined in JS*/
+    background-color: #666666;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 31px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.credits_title {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #35e252;
+}
+.credits_text {
+    margin: 0;
+    font-size: 20px;
+    color: #666666;
+}
+a {
+    text-decoration: none;
+    color: #35bfe2;
+    cursor: pointer;
+}
+a:link {
+    color: #35bfe2;
+}
+a:visited {
+    color: #2d9ab6;
+}
+a:focus {
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: underline;     
+}
+a:active {
+    color: #237083;
+}
+
+
+/*GAME SCENE*/
+#game_content {
+    z-index: 20;
+    position: absolute;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    /*margin: 0px auto;*/
+}
+#game_layers_handler {
+    float: left;
+    position: relative;
+    z-index: 20;
+}
+.interface {
+    float: left;
+    width: 300px;
+    background-color: rgba(250,250,250,0.8);
+    text-align: center;
+}
+.player1_interface {
+    color: #35e252;
+    margin-left:0;/*defined in JS*/
+}
+.player2_interface {
+    color: #35bfe2;
+}
+.player1_playing {
+    box-shadow: 0px 0px 20px #35e252;
+    filter: drop-shadow(0px 0px 0px #35e252);
+}
+.player2_playing {
+    box-shadow: 0px 0px 20px #35bfe2;
+    filter: drop-shadow(0px 0px 0px #35bfe2);
+}
+.interface_title {
+    font-size: 30px
+}
+.interface_subtitle {
+    font-size: 20px;
+    color: #999999;
+}
+.interface_data_display {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.side_interface_button {
+    width: 100px;
+    height: 20px;
+    border: none;
+    background-color: #eeeeee;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+#bottom_interface {
+    float: left;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(220,220,220,0.8);
+}
+.bottom_interface_button {
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: #eeeeee;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999999;
+    border: 2px solid #cccccc;
+}
+#menu {
+    width:100%;
+    text-align:center;
+}
+
+
+#bottom {
+    z-index: 200;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align:center;
+    font-size: 15px;
+    color: #999999;
+}
+
+/*EXPLANATION OF BORDER RADIUS (1)
+top-left = top-L, bottom-right = bottom-R, etc.
+px = lenght in px on the line that is rounded
+% = lenght in percentage (/100) on the line that is rounded
+    1 part  : x-rounded AND y-rounded
+    2 parts : x-rounded / y-rounded (THE "/" IS THE SEPARATOR)
+    on one part  :
+        - 1 value  :<top-L, top-R, bottom-L, bottom-R>
+        - 2 values :<top-L, bottom-R> <top-R, bottom-L>
+        - 3 values :<top-L> <top-R> <bottom-R>
+        - 4 values :<top-L> <top-R> <bottom-R> <bottom-L>
+
+x-rounding correspond to the coefficient of round on x-axis "x_coef". The same for y "y_coef".
+A value for x_coef and for y_coef is picked up for each corner, one on left side and one on right side (separated by "/", or same value if only one part) following the rules below.
+The rounding is defined from those 2 coefficient.
+BY COMBINING ALL THIS, YOU CAN MAKE AWESOME DESIGNS !
+*/
