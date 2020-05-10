@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-win": "electron-packager . plant-beta --platform=win32 --arch=all --prune=true --out=beta-builds --ignore=\".vscode\" --asar --version-string.CompanyName=\"by Picorims and Cirno\" --version-string.FileDescription=\"Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.\" --version-string.ProductName=\"Plant Beta\" --version-string.ProductVersion=\"0.1.0(b5)\""
+    "package-win": "electron-packager . plant-beta --platform=win32 --arch=all --prune=true --out=beta-builds --ignore=\".vscode\" --asar --version-string.CompanyName=\"by Picorims and Cirno\" --version-string.FileDescription=\"Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.\" --version-string.ProductName=\"Plant Beta\" --version-string.ProductVersion=\"0.1.0(b6)\""
   },
   "author": "Picorims<picorims.contact@gmail.com> and Cirno",
   "license": "AGPL-3.0",
