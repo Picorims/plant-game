@@ -37,11 +37,15 @@
         },
         "credits":{
             "development":"Développement",
+            "development_content":"Picorims<br>Cirno",
             "graphism":"Graphismes et Design",
+            "graphism_content":"Picorims<br>Police: 'candela' de La Tipomatika",
             "music2":"Musique",
-            "music2_content":"\"Drift\" par Geoplex {LINK TO ADD}",
+            "music2_content":"\"Drift\" par Geoplex {https://www.youtube.com/watch?v=lLVwHWWvejQ}",
             "sfx":"SFX",
+            "sfx_content":"",
             "libraries":"Librairies",
+            "libraries_content":"Electron.js<br>NodeJS<br>p5.js<br>showdown.js<br>electron-packager",
             "notice":"Notice"
         },
         "game":{

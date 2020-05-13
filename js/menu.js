@@ -636,13 +636,15 @@ function ApplyLanguage(selected_language) {
     
     //credits
     HTML.credits.title.dev.innerHTML                        = options.language.UI.credits.development;
+        HTML.credits.title.dev_content.innerHTML                = options.language.UI.credits.development_content;    
     HTML.credits.title.graphism.innerHTML                   = options.language.UI.credits.graphism;
+        HTML.credits.title.graphism_content.innerHTML           = options.language.UI.credits.graphism_content;
     HTML.credits.title.music.innerHTML                      = options.language.UI.credits.music2;
-    HTML.credits.title.music_content.innerHTML              = options.language.UI.credits.music2_content;
+        HTML.credits.title.music_content.innerHTML              = options.language.UI.credits.music2_content;
     HTML.credits.title.sfx.innerHTML                        = options.language.UI.credits.sfx;
-        //##########################################################################################################
-        HTML.credits.title.libraries.innerHTML                  = options.language.UI.credits.libraries;
-        //##########################################################################################################
+        HTML.credits.title.sfx_content.innerHTML                = options.language.UI.credits.sfx_content;
+    HTML.credits.title.libraries.innerHTML                  = options.language.UI.credits.libraries;
+        HTML.credits.title.libraries_content.innerHTML          = options.language.UI.credits.libraries_content;
     HTML.credits.title.notice.innerHTML                     = options.language.UI.credits.notice;
 
     //game
