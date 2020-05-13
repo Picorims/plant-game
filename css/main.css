@@ -12,14 +12,7 @@ and you should see README.md as well for other information. */
     font-family: "candela";
     src: url("../assets/font/candela/CandelaBook.otf") format("truetype");
 }
-@font-face {
-    font-family: "averia_sans";
-    src: url("../assets/font/averia_sans/AveriaSans-Regular.ttf") format("truetype");
-}
-@font-face {
-    font-family: "comfortaa";
-    src: url("../assets/font/comfortaa/Comfortaa-Regular.ttf") format("truetype");
-}
+
 
 body {
     margin: 0;
@@ -31,9 +24,7 @@ body {
     overflow: hidden;
 }
 body, button {
-    /* font-family:"averia_sans"; */
     font-family: "candela";
-    /* font-family: "comfortaa"; */
     outline: 0;
     user-select: none;
 }
