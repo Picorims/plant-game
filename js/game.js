@@ -161,7 +161,7 @@ function GameInit() {//initialization of the game
     
 
     
-    //GRID STYLR
+    //GRID STYLE
     grid = {
         line_color:         200,    //color of the lines of the grid (rgb)
         background_color:   250,    //color of the background of the grid(rgb)
@@ -261,6 +261,11 @@ function GameInit() {//initialization of the game
     };
     
     SendMessage.ClearMessage();
+
+
+
+    //TERRAIN DRAW
+    first_draw = true;
     
     
     
