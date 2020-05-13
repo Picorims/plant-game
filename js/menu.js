@@ -3,9 +3,9 @@
 // Copyright (c) 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
 
 // Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
-// More information about the license at LICENSE.txt to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
-// A full notice can be found at NOTICE.txt to the root of the program,
-// and you should see README.txt as well for other information.
+// More information about the license at LICENSE.md to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+// A full notice can be found at NOTICE.md to the root of the program,
+// and you should see README.md as well for other information.
 
 //JS THAT HANDLE THE MENU AND OTHER SUB MENUS
 const { remote } = require('electron');
@@ -778,17 +778,17 @@ function Credits() {//credits button to show full credits
 }
 
 
-function DispReadMe() {//open README.txt in a window
+function DispReadMe() {//open README.md in a window
     CreateReadMeWindow();
 }
 
 
-function DispNotice() {//open NOTICE.txt in a window
+function DispNotice() {//open NOTICE.md in a window
     CreateNoticeWindow();
 }
 
 
-function DispLicense() {//open LICENCE.txt in a window
+function DispLicense() {//open LICENCE.md in a window
     CreateLicenseWindow();
 }
 

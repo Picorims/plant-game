@@ -15,9 +15,9 @@ OOO=============================================================================
     Copyright (c) 2019 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
     
     Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
-    More information about the license at LICENSE.txt to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
-    A full notice can be found at NOTICE.txt to the root of the program,
-    and you should see README.txt as well for other information.
+    More information about the license at LICENSE.md to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+    A full notice can be found at NOTICE.md to the root of the program,
+    and you should see README.md as well for other information.
 
 #######################################
 #  WHAT IS THIS CHANGELOG IT ABOUT ?  #
@@ -416,7 +416,9 @@ ex : main_layer_canvas.line(args...);
 |   0.1.0(b6) | ?    |
 +--------------------------------+
 
-- 
+- README.txt, NOTICE.txt, LICENSE.txt have been converted to README.md, NOTICE.md, LICENSE.md (LICENSE hasn't been altered at all, it's only)
+  a change of format to the end of the name of the file (.txt -> .md)
+- Markdown support in-game to match github markdown, with custom css themed with the game.
 
 =============================================================================================================================================
 

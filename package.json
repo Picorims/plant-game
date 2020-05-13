@@ -12,5 +12,8 @@
   "devDependencies": {
     "electron": "^4.0.0",
     "electron-packager": "^13.0.1"
+  },
+  "dependencies": {
+    "showdown": "^1.9.1"
   }
 }

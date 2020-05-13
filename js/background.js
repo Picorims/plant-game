@@ -3,9 +3,9 @@
 // Copyright (c) 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
 
 // Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
-// More information about the license at LICENSE.txt to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
-// A full notice can be found at NOTICE.txt to the root of the program,
-// and you should see README.txt as well for other information.
+// More information about the license at LICENSE.md to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+// A full notice can be found at NOTICE.md to the root of the program,
+// and you should see README.md as well for other information.
 
 //BACKGROUND GRAPHICAL PROCESS AND OTHER GRAPHICS FOR THE OVERALL AMBIANCE.
 //canvas from back layer to top layer:

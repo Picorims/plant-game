@@ -1,0 +1,41 @@
+/* Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
+    
+Copyright (c) 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
+
+Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
+More information about the license at LICENSE.md to the root of the program. If it is missing, see <https://www.gnu.org/licenses/>.
+A full notice can be found at NOTICE.md to the root of the program,
+and you should see README.md as well for other information. */
+
+/*OPENED MD FILE CSS (that went through the html converter only)*/
+
+@font-face {
+    font-family: "candela";
+    src: url("../assets/font/candela/CandelaBook.otf") format("truetype");
+}
+
+body {
+    background-color: #e3eee5;
+    font-family: "candela", Verdana, Geneva, Tahoma, sans-serif;
+    color: #1d1d1d;
+    padding: 20px;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 50px;
+    color: #35bfe2;
+    border-bottom: 5px solid rgb(167, 205, 214);
+    padding-left: 30px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #35e252;
+    border-bottom: 2px solid rgb(167, 214, 167);
+    padding-left: 50px;
+}
+
+a.disabled {
+    pointer-events: none;
+}
