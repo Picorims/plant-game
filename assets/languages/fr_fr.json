@@ -55,7 +55,10 @@
             "new":"Nouvelle partie",
             "go_back":"Retourner au menu principal",
             "turn":"Tour : ",
-            "msg":"Message : "
+            "msg":"Message : ",
+            "win":"VOUS AVEZ GAGNÉ!",
+            "loss":"VOUS AVEZ PERDU!",
+            "draw":"ÉGALITÉ"
         }
     },
     "game_message":{

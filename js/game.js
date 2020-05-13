@@ -629,7 +629,6 @@ function ChangeTurn(player,ignore_turn) {//switch turn to the player "player". '
         HTML.game.player2_interface.className = HTML.game.player2_interface.className.replace(" player2_playing","");//remove that overlay for the other player.
         GetRandomMovement(1);
         if(!ignore_turn) turn.count++;//player 1 toggle turn incrementation, as he plays first.
-
     }
     else if (player==2) {
         
@@ -2452,8 +2451,8 @@ function BloquedOnTurn(bloqued) {//return if the player bloqued is the one who i
 function FindWinner() {//find who's the winner of the game by comparing it's score
     
     //shortcuts
-    var game_result_p1 = HTML.game.display.player1.game_result.innerHTML;
-    var game_result_p2 = HTML.game.display.player2.game_result.innerHTML;
+    var game_result_p1 = HTML.game.display.player1.game_result;
+    var game_result_p2 = HTML.game.display.player2.game_result;
 
     var p1_classes = HTML.game.player1_interface.className;
     var p2_classes = HTML.game.player2_interface.className;
@@ -2461,8 +2460,8 @@ function FindWinner() {//find who's the winner of the game by comparing it's sco
     //PLAYER 1
     if (player1.score > player2.score) {
         //text display
-        game_result_p1 = "YOU WIN";
-        game_result_p2 = "YOU LOOSE";
+        game_result_p1.innerHTML = options.language.UI.game.win;
+        game_result_p2.innerHTML = options.language.UI.game.loss;
 
         //visuals
         p1_classes += " player1_playing";//add overlay showing it's the winner
@@ -2474,8 +2473,8 @@ function FindWinner() {//find who's the winner of the game by comparing it's sco
 
     //PLAYER 2
     else if (player2.score > player1.score) {
-        game_result_p2 = "YOU WIN";
-        game_result_p1 = "YOU LOOSE";
+        game_result_p2.innerHTML = options.language.UI.game.win;
+        game_result_p1.innerHTML = options.language.UI.game.loss;
         
         p2_classes += " player2_playing";
         p1_classes = p1_classes.replace(" player1_playing","");
@@ -2485,9 +2484,9 @@ function FindWinner() {//find who's the winner of the game by comparing it's sco
 
     //DRAW
     else if (player1.score == player2.score) {
-        game_result_p1 = "DRAW";
-        game_result_p2 = "DRAW";
-        
+        game_result_p1.innerHTML = options.language.UI.game.draw;
+        game_result_p2.innerHTML = options.language.UI.game.draw;
+
         p1_classes = p1_classes.replace(" player1_playing","");
         p2_classes = p2_classes.replace(" player2_playing","");
         
