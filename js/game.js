@@ -1530,12 +1530,12 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
                 else {tilemap[X+aura_x-1][Y+aura_y-1].forbidden.p1=true;}
                 
                 //if the aura touch the opponent's plant he steal points as defined by rules.stolen_point_by_aura.
-                if (tilemap[X+aura_x-1][Y+aura_y-1].player==2) {
+                if ( (tilemap[X+aura_x-1][Y+aura_y-1].player == 2) && (player == player1) ) {
                     player1.score                     += rules.stolen_point_by_aura;
                     player1.last_bonus.stolen_by_aura += rules.stolen_point_by_aura;
                     player2.score                     -= rules.stolen_point_by_aura;
                 }
-                else if (tilemap[X+aura_x-1][Y+aura_y-1].player==1) {
+                else if ( (tilemap[X+aura_x-1][Y+aura_y-1].player == 1) && (player == player2) ) {
                     player2.score                     += rules.stolen_point_by_aura;
                     player2.last_bonus.stolen_by_aura += rules.stolen_point_by_aura;
                     player1.score                     -= rules.stolen_point_by_aura;
