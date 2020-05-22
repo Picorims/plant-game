@@ -1,0 +1,348 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>CHANGELOG.md</title>
+            <link rel="stylesheet" type="text/css" href="../css/md.css" />
+        </head>
+        <body>
+            <h1 id="changelogs--v010b6-">CHANGELOGS ( v0.1.0(b6) )</h1>
+<pre><code>Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
+
+Copyright (c) 2019 Picorims&lt;picorims.contact@gmail.com&gt; and Cirno, France. All rights reserved.
+
+Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
+More information about the license at LICENSE.md to the root of the program. If it is missing, see &lt;https://www.gnu.org/licenses/&gt;.
+A full notice can be found at NOTICE.md to the root of the program,
+and you should see README.md as well for other information.</code></pre>
+<h2 id="what-is-this-changelog-it-about-">WHAT IS THIS CHANGELOG IT ABOUT ?</h2>
+<p>This changelog is giving you all the information about all the changes until this build, internally and externally. You can find when and<br />
+where something appeared. However changes are summarized to what changed globally, for more detail you should go explore the concerned build.</p>
+<h2 id="how-does-it-works-">HOW DOES IT WORKS ?</h2>
+<p>The changes are classificated by version, from alpha to release, in the chronological order. The latest changelogs are to the bottom of the<br />
+file! Bugs are indicated by the "BUG FIX" keywords.</p>
+<h2 id="how-does-versioning-works-">HOW DOES VERSIONING WORKS ?</h2>
+<p>Version starting by "a" is an alpha. Version starting by "0." is a beta. Otherwise it's a release.</p>
+<p>The alpha syntax is   : a0.{version}b{build}<br />
+ex : a0.1b1<br />
+The beta syntax is    : 0.{big_version}.{small/sub_version)(b{build})<br />
+ex : 0.1.2(b8)<br />
+The release syntax is : {giant_version}.{big_update}.{small_update}(b{build})<br />
+ex : 1.2.1(b7)</p>
+<h1 id="alpha">ALPHA</h1>
+<h2 id="a01b1--august-31st-2018">a0.1b1 | August, 31st 2018</h2>
+<ul>
+<li>First build of the game</li>
+<li>Contains :<ul>
+<li>HTML base structure :<ul>
+<li>Title</li>
+<li>Canvas</li>
+<li>Left and right tab for players</li>
+<li>Bottom tab, for additional informations and buttons</li></ul></li>
+<li>CSS file and some basic design, based on white, gray, green and blue.</li>
+<li>JS base structure :<ul>
+<li>(librairy) jQuery-3.3.1.min.js loaded</li>
+<li>(librairy) p5.min.js loaded. Other p5 files are available in "p5" folder.</li>
+<li>main.js, empty, for electron program</li>
+<li>program.js, managing the overall app, and display</li>
+<li>canvas.js, managing the canvas for game display, and run the game itself.</li></ul></li>
+<li>Rules in Plant Rules.html</li>
+<li>LICENSE.txt, README.txt, NOTICE.txt.</li></ul></li>
+<li>Objective and rules of the game (may change in the future and become obsolete ==&gt; check Plant Rules.html):<ul>
+<li>Players : 2</li>
+<li>Terrain grid size : 25x25</li>
+<li>Dice : 3,4,5,6,7,8 (each has the same probability to be taken)</li>
+<li>Start : top center &amp; bottom center</li>
+<li>Rules of moving :<ul>
+<li>Players plays after each other.</li>
+<li>20 turns. (1 turn = p1+p2 play)</li>
+<li>Once dice dropped, the player choose the start of his stem, then make it grow as much as the number allow.</li>
+<li>Moving :<br />
+<code>___________________________________________________________________</code><br />
+<code>| Moving Direction | .Top Player (Blue) . | Bottom Player (Green) |</code><br />
+<code>|==================|======================|=======================|</code><br />
+<code>| . . .TOP . . . . | . . .impossible. . . | . . . no limit. . . . |</code><br />
+<code>| . . .BOTTOM. . . | . . . no limit . . . | . . .impossible . . . |</code><br />
+<code>| . . .LEFT. . . . | cannot be twice done | cannot be twice done. |</code><br />
+<code>| . . .RIGHT . . . | cannot be twice done | cannot be twice done. |</code><br />
+<code>|==================|======================|=======================|</code></li>
+<li>A stem cannot do more than 8 cases.</li>
+<li>When a stem is 8 cases long, a flower appear on the 8th case of the stem, keeping safe for the player cases arround<br />
+(Those cases are reserved but not counted into the score, those still has to be taken by the plant !).<br />
+This is done using this pattern :<br />
+<code>OO#OO</code><br />
+<code>O###O</code><br />
+<code>##F##</code><br />
+<code>O###O</code><br />
+<code>OO#OO</code><br />
+Where F is the flower, # is reserved, O a classic case.</li>
+<li>It is possible to start a new stem from another stem (not a flower !) (to the start of the turn only).</li>
+<li>A case cannot contain the 2 players. If one player take that case, the other cannot access this one anymore.</li>
+<li>A stem cannot be continued if no others moves are available. If while moving the player used all it's moves,<br />
+the other moves left cannot be used.</li>
+<li>If all the turns are ended, or if one of the players is completely stuck at his turn, the game is ended.</li>
+<li>The player who taken the most cases win.</li></ul></li>
+<li>The player choose it's moving before validating.</li></ul></li>
+<li>Features :<ul>
+<li>Canvas initialization, drawing grid, and with arrows can draw lines of players (directional arrows and Enter on keyboard).</li>
+<li>Score depending of player's cases taken.</li>
+<li>Preview canvas on the game canvas to draw gray lines, they show the path the player will select.</li>
+<li>Players database display auto updated for selected variables.<strong>(1)</strong></li>
+<li>Event that listen the keyboard.</li>
+<li>A function to know if a number is odd (isOdd();).</li>
+<li>2 functions x() and y() to convert a coordinate to top/left in pixels.</li>
+<li>Movements :<ul>
+<li>Does not contain turn, dice, length limitation, point of start of the stem, players' collision, border collision,<br />
+game end, option to restart.</li>
+<li>Contain score count, moving limitations reguarding the direction, order to play (the green always start), player path<br />
+preview.</li></ul></li></ul></li>
+</ul>
+<p><strong>(1)</strong> In UpdateTabData(), a line is needed to update a variable to an attributed HTML element, the variable must be into player1 and player2<br />
+object, otherwise it needs additional data transfer using sessionStorage().</p>
+<h2 id="a01b2--october-20th-2018">a0.1b2 | October, 20th 2018</h2>
+<ul>
+<li>Movement :<ul>
+<li>Added turn, dice, length limitation, players' collision, border collision, game end.</li>
+<li>Still not contain point of start of the stem (in work, with the function SetLineStart(player,X,Y)).</li></ul></li>
+<li>Added a tilemap database saving for each case the item type (line, flower), the player owner of the case, and if it's connected to<br />
+top/bottom/left/right.</li>
+<li>Added the bottom interface :<ul>
+<li>Button to start the game</li>
+<li>Dice and random value</li>
+<li>Turn count</li>
+<li>End of the game with winner, looser and draw for turn count end only. <strong>(1)</strong></li>
+<li>Message explaining why the player can't perform a move when it's the case.</li>
+<li>Button to restart. No need for a refresh anymore, with the result of a much more optimized restart !</li></ul></li>
+<li>Now the player that must play has an overlay to his tab.</li>
+<li>BUG FIX : Cleaned initialization, deleted double var declaration. <strong>(2)</strong></li>
+</ul>
+<p><strong>(1)</strong> The game won't detect if both players are stuck, and this will result in a need to skip all turns until the last one.<br />
+<strong>(2)</strong> No variable from another file can be accessible directly "as is" in p5.js function such as setup() and draw(). We recommend using<br />
+external functions call if such variables need an interaction with p5.js functions. </p>
+<h2 id="a01b3--december-21st-2018">a0.1b3 | December, 21st 2018</h2>
+<ul>
+<li>Movement :<ul>
+<li>Added point of start of the stem. The player can also restart it's preview to do a new preview.</li>
+<li>Added limitation for stem length</li>
+<li>Added the flower and their aura blocking cases for the opponent.</li></ul></li>
+<li>The game now ends if one of the players is bloqued at the end of a player turn.</li>
+<li>Added a very early and simple way to visualize where the player can start from depending of available movements from these cases.</li>
+<li>BUG FIX : On the start of the stem connected to the left or the right, you could again draw preview in the same direction, whereas it is<br />
+forbidden in the rules.</li>
+<li>BUG FIX : Small fixes in the calcul of the stem length.</li>
+</ul>
+<h2 id="a02b1--december-26th-2018">a0.2b1 | December, 26th 2018</h2>
+<ul>
+<li>Some cleaning in variables and functions <strong>(1)</strong> :<ul>
+<li>Fixed the wrong traduction of "move(s)" and replaced it by "movement(s)".</li>
+<li>All variables related to html display have been grouped in the object "display".</li>
+<li>All variables related to preview line style have been grouped in the object "preview_line".</li>
+<li>All variables containing an html button element have been grouped in the object "button".</li>
+<li>Cleaned the html elements IDs and classes to fit these changes.</li>
+<li>Moved mathematical methods not specific to the game into the file "mathematical_methods.js". (ex: IsOdd(); and GetRandom();)</li>
+<li>Better support of errors : for functions handling parameters, these parameters are verified to fit the intended form in the<br />
+function <strong>(2)</strong>.</li>
+<li>Some functions didn't have comments explaining what they do.</li>
+<li>max stem length and dice range are now easily customizable rules by only changing the value of their respective variables<br />
+in the object "rules".</li></ul></li>
+<li>Added victories counting</li>
+<li>Added an how to play tutorial in README.txt</li>
+<li>Improved turn display (now display actual turn from the max of turns : (actual turn)/(max_turn)</li>
+<li>BUG FIX : Sometime at the very start of the runtime it were possible that an error where trown (player1_collected==null) because the game<br />
+try to display data whereas there is nothing to display yet.</li>
+</ul>
+<p><strong>(1)</strong> WARNING : Meaning from a0.1 to a0.2 lot of variables and functions have changed of name to include these changes!<br />
+<strong>(2)</strong> For every new function handling parameters is it highly recommended to support this, using the following format (can fit in a single<br />
+line of code) :</p>
+<pre><code class="js language-js">if (("parameters to verify are false") /*(type, allowed values, defined or not, optional or not, etc))*/ {
+    console.error("[&lt;domain&gt;]{&lt;function&gt;} Invalid argument for parameter '&lt;parameter&gt;' : expected &lt;what was expected&gt;, got"+"&lt;parameter&gt;");
+    return;
+}
+//if the error should drop a structure (array, object, table, etc...), instead of using the format "console.error(""+var)",
+//it is recommended to use the more appropriated format "console.error("");console.log(var);"</code></pre>
+<h2 id="a02b2--december-28th-2018">a0.2b2 | December, 28th 2018</h2>
+<ul>
+<li>Improved radically the display of cases where a player can start from (added in a0.1b3). This is now correctly implemented,<br />
+use the colors of the player, and now only shows the available movements for the player who is playing, but during the whole turn<br />
+(not cleared anymore once dice is dropped ! Also fixed the bug when you validate without any movement making black dots very big.<br />
+Finally now it uses it's own canvas instead of using the preview graph which was the reason of the erasement on dice drop.).</li>
+<li>balancing :<ul>
+<li>Reduced grid size from 25x25 to 21x21.</li>
+<li>Changed dice range from 3-8 to 3-6 (8 movements dropped by dice were actually impossible to fully do before this version,<br />
+this change aim to fix that).</li>
+<li>Added bonus (to remove the dependance of luck in scores) :<ul>
+<li>Added a bonus of 2 points when creating a flower</li>
+<li>Added a bonus of 1 point for each stem case touching the opposite side of the grid.</li>
+<li>Added a bonus of 1 point for each aura case touching the opponent's plant. This point is stolen from the opponent!</li>
+<li>When the player turn is ended the bonus optained is displayed in the bottom tab<br />
+(internally : moved "SendMessage.ClearMessage();" from "ChangeTurn();" function to "GetRandomMovement();" function, so<br />
+the bonus can be displayed, and it's erased when the next player drop the dice)</li></ul></li></ul></li>
+<li>Updated Plant Rules.html to apply balancing.</li>
+<li>The bottom tab height has been increased (120px -&gt; 200px) to handle more information.</li>
+<li>BUG FIX : The initial stem from players were not counted in score.</li>
+<li>BUG FIX : The data about cases containing initial starts weren't accurate : movements from the opponent of the player who own that<br />
+start case were stored as possible whereas it's fully false.</li>
+<li>BUG FIX : Sometime the game ended when the player 2 were bloqued but when it was not it's turn and the other player could still play.</li>
+<li>BUG FIX : Link of the licence were not appearing in the header of Plant Rules.html although this were written in the code.</li>
+</ul>
+<h2 id="a02b3--december-29th-2018">a0.2b3 | December, 29th 2018</h2>
+<ul>
+<li>Added advices in "Plant Rules.html".</li>
+</ul>
+<h2 id="a03b1--february-23th-2019">a0.3b1 | February, 23th 2019</h2>
+<ul>
+<li>Integration of Electron.js for creating executables <strong>(1)</strong></li>
+<li>Added loading screen <strong>(2)</strong></li>
+<li>Added main menu <strong>(2)</strong><ul>
+<li>play : play the game.</li>
+<li>tutorial and rules : access to those, tutorial not added yet.</li>
+<li>options : option menu, with sound and music volume, plus high or low quality option. Missing other options, and not functional.</li>
+<li>credits : full credits, with link to README.txt, LICENSE.txt, NOTICE.txt.</li>
+<li>quit : quit button, same as quit to the top tab but with warning. Top tab is meant to disappear.</li></ul></li>
+<li>Of course you can go back to menu, once a game is launched, with the new go back to menu button on game end.</li>
+<li>New key bindings : replaced arrows by ZQSD and Enter by spacebar.</li>
+<li>Updated Plant Rules.html to explain better how to play.</li>
+<li>Updated README.txt to make some fixs (grammar, more readable, fixed some wrong infos…)</li>
+<li>Removed the get button to obtain the movements. It's now directly given on turn change.</li>
+<li>Removed in app notice display in Plant Rules.html.</li>
+<li>changed some ID names :<ul>
+<li>(div) : "canvas_handler" --&gt; "game_layers_handler"</li>
+<li>var : "canvas" --&gt; "main_layer_canvas" <strong>(3)</strong></li></ul></li>
+<li>Updated copyright to 2019.</li>
+<li>Prepared the graphism processing for the coming beta cycle :<ul>
+<li>Reorganized p5 main functions in canvas.js (setup, preload, draw), they stay in that file but are clearly separated from<br />
+the game process.</li>
+<li>Added the div that will handle most of the graphical process.</li>
+<li>Prepared canvas corresponding to the graphical structure of the background and the main graphical effects.</li>
+<li>Prepared the file (background.js) handling the process, with functions called and ready, but empty.</li>
+<li>All these changes are not visible at all by the user, and do not have a big impact on performance, so the code is kept functional.</li>
+<li>Some graphism work as started, but this time it is hidden, puting the code in comment. It includes :<ul>
+<li>shadow_effect : done trough div+css with this ID, ellipse gradient from alpha 0 at center to a semi-transparent color<br />
+in corners,<br />
+one black and one yellow, creating depth.</li>
+<li>floating_particles : a canvas layer displaying floating yellow particles, like fireflies for ambience.</li>
+<li>leaves button on main menu : button redesigned as leaves using pure css, without image.</li></ul></li></ul></li>
+<li>BUG FIX : Flower aura bonus was sometime displaying a wrong value, but graphically only, not affecting the gameplay.</li>
+</ul>
+<p><strong>(1)</strong> When opening the project in git, the command to run the game is "npm start". Also the compiler is not final, we actually integrated<br />
+a compiler. Finally we will consider security for the public beta, and isn't in work for alpha. So we won't make any external link<br />
+accessible directly from the app.<br />
+to get an executable directly, but we plan on maybe setup an installer which will be more user friendly.<br />
+<strong>(2)</strong> The game has been splitted into scenes, annd the main game is now one of those scenes.<br />
+<strong>(3)</strong> There is no more reason having a main process canvas, as now there's different layers for the main game display, and also other canvas<br />
+for graphism in the future. Although it is still the most important one, so it has been renamed in consequence. But we've applied the<br />
+following change to get less ambiguity in the code :</p>
+<ul>
+<li>main_layer_canvas is now a CreateGraphics() process and no more a CreateCanvas() process.</li>
+<li>all actions from p5 related to main_layer_canvas has, as it's the case for all other canvas, a prefix like the following :<br />
+"main_layer_canvas.(action)"<br />
+ex : main_layer_canvas.line(args…);</li>
+</ul>
+<h1 id="beta">BETA</h1>
+<h2 id="010b1--march-28th-2019">0.1.0(b1) | March, 28th 2019</h2>
+<ul>
+<li>Big graphical revamp started <strong>(1)</strong> :<ul>
+<li>Everything is themed on nature.</li>
+<li>Disabled graphical features from the alpha a0.3b1 are enabled back.<ul>
+<li>The floating_particle system has slightly changed : improved performances<br />
+(using a .svg image instead of an intensive dynamic draw), reviewed style a bit, and finally they've dynamic position,<br />
+by this understand a random proportional speed and size to make a feel of 3D/depth.</li></ul></li>
+<li>A new fancy dynamic background, only missing falling leaves.</li>
+<li>Removed the header.</li>
+<li>A new font is used for every text in the game.</li>
+<li>A new "assets" folder has been created where you can find all required resources relative to graphism and sound.</li>
+<li>That's the only changes for now, and still a lot of progress is needed, the UI is not finished yet too.</li></ul></li>
+<li>Added FPS display in top left corner.</li>
+<li>The version now appear in the credits menu.</li>
+<li>Canvas elements are no more called using "div.children[i]" but using "p5_canvas.elt", avoiding possible bugs if the canvas<br />
+order change in the future.</li>
+<li>Removed jQuery which was completely useless.</li>
+</ul>
+<p><strong>(1)</strong> This introduced performances problems, so be sure to run the app without too much process behind from other apps!</p>
+<h2 id="010b2--july-23rd-2019">0.1.0(b2) | July, 23rd 2019</h2>
+<ul>
+<li>Graphic changes :<ul>
+<li>Added falling leaves to the background</li>
+<li>The loading screen message is now animated.</li>
+<li>Added a transition between the loading screen and the main menu.</li>
+<li>The low graphics option is now functional, and can boost a bit the performances.</li>
+<li>background.js is now more readable, with a lot of aliases used for variables in most of the functions.<br />
+Some parts got some better explanation as well.</li>
+<li>As the main game UI isn't started, the transparent colors has less opacity so it's more visible with the new dynamic background.</li>
+<li>Added the game logo on the main menu, not final design, not fully animated.</li></ul></li>
+<li>Added music, started audio "engine".</li>
+<li>The game isn't launched before the initialization has finished.<ul>
+<li>Initialization information is better displayed in the logs.</li></ul></li>
+<li>Plant b0.1b1 may contain some false version numerotation at some places (a0.3b2 instead of b0.1b1)</li>
+<li>Renamed scene.game_menu into scene.main_menu</li>
+<li>BUG FIX : The grid wasn't reseted when quiting and launching a new game.</li>
+</ul>
+<h2 id="010b3--october-22nd-2019">0.1.0(b3) | October, 22nd 2019</h2>
+<ul>
+<li>Now each player have 3 start points, to increase fight between plants.</li>
+<li>Graphic changes :<ul>
+<li>The game logo is now animated, as a "drawn" animation. Missing the leaves animation, and the base.</li>
+<li>Changes to the falling leaves particles :<ul>
+<li>The spawn probability of the falling leave particle can now be changed in fall_ptcl_data.<ul>
+<li>Decreased the ammount of leaves spawned per frame, to increase performances.</li>
+<li>Changed the leave texture</li>
+<li>changed the way the display of these particles works to improve FPS. But may be rewritten again due to a higher ammount<br />
+of resources used.</li></ul></li></ul></li></ul></li>
+<li>Added the tutorial menu, but the tutorial menu itself isn't ready.</li>
+<li>Options are now automatically saved in user_data/options.json</li>
+<li>Added support for French language. Other languages can now be added easily using a JSON file.</li>
+<li>Numerous HTML elements now have an ID.</li>
+<li>Started moving all HTML variables into an "HTML" object.</li>
+<li>BUG FIX : The loading animation when the game loads wasn't horizontally centered.</li>
+<li>BUG FIX : The music volume range bar were not working.</li>
+</ul>
+<h2 id="010b4--december-1st-2019">0.1.0(b4) | December, 1st 2019</h2>
+<ul>
+<li>Gameplay changes:<ul>
+<li>Grid size: 21 ==&gt; 17</li>
+<li>Bonus point for opposite cases: 1 ==&gt; 5</li></ul></li>
+<li>Source code structure changes:<ul>
+<li>Moved all html files into a new folder called "html", with the exception of index.html.</li>
+<li>Moved css file into a new folder called "css".</li>
+<li>Moved all js files into a new folder called "js", with the exception of main.js.</li>
+<li>p5 is now found in "js/libraries/p5".</li>
+<li>js restructuration:<ul>
+<li>Renamed "program.js" into "sub_main.js"</li>
+<li>Splitted "canvas.js" into "game.js" and "p5_canvas.js". (functions and variables reorganized accordingly).<br />
+Game process contained in draw() is now called trough a function in game.js.</li>
+<li>SendMessage() has been moved from sub_main.js to game.js.</li></ul></li></ul></li>
+<li>BUG FIX: When starting a new game after having played one, the grid wasn't displayed, and only the first player could play.<br />
+it could behave more and more strangely if we continued restarting games.</li>
+<li>BUG FIX: Player 2 bonus for opposite cases were wrongly counted.</li>
+<li>BUG FIX: Missing translations for game messages.</li>
+</ul>
+<h2 id="010b5--may-9th-2020">0.1.0(b5) | May, 9th 2020</h2>
+<ul>
+<li>Big code clean up (refactoring):<ul>
+<li>All HTML elements excluding scenes, classes and some exceptions have been organized in the "HTML" object.<ul>
+<li>Some elements have by the same way changed of ID to get a more suitable name.</li></ul></li>
+<li>New functions created to wrap up the code into more clear sections and simplify code modification.</li>
+<li>Created ShowScene() and HideScene() to simplify scene management</li>
+<li>Removed useless "zombie code" in comments (kept some debug parts).</li>
+<li>Tilemap now contains the coordinates of the targeted case for debug purpose.</li></ul></li>
+<li>Temporary css to improve controls settings display, and avoid the overlap with the button to go back to main menu.</li>
+</ul>
+<h2 id="010b6--">0.1.0(b6) | ?</h2>
+<ul>
+<li>README.txt, NOTICE.txt, LICENSE.txt CHANGELOG.txt have been converted to README.md, NOTICE.md, LICENSE.md CHANGELOG.md<ul>
+<li>The license content remained untouched.</li></ul></li>
+<li>Markdown support in-game to match github markdown, with custom css themed with the game.<ul>
+<li>The license do not receive mardown flavor, and is displayed as a text file only.</li></ul></li>
+<li>Added in-game access to these changelogs, using a new "changelogs" button in the main menu.</li>
+<li>Removed unused fonts.</li>
+<li>Added missing credits.</li>
+<li>BUG FIX: The winner was not displayed at the end of a game.</li>
+<li>BUG FIX: No grid was displayed when going back to main menu, then launching a new game.</li>
+<li>BUG FIX: The flower aura bonus wasn't accurate.</li>
+</ul>
+<h1 id="release">RELEASE</h1>
+<p>Mmmmmmh… soon ?</p>
+        </body>
+        </html>
+        

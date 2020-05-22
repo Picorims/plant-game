@@ -48,6 +48,7 @@ function GlobalInit() {//initialization
                 tutorial_and_rules: document.getElementById("tutorial_and_rules_button"),
                 options:            document.getElementById("options_button"),
                 credits:            document.getElementById("credits_button"),
+                changelog:          document.getElementById("changelog_button"),
                 exit:               document.getElementById("exit_button"),
             },
         },

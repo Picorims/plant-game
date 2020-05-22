@@ -9,10 +9,11 @@
 
 //JS THAT HANDLE THE MENU AND OTHER SUB MENUS
 const { remote } = require('electron');
-var CreateRulesWindow = remote.require('./main').CreateRulesWindow;
-var CreateReadMeWindow = remote.require('./main').CreateReadMeWindow;
-var CreateNoticeWindow = remote.require('./main').CreateNoticeWindow;
-var CreateLicenseWindow = remote.require('./main').CreateLicenseWindow;
+var CreateRulesWindow       = remote.require('./main').CreateRulesWindow;
+var CreateChangelogWindow   = remote.require('./main').CreateChangelogWindow;
+var CreateReadMeWindow      = remote.require('./main').CreateReadMeWindow;
+var CreateNoticeWindow      = remote.require('./main').CreateNoticeWindow;
+var CreateLicenseWindow     = remote.require('./main').CreateLicenseWindow;
 var fs = require('fs');
 
 var languages;//list of available languages
@@ -606,6 +607,7 @@ function ApplyLanguage(selected_language) {
     HTML.main_menu.button.tutorial_and_rules.innerHTML      = options.language.UI.main_menu.button.tutorial;
     HTML.main_menu.button.options.innerHTML                 = options.language.UI.main_menu.button.options;
     HTML.main_menu.button.credits.innerHTML                 = options.language.UI.main_menu.button.credits;
+    HTML.main_menu.button.changelog.innerHTML               = options.language.UI.main_menu.button.changelog;
     HTML.main_menu.button.exit.innerHTML                    = options.language.UI.main_menu.button.exit;
     
     //quit menu
@@ -774,7 +776,13 @@ function QuitOptions() {//function to quit the options menu to go back to the ma
 
 
 
-//CREDITS
+
+
+
+//###################
+//#     CREDITS     #
+//###################
+
 function Credits() {//credits button to show full credits
     ShowScene(scene.credits);
 }
@@ -810,7 +818,38 @@ function CloseCredits() {//close credits menu to go back to main menu
 
 
 
-//QUIT
+
+
+
+
+//######################
+//#     CHANGELOGS     #
+//######################
+
+function Changelogs() {
+    CreateChangelogWindow();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//################
+//#     QUIT     #
+//################
+
 function ConfirmQuit() {//quit button to show a window that confirms quit. 2 buttons are displayed to confirm quit or cancel it, corresponding to the 2 functions below.
     ShowScene(HTML.quit_warning_menu.container,   ((window.innerWidth/2)-(HTML.quit_warning_menu.container.offsetWidth/2))+"px");
 }

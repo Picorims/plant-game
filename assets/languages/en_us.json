@@ -5,9 +5,10 @@
         "main_menu":{
             "button":{
                 "play":"PLAY",
-                "tutorial":"TUTORIAL<br>AND RULES",
+                "tutorial":"TUTORIAL</br>AND RULES",
                 "options":"OPTIONS",
                 "credits":"CREDITS",
+                "changelog":"CHANGELOGS",
                 "exit":"EXIT"
             },
             "quit":{
@@ -37,15 +38,15 @@
         },
         "credits":{
             "development":"Development",
-            "development_content":"Picorims<br>Cirno",
+            "development_content":"Picorims</br>Cirno",
             "graphism":"Graphism and Design",
-            "graphism_content":"Picorims<br>Police: 'candela' by La Tipomatika",
+            "graphism_content":"Picorims</br>Police: 'candela' by La Tipomatika",
             "music2":"Music",
             "music2_content":"\"Drift\" by Geoplex {https://www.youtube.com/watch?v=lLVwHWWvejQ}",
             "sfx":"SFX",
             "sfx_content":"",
             "libraries":"Libraries",
-            "libraries_content":"Electron.js<br>NodeJS<br>p5.js<br>showdown.js<br>electron-packager",
+            "libraries_content":"Electron.js</br>NodeJS</br>p5.js</br>showdown.js</br>electron-packager",
             "notice":"Notice"
         },
         "game":{
@@ -66,7 +67,7 @@
         }
     },
     "game_message":{
-        "bonus":"Score bonus for player [PLAYER] :<br>- Flower bonus: +[FLOWER_BONUS]<br>- Bonus from opposite border cases: +[OPPONENT_SIDE_BONUS]<br>- Points stolen by a flower aura: +[STOLEN_BY_AURA]",
+        "bonus":"Score bonus for player [PLAYER] :</br>- Flower bonus: +[FLOWER_BONUS]</br>- Bonus from opposite border cases: +[OPPONENT_SIDE_BONUS]</br>- Points stolen by a flower aura: +[STOLEN_BY_AURA]",
         "double_left_right":"You cannot go twice to the left or the right! You cannot go backward your previous movement too!",
         "flower_start":"You can't start moving from a flower!",
         "max_stem_length":"The stem is already to it's max length!",

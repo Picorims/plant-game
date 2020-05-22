@@ -22,15 +22,16 @@ const {
 process.env.NODE_ENV = 'development';//development||production
 let main_window;//game window
 let rules_window;//window for rules
-let readme_window;//window for README.txt
-let notice_window;//window for NOTICE.txt
+let changelog_window;//window for the changelogs
+let readme_window;//window for README.md
+let notice_window;//window for NOTICE.md
 let license_window;//window for LICENSE.txt
 
 //md file to html
 var fs = require('fs');
 var showdown  = require('showdown'),
     converter = new showdown.Converter(),
-    readme_md, notice_md, license_md;
+    changelog_md, readme_md, notice_md, license_md;
 converter.setFlavor('github');
 
 
@@ -107,8 +108,67 @@ ipcMain.on('rules_window', function(){
 
 
 
+function CreateChangelogWindow() {//creates a window displaying the changelogs
+    changelog_window = new BrowserWindow({
+        width: 1440,
+        height: 810,
+        titles: 'CHANGELOG.md',
+        frame: true,
+        webPreferences:{
+            nodeIntegration: false,
+        },
+    });
 
-function CreateReadMeWindow() {//creates a window displaying README.txt
+    //md to html
+    fs.readFile("CHANGELOG.md", function(error, data) {
+        if (error) throw error;
+        changelog_md = data.toString();
+
+        var changelog_html = converter.makeHtml(changelog_md);
+
+        var changelog_html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>CHANGELOG.md</title>
+            <link rel="stylesheet" type="text/css" href="../css/md.css" />
+        </head>
+        <body>
+            ${changelog_html}
+        </body>
+        </html>
+        `;
+
+        //disable links
+        var changelog_html = changelog_html.replace(/<a/g, "<a class='disabled'"); //all "<a" in the file, not only the first one.
+
+        fs.writeFile("tmp/md_to_html_changelog.html", changelog_html, function(error) {
+            if (error) throw error;
+            changelog_window.loadFile("tmp/md_to_html_changelog.html");
+        });
+
+    });
+
+    changelog_window.on('close', function () {
+        changelog_window = null;
+    });
+}
+exports.CreateChangelogWindow = CreateChangelogWindow;
+ipcMain.on('changelog_window', function(){
+    changelog_window.show()
+})
+
+
+
+
+
+
+
+
+
+
+function CreateReadMeWindow() {//creates a window displaying README.md
     readme_window = new BrowserWindow({
         width: 1440,
         height: 810,
@@ -167,7 +227,7 @@ ipcMain.on('readme_window', function(){
 
 
 
-function CreateNoticeWindow() {//creates a window displaying NOTICE.txt
+function CreateNoticeWindow() {//creates a window displaying NOTICE.md
     notice_window = new BrowserWindow({
         width: 1440,
         height: 810,

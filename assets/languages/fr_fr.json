@@ -5,9 +5,10 @@
         "main_menu":{
             "button":{
                 "play":"JOUER",
-                "tutorial":"TUTORIEL<br>ET RÈGLES",
+                "tutorial":"TUTORIEL</br>ET RÈGLES",
                 "options":"OPTIONS",
                 "credits":"CRÉDITS",
+                "changelog":"MISES À JOUR</br>(ANGLAIS)",
                 "exit":"QUITTER"
             },
             "quit":{
@@ -37,15 +38,15 @@
         },
         "credits":{
             "development":"Développement",
-            "development_content":"Picorims<br>Cirno",
+            "development_content":"Picorims</br>Cirno",
             "graphism":"Graphismes et Design",
-            "graphism_content":"Picorims<br>Police: 'candela' de La Tipomatika",
+            "graphism_content":"Picorims</br>Police: 'candela' de La Tipomatika",
             "music2":"Musique",
             "music2_content":"\"Drift\" par Geoplex {https://www.youtube.com/watch?v=lLVwHWWvejQ}",
             "sfx":"SFX",
             "sfx_content":"",
             "libraries":"Librairies",
-            "libraries_content":"Electron.js<br>NodeJS<br>p5.js<br>showdown.js<br>electron-packager",
+            "libraries_content":"Electron.js</br>NodeJS</br>p5.js</br>showdown.js</br>electron-packager",
             "notice":"Notice"
         },
         "game":{
@@ -66,7 +67,7 @@
         }
     },
     "game_message":{
-        "bonus":"Score bonus pour le joueur [PLAYER] :<br>- bonus des fleurs: +[FLOWER_BONUS]<br>- Bonus des cases sur le bord opposé: +[OPPONENT_SIDE_BONUS]<br>- Points volés par l'aura d'une fleur: +[STOLEN_BY_AURA]",
+        "bonus":"Score bonus pour le joueur [PLAYER] :</br>- bonus des fleurs: +[FLOWER_BONUS]</br>- Bonus des cases sur le bord opposé: +[OPPONENT_SIDE_BONUS]</br>- Points volés par l'aura d'une fleur: +[STOLEN_BY_AURA]",
         "double_left_right":"Vous ne pouvez pas aller deux fois à gauche ou à droite! Vous ne pouvez pas revenir en arrière non plus!",
         "flower_start":"Vous ne pouvez pas démarrer une tige depuis une fleur!",
         "max_stem_length":"Vous avez déjà atteint la longueur maximale d'une tige!",

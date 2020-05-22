@@ -77,14 +77,15 @@ and you should see README.txt as well for other information. -->
             </object>
         </div>
         
-        <button id="play_button" class="main_menu_button leave_button" onclick="Play();"></button><br>
-        <button id="tutorial_and_rules_button" class="main_menu_button leave_button" style="font-size: 20px;" onclick="TutorialAndRules();"></button><br>
-        <button id="options_button" class="main_menu_button leave_button" onclick="Options();"></button><br>
-        <button id="credits_button" class="main_menu_button leave_button" onclick="Credits();"></button><br>
-        <button id="exit_button" class="main_menu_button leave_button" onclick="ConfirmQuit();"></button><br>
+        <button id="play_button" class="main_menu_button leave_button" onclick="Play();"></button></br>
+        <button id="tutorial_and_rules_button" class="main_menu_button leave_button" onclick="TutorialAndRules();"></button></br>
+        <button id="options_button" class="main_menu_button leave_button" onclick="Options();"></button></br>
+        <button id="credits_button" class="main_menu_button leave_button" onclick="Credits();"></button></br>
+        <button id="changelog_button" class="main_menu_button leave_button" onclick="Changelogs();"></button></br>
+        <button id="exit_button" class="main_menu_button leave_button" onclick="ConfirmQuit();"></button></br>
 
         <div id="quit_warning_menu">
-            <span id="quit_msg"></span><br>
+            <span id="quit_msg"></span></br>
             <button id="quit_confirm_button" class="quit_button" onclick="Quit();"></button><button id="quit_cancel_button" class="quit_button" onclick="CancelQuit();"></button>
         </div>
     </div>
@@ -131,7 +132,7 @@ and you should see README.txt as well for other information. -->
             <button id="next_slide_button" onclick="NextSlide(1)">&raquo;</button>
 
         </div>
-        <br>
+        </br>
 
         <!-- Div which contains clickable objects to go on a specific page -->
         <div id="dot_container">
@@ -177,15 +178,15 @@ and you should see README.txt as well for other information. -->
             <span id="controls_option_title" class="option_title"></span>
             <form id="controls_container">
                 <span id="control_left_msg"></span>
-                <input id="control_left" type="button" value="Q"/><br>
+                <input id="control_left" type="button" value="Q"/></br>
                 <span id="control_right_msg"></span>
-                <input id="control_right" type="button" value="D"/><br>
+                <input id="control_right" type="button" value="D"/></br>
                 <span id="control_down_msg"></span>
-                <input id="control_down" type="button" value="S"/><br>
+                <input id="control_down" type="button" value="S"/></br>
                 <span id="control_up_msg"></span>
-                <input id="control_up" type="button" value="Z"/><br>
+                <input id="control_up" type="button" value="Z"/></br>
                 <span id="control_validate_msg"></span>
-                <input id="control_validate" type="button" value=" "/><br>
+                <input id="control_validate" type="button" value=" "/></br>
 
                 <button id="default_controls"></button>
             </form>
@@ -229,13 +230,13 @@ and you should see README.txt as well for other information. -->
             <h1 id="credits_notice" class="credits_title"></h1>
             <p class="credits_text">
                 Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
-                <br>
-                <br>Copyright © 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
-                <br>
-                <br>Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
-                <br>More information about the license at <a onclick="DispLicense();">LICENSE.md</a> to the root of the program. If it is missing, see <!--<a href="https://www.gnu.org/licenses/">-->"https://www.gnu.org/licenses/"<!--</a>-->.
-                <br>A full notice can be found at <a onclick="DispNotice();">NOTICE.md</a> to the root of the program,
-                <br>and you should see <a onclick="DispReadMe();">README.md</a> as well for other information.</p>
+                </br>
+                </br>Copyright © 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
+                </br>
+                </br>Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
+                </br>More information about the license at <a onclick="DispLicense();">LICENSE.md</a> to the root of the program. If it is missing, see <!--<a href="https://www.gnu.org/licenses/">-->"https://www.gnu.org/licenses/"<!--</a>-->.
+                </br>A full notice can be found at <a onclick="DispNotice();">NOTICE.md</a> to the root of the program,
+                </br>and you should see <a onclick="DispReadMe();">README.md</a> as well for other information.</p>
         </div>
     </div>
 
@@ -246,8 +247,8 @@ and you should see README.txt as well for other information. -->
         <div id="player1_interface" class="interface player1_interface">
             <h1 id="interface1_title" class="interface_title"></h1>
             <label class="interface_subtitle score_subtitle" for="player1_score"></label><span class="interface_data_display" id="player1_score"></span>
-            <br><label class="interface_subtitle movements_subtitle" for="player1_movements"></label><span class="interface_data_display" id="player1_movements"></span><button id='player1_movements_button' class="side_interface_button player1_interface get_button" onclick="GetRandomMovement(1);"></button>
-            <br><label class="interface_subtitle victories_subtitle" for="player1_wins"></label><span class="interface_data_display" id="player1_wins"></span>
+            </br><label class="interface_subtitle movements_subtitle" for="player1_movements"></label><span class="interface_data_display" id="player1_movements"></span><button id='player1_movements_button' class="side_interface_button player1_interface get_button" onclick="GetRandomMovement(1);"></button>
+            </br><label class="interface_subtitle victories_subtitle" for="player1_wins"></label><span class="interface_data_display" id="player1_wins"></span>
             <p class="interface_data_display" id="player1_game_result"></p>
         </div>
         <div id="game_layers_handler">
@@ -256,16 +257,16 @@ and you should see README.txt as well for other information. -->
         <div id="player2_interface" class="interface player2_interface">
             <h1 id="interface2_title" class="interface_title"></h1>
             <label class="interface_subtitle score_subtitle" for="player2_score"></label><span class="interface_data_display" id="player2_score"></span>
-            <br><label class="interface_subtitle movements_subtitle" for="player2_movements"></label><span class="interface_data_display" id="player2_movements"></span><button id='player2_movements_button' class="side_interface_button player2_interface get_button" onclick="GetRandomMovement(2);"></button>
-            <br><label class="interface_subtitle victories_subtitle" for="player2_wins"></label><span class="interface_data_display" id="player2_wins"></span>
+            </br><label class="interface_subtitle movements_subtitle" for="player2_movements"></label><span class="interface_data_display" id="player2_movements"></span><button id='player2_movements_button' class="side_interface_button player2_interface get_button" onclick="GetRandomMovement(2);"></button>
+            </br><label class="interface_subtitle victories_subtitle" for="player2_wins"></label><span class="interface_data_display" id="player2_wins"></span>
             <p class="interface_data_display" id="player2_game_result"></p>
         </div>
         <div id="bottom_interface" class="interface">
             <button id="start_game_button" class="bottom_interface_button" onclick="StartGame()"></button>
             <button id="new_game_button" class="bottom_interface_button" onclick="ResetGame()"></button>
             <button id="back_to_menu_button" class="bottom_interface_button" onclick="ToMenu()"></button>
-            <br><label class="interface_subtitle turn_subtitle" for="turn"></label><span class="interface_data_display" id="turn"></span>
-            <br><label class="interface_subtitle msg_subtitle" for="message"></label><span class="interface_data_display" id="message"></span>
+            </br><label class="interface_subtitle turn_subtitle" for="turn"></label><span class="interface_data_display" id="turn"></span>
+            </br><label class="interface_subtitle msg_subtitle" for="message"></label><span class="interface_data_display" id="message"></span>
         </div>
     </div>
     

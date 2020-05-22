@@ -2537,6 +2537,6 @@ function ResetGame() {//reset the game for a new game
 
 
 function ToMenu() {//go back to main menu
-    scene.game_content.style.left = window.innerWidth+"px";
-    scene.main_menu.style.left = 0;
+    HideScene(scene.game_content);
+    ShowScene(scene.main_menu);
 }
