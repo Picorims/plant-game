@@ -370,6 +370,8 @@ ex : main_layer_canvas.line(args...);
 
 ## 0.1.0(b6) | ?
 
+- Graphical changes:
+	- Buttons redesign.
 - README.txt, NOTICE.txt, LICENSE.txt CHANGELOG.txt have been converted to README.md, NOTICE.md, LICENSE.md CHANGELOG.md
 	- The license content remained untouched.
 - Markdown support in-game to match github markdown, with custom css themed with the game.
@@ -377,6 +379,8 @@ ex : main_layer_canvas.line(args...);
 - Added in-game access to these changelogs, using a new "changelogs" button in the main menu.
 - Removed unused fonts.
 - Added missing credits.
+- Small CSS clean-up.
+- Translation fixes.
 - BUG FIX: The winner was not displayed at the end of a game.
 - BUG FIX: No grid was displayed when going back to main menu, then launching a new game.
 - BUG FIX: The flower aura bonus wasn't accurate.

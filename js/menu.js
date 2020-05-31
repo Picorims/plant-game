@@ -249,6 +249,7 @@ function MainMenuAnimation() {//main menu animation
                     path.style.strokeLinejoin   = "round";
                     path.style.strokeDasharray  = path_length+" "+path_length;
                     path.style.strokeDashoffset = path_length;
+                    path.style.willChange       = "stroke-dashoffset, stroke_width, fill";
                     //############################################################
 
 

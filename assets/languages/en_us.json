@@ -18,7 +18,7 @@
             }
         },
         "tutorial":{
-            "back":"BACK TO MAIN MENU"
+            "back":"MAIN MENU"
         },
         "options":{
             "language2":"Language",
@@ -34,7 +34,7 @@
                 "validate":"Validate",
                 "default":"Default"
             },
-            "back":"BACK TO MAIN MENU"
+            "back":"MAIN MENU"
         },
         "credits":{
             "development":"Development",
