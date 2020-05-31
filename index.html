@@ -56,11 +56,21 @@ and you should see README.txt as well for other information. -->
     <div id="background_graphism_handler">
         <div id="shadow_effect"></div>
     </div>
+
+    <!--SVG FILTERS-->
     <!--HORIZONTAL BLUR FILTER FOR GOD RAYS (because classic blur also act on canvas borders which is not esthetic)-->
     <svg xmlns="http://www.w3.org/2000/svg" version="2" class="filters" id="svg_filters">
         <defs>
             <filter id="horizontal_blur">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="0,0" />
+            </filter>
+        </defs>
+    </svg>
+    <!--CLASSIC BLUR FOR BACKGROUND ELEMENTS-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters" id="svg_filters">
+        <defs>
+            <filter id="blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10,10" />
             </filter>
         </defs>
     </svg>

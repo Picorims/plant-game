@@ -87,12 +87,12 @@ body, button {
 }
 
 .big_leave_button:hover {
-    filter: drop-shadow(0px 0px 6px #f5e274c2);
+    filter: drop-shadow(0px 0px 3px #f5e274e5);
     transform: scale(1.1,1.1) rotate(-3deg);
 }
 
 .big_leave_button:active {
-    filter: drop-shadow(0px 0px 6px #f5e274c2);
+    filter: drop-shadow(0px 0px 3px #f5e274e5);
     transform: scale(0.95,0.95) rotate(-3deg);
 }
 
@@ -911,27 +911,30 @@ input:checked+.slider:before {
 
 
 
-
-
-
 #credits_window {
     position: absolute;
+    z-index: 30;
     width: 70%;
     height: 80%;
     top: 0;/*defined in JS*/
     left: 0;/*defined in JS*/
     padding: 20px;
-    background-color: #eeeeee;
+    background-color: #eee;
+    border: 2px solid white;
     text-align: center;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
-
-
-
-
-
+/* #credits_window::after {
+    position: absolute;
+    z-index: 28;
+    content:"";
+    filter: url("#blur");
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+} */
 
 
 
