@@ -174,8 +174,10 @@ function PrepareMainMenuAnimation() {//prepare everything for the animation of t
 
 
 function MainMenuAnimation() {//main menu animation
+    
     //defs
     var game_logo_object = document.getElementById("game_logo_object").contentDocument;
+
     var letter_path = {
         p:{
             _stem1:game_logo_object.getElementById("p_stem1"),

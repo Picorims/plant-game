@@ -30,7 +30,7 @@ body {
     width: 100%;/*defined in JS*/
     height: 100%;/*defined in JS*/
     background-image: radial-gradient(ellipse at center, #78e676, 0, #082f08 75%);
-    background-repeat: none;
+    background-repeat: no-repeat;
     overflow: hidden;
 }
 
@@ -87,7 +87,7 @@ body, button {
 }
 
 .big_leave_button:hover {
-    filter: drop-shadow(0px 0px 3px #f5e274e5);
+    filter: url(#yellow_outline);
     transform: scale(1.1,1.1) rotate(-3deg);
 }
 
@@ -405,7 +405,7 @@ body, button {
 }
 
 
-#svg_filters {
+.filters {
     position: fixed;
     width: 0;
     height: 0;
@@ -919,22 +919,17 @@ input:checked+.slider:before {
     top: 0;/*defined in JS*/
     left: 0;/*defined in JS*/
     padding: 20px;
-    background-color: #eee;
-    border: 2px solid white;
+    background-color: rgba(205, 231, 203, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 3px;
     text-align: center;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-/* #credits_window::after {
-    position: absolute;
-    z-index: 28;
-    content:"";
-    filter: url("#blur");
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-} */
+
+
+
+
 
 
 

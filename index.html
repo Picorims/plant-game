@@ -27,7 +27,7 @@ and you should see README.txt as well for other information. -->
     <script src="js/audio.js" type="text/javascript" charset="UTF-8"></script>
     <script src="js/game.js" type="text/javascript"  charset="UTF-8"></script>
 </head>
-<body onload="GlobalInit();">
+<body onload="setTimeout(function() {GlobalInit();}, 1000)">
     <div id="fps_display"></div>
     
     
@@ -59,7 +59,7 @@ and you should see README.txt as well for other information. -->
 
     <!--SVG FILTERS-->
     <!--HORIZONTAL BLUR FILTER FOR GOD RAYS (because classic blur also act on canvas borders which is not esthetic)-->
-    <svg xmlns="http://www.w3.org/2000/svg" version="2" class="filters" id="svg_filters">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters" id="svg_filters">
         <defs>
             <filter id="horizontal_blur">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="0,0" />
@@ -67,10 +67,16 @@ and you should see README.txt as well for other information. -->
         </defs>
     </svg>
     <!--CLASSIC BLUR FOR BACKGROUND ELEMENTS-->
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters" id="svg_filters">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="filters">
         <defs>
-            <filter id="blur">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10,10" />
+            <filter id="yellow_outline">
+                <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="THICKEN" /> <!--outline-->
+                <feFlood flood-color="#f5e274" result="COLOR" /> <!--outline color-->
+                <feComposite in="COLOR" in2="THICKEN" operator="in" result="COLORED_THICKEN" /> <!--apply outile color-->
+                <feMerge result="OUTLINE"> <!--merge to source-->
+                    <feMergeNode in="COLORED_THICKEN" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
             </filter>
         </defs>
     </svg>
