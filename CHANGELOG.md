@@ -372,7 +372,8 @@ ex : main_layer_canvas.line(args...);
 
 - Graphical changes:
 	- Main buttons redesign.
-	- Credits background improvement.
+	- Credits menu improvement.
+	- Customized scroll bars.
 - Internal updates:
 	- Updated Electron.js to v8.3.0:
 		- Upgraded to Chromium 80.0.3987.86;

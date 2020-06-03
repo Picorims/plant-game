@@ -42,6 +42,34 @@ body, button {
 }
 
 
+
+
+
+
+/*scroll bars*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #238e3a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4caf50;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #238e3a;
+}
+
+
+
+
+
 #fps_display {
     position: fixed;
     top: 10px;
@@ -79,7 +107,7 @@ body, button {
 
     font-size: 25px;
     font-weight: bold;
-    color: #eeeeee;
+    color: #dddddd;
     text-shadow: 0px 0px 15px #238e3a;
     
     transition: 0.2s;
@@ -94,6 +122,33 @@ body, button {
 .big_leave_button:active {
     filter: drop-shadow(0px 0px 3px #f5e274e5);
     transform: scale(0.95,0.95) rotate(-3deg);
+}
+
+
+
+
+
+
+
+
+a {
+    color: #61ccff;
+    cursor: pointer;
+}
+a:link {
+    color: #61ccff;
+}
+a:visited {
+    color: #2d9ab6;
+}
+a:focus {
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: underline;     
+}
+a:active {
+    color: #237083;
 }
 
 
@@ -148,7 +203,7 @@ body, button {
 
 @keyframes FadeIn {
     from {background-color: #222222;}
-    to {background-color: #eeeeee;}
+    to {background-color: #dddddd;}
 }
 @keyframes FadeOut {
     from {opacity: 1;}
@@ -920,8 +975,8 @@ input:checked+.slider:before {
     left: 0;/*defined in JS*/
     padding: 20px;
     background-color: rgba(205, 231, 203, 0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 3px;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
     text-align: center;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -939,7 +994,7 @@ input:checked+.slider:before {
     left: 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #999999;
+    color: #dddddd;
 }
 
 
@@ -950,7 +1005,8 @@ input:checked+.slider:before {
     top: 0; /*for sticky to work*/
     margin-left: 0;/*defined in JS*/
     background-color: #666666;
-    color: #eeeeee;
+    border-radius: 5px;
+    color: #dddddd;
     text-align: center;
     font-size: 31px;
     font-weight: bold;
@@ -971,30 +1027,7 @@ input:checked+.slider:before {
 .credits_text {
     margin: 0;
     font-size: 20px;
-    color: #666666;
-}
-
-
-
-a {
-    text-decoration: none;
-    color: #35bfe2;
-    cursor: pointer;
-}
-a:link {
-    color: #35bfe2;
-}
-a:visited {
-    color: #2d9ab6;
-}
-a:focus {
-    text-decoration: underline;
-}
-a:hover {
-    text-decoration: underline;     
-}
-a:active {
-    color: #237083;
+    color: #dddddd;
 }
 
 
