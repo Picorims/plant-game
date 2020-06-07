@@ -93,12 +93,12 @@ and you should see README.txt as well for other information. -->
             </object>
         </div>
         
-        <button id="play_button" class="main_menu_button big_leave_button" onclick="Play();"></button></br>
-        <button id="tutorial_and_rules_button" class="main_menu_button big_leave_button" onclick="TutorialAndRules();"></button></br>
-        <button id="options_button" class="main_menu_button big_leave_button" onclick="Options();"></button></br>
-        <button id="credits_button" class="main_menu_button big_leave_button" onclick="Credits();"></button></br>
-        <button id="changelog_button" class="main_menu_button big_leave_button" onclick="Changelogs();"></button></br>
-        <button id="exit_button" class="main_menu_button big_leave_button" onclick="ConfirmQuit();"></button></br>
+        <button id="play_button" class="main_menu_button leave_button big_leave_button" onclick="Play();"></button></br>
+        <button id="tutorial_and_rules_button" class="main_menu_button leave_button big_leave_button" onclick="TutorialAndRules();"></button></br>
+        <button id="options_button" class="main_menu_button leave_button big_leave_button" onclick="Options();"></button></br>
+        <button id="credits_button" class="main_menu_button leave_button big_leave_button" onclick="Credits();"></button></br>
+        <button id="changelog_button" class="main_menu_button leave_button big_leave_button" onclick="Changelogs();"></button></br>
+        <button id="exit_button" class="main_menu_button leave_button big_leave_button" onclick="ConfirmQuit();"></button></br>
 
     </div>
 
@@ -106,9 +106,10 @@ and you should see README.txt as well for other information. -->
 
     <!--QUIT WARNING MENU SCENE-->
     <div id="quit_warning_menu" class="scene overlay_scene">
-        <div id="warning_menu_container">
+        <div id="warning_menu_container" class="light_blur_background">
             <span id="quit_msg"></span></br>
-            <button id="quit_confirm_button" class="quit_button" onclick="Quit();"></button><button id="quit_cancel_button" class="quit_button" onclick="CancelQuit();"></button>    
+            <button id="quit_confirm_button" class="quit_button leave_button small_leave_button" onclick="Quit();"></button>
+            <button id="quit_cancel_button" class="quit_button leave_button small_leave_button" onclick="CancelQuit();"></button>    
         </div>
     </div>
 
@@ -166,7 +167,7 @@ and you should see README.txt as well for other information. -->
         </div>
 
 
-        <button id="tutorial_to_main_button" class="main_menu_button big_leave_button" onclick="QuitTutorialAndRules();"></button>
+        <button id="tutorial_to_main_button" class="main_menu_button leave_button big_leave_button" onclick="QuitTutorialAndRules();"></button>
 
     </div>
 
@@ -213,14 +214,14 @@ and you should see README.txt as well for other information. -->
                 <button id="default_controls"></button>
             </form>
         </div>
-        <button id="options_to_main_button" class="main_menu_button big_leave_button" onclick="QuitOptions();"></button>
+        <button id="options_to_main_button" class="main_menu_button leave_button big_leave_button" onclick="QuitOptions();"></button>
     </div>
 
     
 
     <!--CREDITS SCENE-->
     <div id="credits" class="scene overlay_scene">
-        <div id="credits_window">
+        <div id="credits_window" class="light_blur_background">
             <div id="game_version">Beta 0.1.0(b6)</div>
             <div id="close_credits_button" onclick="CloseCredits();">X</div><!--window closer-->
 
