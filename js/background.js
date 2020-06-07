@@ -82,7 +82,7 @@ function GraphicInit() {//graphical process initialization. All var explanation 
     fall_ptcl_data = {
         min_max_rotation_caching: 90,//In degree. All integer rotations from -x to x that should be cached for the render. 0 means only caching the original texture. 2 mean caching -2;-1;0;1;2 roations, 0 being the original rotation. (must be BIGGER THAN THE BIGGEST ROTATION possible !)
         particles:[],//array containing all particles and their data
-        spawn_probability: 5,//i% of chance at each frame to spawn a new particle
+        spawn_probability: 2,//i% of chance at each frame to spawn a new particle
         particle_style:{//styling of the particles. Ranges works as following : [most far, nearest] (from our view)
             //a particle is defined by a random percentage. Depending of that percentage, it will proportionally choose it's parameters in the ranges by mapping.
             src:temp_load.leave_particle,//texture

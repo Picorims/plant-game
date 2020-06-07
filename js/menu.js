@@ -854,7 +854,7 @@ function Changelogs() {
 //################
 
 function ConfirmQuit() {//quit button to show a window that confirms quit. 2 buttons are displayed to confirm quit or cancel it, corresponding to the 2 functions below.
-    ShowScene(HTML.quit_warning_menu.container,   ((window.innerWidth/2)-(HTML.quit_warning_menu.container.offsetWidth/2))+"px");
+    ShowScene(scene.quit_warning_menu);
 }
 
 
@@ -864,5 +864,5 @@ function Quit() {//quit confirmed, quit and stop proccess
 
 
 function CancelQuit() {//quit canceled, the window is closed, and the player is back to the menu.
-    HideScene(HTML.quit_warning_menu.container);
+    HideScene(scene.quit_warning_menu);
 }

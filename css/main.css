@@ -32,6 +32,17 @@ body {
     background-image: radial-gradient(ellipse at center, #78e676, 0, #082f08 75%);
     background-repeat: no-repeat;
     overflow: hidden;
+
+    --main-white: #dddddd;
+    --lighter-white: #eeeeee;
+    --light-green: #5bc15b;
+    --green: #4caf50;
+    --dark-green: #3f943f;
+    --darker-green: #1b6f2d;
+    --light-blue: #61ccff;
+    --cyan: #2d9ab6;
+    --dark-cyan: #237083;
+    --main-black: #222222;
 }
 
 
@@ -53,17 +64,17 @@ body, button {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #238e3a;
+    background-color: var(--dark-green);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #4caf50;
+    background-color: var(--light-green);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: #238e3a;
+    background-color: var(--dark-green);
 }
 
 
@@ -76,8 +87,29 @@ body, button {
     left: 10px;
     font-size: 20px;
     font-weight: bold;
-    color: #ccc;
+    color: var(--main-white);
 }
+
+
+
+
+
+.scene {
+    z-index: 20;
+    position: absolute;
+    width: 100%;/*defined in JS*/
+    height: 100%;/*defined in JS*/
+    left: 0;/*defined in JS*/
+    padding-top:0;/*defined in JS*/
+    text-align: center;
+}
+
+.overlay_scene {/*goes above another scene*/
+    position: fixed !important;
+    top: 0;
+    background-color: rgba(68, 113, 48, 0.5);
+}
+
 
 
 
@@ -107,8 +139,8 @@ body, button {
 
     font-size: 25px;
     font-weight: bold;
-    color: #dddddd;
-    text-shadow: 0px 0px 15px #238e3a;
+    color: var(--main-white);
+    text-shadow: 0px 0px 15px var(--darker-green);
     
     transition: 0.2s;
     will-change: filter;
@@ -132,14 +164,14 @@ body, button {
 
 
 a {
-    color: #61ccff;
+    color: var(--light-blue);
     cursor: pointer;
 }
 a:link {
-    color: #61ccff;
+    color: var(--light-blue);
 }
 a:visited {
-    color: #2d9ab6;
+    color: var(--cyan);
 }
 a:focus {
     text-decoration: underline;
@@ -148,7 +180,7 @@ a:hover {
     text-decoration: underline;     
 }
 a:active {
-    color: #237083;
+    color: var(--dark-cyan);
 }
 
 
@@ -192,18 +224,16 @@ a:active {
 #loading_screen {
     z-index: 100;
     position: fixed;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
     top: 0;
     left: 0;
-    background-color: #222222;
+    background-color: var(--main-black);
 }
 
 
 
 @keyframes FadeIn {
-    from {background-color: #222222;}
-    to {background-color: #dddddd;}
+    from {background-color: var(--main-black);}
+    to {background-color: var(--main-white);}
 }
 @keyframes FadeOut {
     from {opacity: 1;}
@@ -324,7 +354,7 @@ a:active {
 
 #init_message {
     text-align: center;
-    color: #eeeeee;
+    color: var(--lighter-white);
     margin-top:0;/*defined in JS*/
     --top-under-window: 0;/*defined in JS*/
     --animation-length: 0;/*defined in JS*/
@@ -354,7 +384,7 @@ a:active {
     0% {animation-timing-function: cubic-bezier(.18,.89,.32,1.28);}
     15% {
         transform: translate(0,0);
-        color: #eeeeee;
+        color: var(--lighter-white);
         text-shadow: 0px 0px 0px #8bec9b,
                      0px 0px 0px #21fa46;
     }
@@ -366,12 +396,12 @@ a:active {
     85% {
         animation-timing-function: cubic-bezier(.6,-0.28,.74,.05);
         transform: translate(0,0);
-        color: #4CAF50;
+        color: var(--green);
         text-shadow: none;
     }
     100% {
         transform: translate(0,var(--top-under-window));/*defined in menu.js, the var is created in #init_message*/
-        color: #4CAF50;
+        color: var(--green);
     }
 }
 
@@ -508,15 +538,9 @@ a:active {
 */
 
 
-#main_menu {
-    z-index: 20;
-    position: absolute;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
-    left: 0;/*defined in JS*/
-    padding-top:0;/*defined in JS*/
-    text-align: center;
-}
+/* #main_menu {
+    nothing special
+} */
 
 
 #game_logo_object {
@@ -563,7 +587,30 @@ a:active {
 
 
 
-#quit_warning_menu {
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+###################
+ QUIT WARNING MENU
+###################
+*/
+
+
+/* #quit_warning_menu {
+    nothing special
+} */
+
+#warning_menu_container {
     position: absolute;
     text-align: center;
     width: 300px;
@@ -581,7 +628,7 @@ a:active {
     width: 100px;
     height: 40px;
     margin-top: 30px;
-    background-color: #eeeeee;
+    background-color: var(--lighter-white);
     color: #999999;
     font-size: 18px;
     border: 2px solid #cccccc;
@@ -626,15 +673,9 @@ a:active {
 */
 
 
-#tutorial {
-    z-index: 20;
-    position: absolute;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
-    left: 0;/*defined in JS*/
-    padding-top:0;/*defined in JS*/
-    text-align: center;
-}
+/* #tutorial {
+    nothing special
+} */
 
 
 
@@ -647,7 +688,7 @@ a:active {
     margin: auto;
     margin-top: 3%;
     padding: 0;
-    background-color: #eeeeee;
+    background-color: var(--lighter-white);
     text-align: center;
     overflow: hidden;
     color: #666666;
@@ -666,7 +707,7 @@ a:active {
     font-weight: bold;
     font-size: 70px;
     background-color: #666666;
-    color: #eeeeee;
+    color: var(--lighter-white);
     border: 0px;
 }
 
@@ -726,7 +767,7 @@ a:active {
     width: 15px;
     height: 15px;
     margin: 0 2px;
-    background-color: #eeeeee;
+    background-color: var(--lighter-white);
     border-radius: 50%;
     display: inline-block;
 }
@@ -776,13 +817,7 @@ a:active {
 
 
 #options_menu {
-    z-index: 20;
-    position: absolute;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
-    left: 0;/*defined in JS*/
     padding-top: 100px;
-    text-align: center;
 }
 
 
@@ -951,19 +986,9 @@ input:checked+.slider:before {
 */
 
 
-#credits {
-    z-index: 20;
-    position: fixed;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
-    top: 0;
-    left: 0;/*defined in JS*/
-    background-color: rgba(68, 113, 48, 0.5);
-}
-
-
-
-
+/* #credits {
+    nothing special
+} */
 
 
 #credits_window {
@@ -994,7 +1019,7 @@ input:checked+.slider:before {
     left: 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #dddddd;
+    color: var(--main-white);;
 }
 
 
@@ -1004,30 +1029,63 @@ input:checked+.slider:before {
     height: 40px;
     top: 0; /*for sticky to work*/
     margin-left: 0;/*defined in JS*/
-    background-color: #666666;
+
+    background-color: var(--light-green);
+    box-shadow: inset 0px 0px 3px var(--dark-green);
     border-radius: 5px;
-    color: #dddddd;
+
+    color: var(--main-white);
+    text-shadow: 0px 0px 15px var(--darker-green);
     text-align: center;
     font-size: 31px;
     font-weight: bold;
+
     cursor: pointer;
+    transition: 0.2s;
+}
+
+#close_credits_button:hover {
+    transform: scale(1.2,1.2);
+    transition: 0.2s;
+}
+#close_credits_button:active {
+    transform: scale(0.8,0.8);
+    transition: 0.2s;
+}
+
+
+.credits_title_container {
+    width: 100%;
+    height: 80px;
+
+    margin-top: 20px;
+    margin-bottom: 5px;
+
+    background-image: url("../assets/textures/range_bar_track.svg");
+    background-size: 100% 100%;
 }
 
 
 .credits_title {
-    font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    display: inline-block;
+    margin-top: 27px;
+    transform: rotate(2deg);
+
+    font-size: 27px;
     font-weight: bold;
-    text-transform: uppercase;
-    color: #35e252;
+
+    color: transparent;
+    background-color: rgb(189,89,7);
+    text-shadow: 0px 0px 1px rgba(241, 193, 132, 0.8);
+    -webkit-background-clip: text;
+    background-clip:text;
 }
 
 
 .credits_text {
     margin: 0;
     font-size: 20px;
-    color: #dddddd;
+    color: var(--main-white);
 }
 
 
@@ -1069,14 +1127,9 @@ input:checked+.slider:before {
 */
 
 
-#game_content {
-    z-index: 20;
-    position: absolute;
-    width: 100%;/*defined in JS*/
-    height: 100%;/*defined in JS*/
-    left: 0;/*defined in JS*/
-    /*margin: 0px auto;*/
-}
+/* #game_content {
+    nothing special
+} */
 
 
 
@@ -1146,7 +1199,7 @@ input:checked+.slider:before {
     width: 100px;
     height: 20px;
     border: none;
-    background-color: #eeeeee;
+    background-color: var(--lighter-white);
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
@@ -1169,7 +1222,7 @@ input:checked+.slider:before {
     width: 200px;
     height: 50px;
     margin-top: 10px;
-    background-color: #eeeeee;
+    background-color: var(--lighter-white);
     font-weight: bold;
     font-size: 18px;
     cursor: pointer;
@@ -1192,7 +1245,7 @@ input:checked+.slider:before {
     height: 60px;
     text-align:center;
     font-size: 15px;
-    color: #999999;
+    color: var(--light-green);
 }
 
 

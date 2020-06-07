@@ -54,7 +54,7 @@ function GlobalInit() {//initialization
         },
 
         quit_warning_menu: {
-            container: document.getElementById("quit_warning_menu"),//small menu that appear to confirm game quit
+            container: document.getElementById("warning_menu_container"),
             msg:       document.getElementById("quit_msg"),
             button: {
                 confirm: document.getElementById("quit_confirm_button"),
@@ -161,6 +161,7 @@ function GlobalInit() {//initialization
     scene = {
         loading_screen: document.getElementById("loading_screen"),//loading screen on program load
         main_menu: document.getElementById("main_menu"),//game main menu
+        quit_warning_menu: document.getElementById("quit_warning_menu"),//small menu that appear to confirm game quit
         tutorial: document.getElementById("tutorial"),//tutorial slideshow
         options_menu: document.getElementById("options_menu"),//options menu with all parameters
         credits: document.getElementById("credits"),//credits display
@@ -198,38 +199,37 @@ function GlobalInit() {//initialization
     //GraphicInit(); ==> DONE IN SETUP FUNCTION OF P5
 
     //main_menu
-    scene.main_menu.style.width = window.innerWidth+"px";
-    scene.main_menu.style.height = window.innerHeight+"px";
-    scene.main_menu.style.paddingTop = (window.innerHeight/40)+"px";
-    scene.main_menu.style.left = 0+"px";
-    HTML.quit_warning_menu.container.style.top = ( (window.innerHeight/2)-(HTML.quit_warning_menu.container.offsetHeight/2) )+"px";
-    HTML.quit_warning_menu.container.style.left = window.innerWidth+"px";
+    InitSceneSize(scene.main_menu);
+    scene.main_menu.style.paddingTop = (window.innerHeight/40)+"px"; //avoid the logo to touch the upper screen border
+    ShowScene(scene.main_menu);
+
+    //quit_warning_menu
+    InitSceneSize(scene.quit_warning_menu);
+    HideScene(scene.quit_warning_menu);
+    HTML.quit_warning_menu.container.style.top =  ( (window.innerHeight/2) - (HTML.quit_warning_menu.container.offsetHeight/2) )+"px";
+    HTML.quit_warning_menu.container.style.left = ( (window.innerWidth/2)  - (HTML.quit_warning_menu.container.offsetWidth/2)  )+"px";
 
     //tutorial
-    scene.tutorial.style.width = window.innerWidth+"px";
-    scene.tutorial.style.height = window.innerHeight+"px";
-    scene.tutorial.style.left = window.innerWidth+"px";
+    InitSceneSize(scene.tutorial);
+    HideScene(scene.tutorial);
     TutorialInit();
     
     //options_menu
-    scene.options_menu.style.width = window.innerWidth+"px";
-    scene.options_menu.style.height = window.innerHeight+"px";
-    scene.options_menu.style.left = window.innerWidth+"px";
+    InitSceneSize(scene.options_menu);
+    HideScene(scene.options_menu);
     OptionsInit();
     
     //credits
-    scene.credits.style.width = window.innerWidth+"px";
-    scene.credits.style.height = window.innerHeight+"px";
-    scene.credits.style.left = window.innerWidth+"px";
+    InitSceneSize(scene.credits);
+    HideScene(scene.credits);
     HTML.credits.window.style.top = (window.innerHeight - HTML.credits.window.offsetHeight)/2 + "px";
     HTML.credits.window.style.left = (window.innerWidth - HTML.credits.window.offsetWidth)/2 + "px";
     HTML.credits.window.css_padding = window.getComputedStyle(HTML.credits.window).padding.replace("px","");
     HTML.credits.close_button.style.marginLeft = HTML.credits.window.offsetWidth - HTML.credits.window.css_padding*2 - HTML.credits.close_button.offsetWidth + "px";
 
     //game_content
-    scene.game_content.style.width = window.innerWidth+"px";
-    scene.game_content.style.height = window.innerHeight+"px";
-    scene.game_content.style.left = window.innerWidth+"px";
+    InitSceneSize(scene.game_content);
+    HideScene(scene.game_content);
     GamePreInit();
 
     //audio
@@ -240,6 +240,16 @@ function GlobalInit() {//initialization
     document.dispatchEvent(event.main_ready);
     setInterval(fpsDisplay, 1000);
 }
+
+
+
+function InitSceneSize(scene) { //initialize the scene size to be full screen.
+    scene.style.width  = `${window.innerWidth}px`;
+    scene.style.height = `${window.innerHeight}px`;
+}
+
+
+
 function fpsDisplay() { //display the average FPS to the top left screen
     HTML.fps_display.innerHTML= Math.round(frameRate())+"fps";
 }

@@ -371,14 +371,18 @@ ex : main_layer_canvas.line(args...);
 ## 0.1.0(b6) | ?
 
 - Graphical changes:
-	- Main buttons redesign.
+	- Buttons redesign.
 	- Credits menu improvement.
+	- Exit menu improvement
 	- Customized scroll bars.
+	- Decreased the leaves particles spawn rate.
+	- Small color changes.
 - Internal updates:
 	- Updated Electron.js to v8.3.0:
 		- Upgraded to Chromium 80.0.3987.86;
 		- Upgraded to Node 12.13.0;
 		- Upgraded to V8 8.0;
+- The quit warning menu is now a scene.
 - README.txt, NOTICE.txt, LICENSE.txt CHANGELOG.txt have been converted to README.md, NOTICE.md, LICENSE.md CHANGELOG.md
 	- The license content remained untouched.
 - Markdown support in-game to match github markdown, with custom css themed with the game.
@@ -387,6 +391,8 @@ ex : main_layer_canvas.line(args...);
 - Removed unused fonts.
 - Added missing credits.
 - Small CSS clean-up.
+	- Main colors now use css variables, to have a more consistent palette. (CSS only)
+	- Scenes now have a common class that reduces duplicates.
 - Translation fixes.
 - BUG FIX: The winner was not displayed at the end of a game.
 - BUG FIX: No grid was displayed when going back to main menu, then launching a new game.

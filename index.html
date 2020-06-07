@@ -33,7 +33,7 @@ and you should see README.txt as well for other information. -->
     
     
     <!--LOADING SCREEN SCENE-->
-    <div id="loading_screen">
+    <div id="loading_screen" class="scene">
         <div id="loading_item">
             <div class="LA_ball_vertical_anim" id="LA_ball_vertical_anim_1">
                 <div class="LA_ball_horizontal_anim" id="LA_ball_horizontal_anim_1">
@@ -84,7 +84,7 @@ and you should see README.txt as well for other information. -->
 
 
     <!--MAIN MENU SCENE-->
-    <div id="main_menu">
+    <div id="main_menu" class="scene">
         <div id="game_logo_container">
             <object>
                 <object id="game_logo_object" type="image/svg+xml" data="assets/textures/plant_logo.svg">
@@ -100,16 +100,22 @@ and you should see README.txt as well for other information. -->
         <button id="changelog_button" class="main_menu_button big_leave_button" onclick="Changelogs();"></button></br>
         <button id="exit_button" class="main_menu_button big_leave_button" onclick="ConfirmQuit();"></button></br>
 
-        <div id="quit_warning_menu">
+    </div>
+
+
+
+    <!--QUIT WARNING MENU SCENE-->
+    <div id="quit_warning_menu" class="scene overlay_scene">
+        <div id="warning_menu_container">
             <span id="quit_msg"></span></br>
-            <button id="quit_confirm_button" class="quit_button" onclick="Quit();"></button><button id="quit_cancel_button" class="quit_button" onclick="CancelQuit();"></button>
+            <button id="quit_confirm_button" class="quit_button" onclick="Quit();"></button><button id="quit_cancel_button" class="quit_button" onclick="CancelQuit();"></button>    
         </div>
     </div>
 
 
 
     <!--TUTORIAL SCENE-->
-    <div id="tutorial">
+    <div id="tutorial" class="scene">
         <!-- Main div for slides and text -->
         <div id="slideshow">
             <!-- Each div contains different slide and text -->
@@ -167,7 +173,7 @@ and you should see README.txt as well for other information. -->
 
 
     <!--OPTIONS MENU SCENE-->
-    <div id="options_menu">
+    <div id="options_menu" class="scene">
         <div class="option_container">
             <span id="language_option_title" class="option_title"></span>
             <select id="select_language">
@@ -213,37 +219,45 @@ and you should see README.txt as well for other information. -->
     
 
     <!--CREDITS SCENE-->
-    <div id="credits">
+    <div id="credits" class="scene overlay_scene">
         <div id="credits_window">
             <div id="game_version">Beta 0.1.0(b6)</div>
             <div id="close_credits_button" onclick="CloseCredits();">X</div><!--window closer-->
 
-            <h1 id="credits_dev" class="credits_title"></h1>
-            <p id="credits_dev_content" class="credits_text">
 
-            </p>
+            <div class="credits_title_container">
+                <span id="credits_dev" class="credits_title"></span>
+            </div>
+            <p id="credits_dev_content" class="credits_text"></p>
 
-            <h1 id="credits_graphism" class="credits_title"></h1>
-            <p id="credits_graphism_content" class="credits_text">
 
-            </p>
+            <div class="credits_title_container">
+                <span id="credits_graphism" class="credits_title"></span>
+            </div>
+            <p id="credits_graphism_content" class="credits_text"></p>
 
-            <h1 id="credits_music" class="credits_title"></h1>
-            <p id="credits_music_content" class="credits_text">
-                
-            </p>
 
-            <h1 id="credits_sfx" class="credits_title"></h1>
-            <p id="credits_sfx_content" class="credits_text">
+            <div class="credits_title_container">
+                <span id="credits_music" class="credits_title"></span>
+            </div>
+            <p id="credits_music_content" class="credits_text"></p>
 
-            </p>
 
-            <h1 id="credits_libraries" class="credits_title"></h1>
-            <p id="credits_libraries_content" class="credits_text">
+            <div class="credits_title_container">
+                <span id="credits_sfx" class="credits_title"></span>
+            </div>
+            <p id="credits_sfx_content" class="credits_text"></p>
 
-            </p>
 
-            <h1 id="credits_notice" class="credits_title"></h1>
+            <div class="credits_title_container">
+                <span id="credits_libraries" class="credits_title"></span>
+            </div>
+            <p id="credits_libraries_content" class="credits_text"></p>
+
+
+            <div class="credits_title_container">
+                <span id="credits_notice" class="credits_title"></span>
+            </div>
             <p class="credits_text">
                 Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
                 </br>
@@ -252,14 +266,17 @@ and you should see README.txt as well for other information. -->
                 </br>Licensed under the GNU Affero General Public License version 3.0 (GNU AGPL v3.0).
                 </br>More information about the license at <a onclick="DispLicense();">LICENSE.md</a> to the root of the program. If it is missing, see <!--<a href="https://www.gnu.org/licenses/">-->"https://www.gnu.org/licenses/"<!--</a>-->.
                 </br>A full notice can be found at <a onclick="DispNotice();">NOTICE.md</a> to the root of the program,
-                </br>and you should see <a onclick="DispReadMe();">README.md</a> as well for other information.</p>
+                </br>and you should see <a onclick="DispReadMe();">README.md</a> as well for other information.
+            </p>
+
+
         </div>
     </div>
 
 
     
     <!--GAME SCENE-->
-    <div id="game_content">
+    <div id="game_content" class="scene">
         <div id="player1_interface" class="interface player1_interface">
             <h1 id="interface1_title" class="interface_title"></h1>
             <label class="interface_subtitle score_subtitle" for="player1_score"></label><span class="interface_data_display" id="player1_score"></span>
