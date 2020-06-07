@@ -13,7 +13,7 @@
             },
             "quit":{
                 "msg":"Êtes-vous sûr(e) de vouloir quitter ?",
-                "confirm":"OK",
+                "confirm":"Quitter",
                 "cancel":"Annuler"
             }
         },

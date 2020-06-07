@@ -9,11 +9,11 @@
                 "options":"OPTIONS",
                 "credits":"CREDITS",
                 "changelog":"CHANGELOGS",
-                "exit":"EXIT"
+                "exit":"QUIT"
             },
             "quit":{
                 "msg":"Are you sure you want to quit ?",
-                "confirm":"OK",
+                "confirm":"Yes",
                 "cancel":"Cancel"
             }
         },
