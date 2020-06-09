@@ -372,8 +372,9 @@ ex : main_layer_canvas.line(args...);
 
 - Graphical changes:
 	- Buttons redesign.
-	- Credits menu improvement.
-	- Exit menu improvement
+	- Options menu improvements.
+	- Credits menu improvements.
+	- Quit menu improvements
 	- Customized scroll bars.
 	- Decreased the leaves particles spawn rate.
 	- Small color changes.
@@ -394,6 +395,7 @@ ex : main_layer_canvas.line(args...);
 	- Main colors now use css variables, to have a more consistent palette. (CSS only)
 	- Scenes now have a common class that reduces duplicates.
 - Translation fixes.
+- range_bar_track.svg has been renamed to wood_stick.svg
 - BUG FIX: The winner was not displayed at the end of a game.
 - BUG FIX: No grid was displayed when going back to main menu, then launching a new game.
 - BUG FIX: The flower aura bonus wasn't accurate.

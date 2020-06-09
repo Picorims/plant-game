@@ -45,6 +45,7 @@ body {
     --main-black: #222222;
 
     --blur-div-border-radius: 8px;
+    --common-text-size: 20px;
 }
 
 
@@ -92,7 +93,7 @@ button {
     position: fixed;
     top: 10px;
     left: 10px;
-    font-size: 20px;
+    font-size: var(--common-text-size);
     font-weight: bold;
     color: var(--main-white);
 }
@@ -182,7 +183,7 @@ button {
     width: 160px;
     height: 50px;
     
-    font-size: 20px;
+    font-size: var(--common-text-size);
     text-shadow: 0px 0px 10px var(--darker-green);
 }
 
@@ -652,7 +653,7 @@ a:active {
 
     text-align: center;
     color: var(--main-white);
-    font-size: 20px;
+    font-size: var(--common-text-size);
 }
 
 .quit_button {
@@ -760,7 +761,7 @@ a:active {
 /* Text */
 .slide_text {
     color: #666666;
-    font-size: 20px;
+    font-size: var(--common-text-size);
     position: absolute;
     bottom: 100px;
     width: 95%;
@@ -841,7 +842,7 @@ a:active {
 
 
 #options_menu {
-    padding-top: 100px;
+    padding-top: 6%;
 }
 
 
@@ -853,10 +854,16 @@ a:active {
     position: relative;
     width: 960px;
     height: 80px;
-    background-image: url("../assets/textures/range_bar_track.svg");
+    background-image: url("../assets/textures/wood_stick.svg");
     background-size: 100% 100%;
-    margin: 20px;
     margin-left: 0;/*defined in JS*/
+}
+
+
+#controls_option_container {
+    height: initial;
+    background-image: none;
+    border-radius: var(--blur-div-border-radius);
 }
 
 
@@ -962,13 +969,26 @@ input:checked+.slider:before {
 
 
 #controls_container {
-    display: inline-flex;
-    justify-content: flex-end;
-    padding: 35px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.controls_grid_left {
+    grid-column: 1;
+}
+.controls_grid_right {
+    grid-column: 2;
+}
+.controls_grid_full {
+    /* grid-column: 2/2; */
 }
 
-#controls_container button, #controls_container input {
-    margin-right: 30px;
+.controls_name {
+    font-size: var(--common-text-size);
+    font-weight: bold;
+    color: var(--main-white);
+    align-self: center;
 }
 
 
@@ -1083,7 +1103,7 @@ input:checked+.slider:before {
     margin-top: 20px;
     margin-bottom: 5px;
 
-    background-image: url("../assets/textures/range_bar_track.svg");
+    background-image: url("../assets/textures/wood_stick.svg");
     background-size: 100% 100%;
 }
 

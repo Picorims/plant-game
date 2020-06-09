@@ -197,22 +197,29 @@ and you should see README.txt as well for other information. -->
             <span id="sound_option_title" class="option_title"></span>
             <input class="range option_item" type="range" min="0" max="1" value="1" step="0.01" id="sound_slider">
         </div>
-        <div class="option_container">
-            <span id="controls_option_title" class="option_title"></span>
-            <form id="controls_container">
-                <span id="control_left_msg"></span>
-                <input id="control_left" type="button" value="Q"/></br>
-                <span id="control_right_msg"></span>
-                <input id="control_right" type="button" value="D"/></br>
-                <span id="control_down_msg"></span>
-                <input id="control_down" type="button" value="S"/></br>
-                <span id="control_up_msg"></span>
-                <input id="control_up" type="button" value="Z"/></br>
-                <span id="control_validate_msg"></span>
-                <input id="control_validate" type="button" value=" "/></br>
-
-                <button id="default_controls"></button>
-            </form>
+        <div class="option_container light_blur_background" id="controls_option_container">
+            <div class="credits_title_container">
+                <span id="controls_option_title" class="credits_title"></span>
+            </div>
+            <div id="controls_container">
+                <span id="control_left_msg" class="controls_name controls_grid_left"></span>
+                <input id="control_left" type="button" value="Q" class="leave_button small_leave_button controls_grid_right"/>
+                <hr class="separator"/>
+                <span id="control_right_msg" class="controls_name controls_grid_left"></span>
+                <input id="control_right" type="button" value="D" class="leave_button small_leave_button controls_grid_right"/>
+                <hr class="separator"/>
+                <span id="control_down_msg" class="controls_name controls_grid_left"></span>
+                <input id="control_down" type="button" value="S" class="leave_button small_leave_button controls_grid_right"/>
+                <hr class="separator"/>
+                <span id="control_up_msg" class="controls_name controls_grid_left"></span>
+                <input id="control_up" type="button" value="Z" class="leave_button small_leave_button controls_grid_right"/>
+                <hr class="separator"/>
+                <span id="control_validate_msg" class="controls_name controls_grid_left"></span>
+                <input id="control_validate" type="button" value=" " class="leave_button small_leave_button controls_grid_right"/>
+                <hr class="separator"/>
+                <span class="controls_name controls_grid_left"></span>
+                <button id="default_controls" class="leave_button small_leave_button"></button>
+            </div>
         </div>
         <button id="options_to_main_button" class="main_menu_button leave_button big_leave_button" onclick="QuitOptions();"></button>
     </div>

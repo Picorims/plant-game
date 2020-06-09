@@ -331,14 +331,18 @@ it could behave more and more strangely if we continued restarting games.</li>
 <h2 id="010b6--">0.1.0(b6) | ?</h2>
 <ul>
 <li>Graphical changes:<ul>
-<li>Main buttons redesign.</li>
+<li>Buttons redesign.</li>
 <li>Credits menu improvement.</li>
-<li>Customized scroll bars.</li></ul></li>
+<li>Exit menu improvement</li>
+<li>Customized scroll bars.</li>
+<li>Decreased the leaves particles spawn rate.</li>
+<li>Small color changes.</li></ul></li>
 <li>Internal updates:<ul>
 <li>Updated Electron.js to v8.3.0:<ul>
 <li>Upgraded to Chromium 80.0.3987.86;</li>
 <li>Upgraded to Node 12.13.0;</li>
 <li>Upgraded to V8 8.0;</li></ul></li></ul></li>
+<li>The quit warning menu is now a scene.</li>
 <li>README.txt, NOTICE.txt, LICENSE.txt CHANGELOG.txt have been converted to README.md, NOTICE.md, LICENSE.md CHANGELOG.md<ul>
 <li>The license content remained untouched.</li></ul></li>
 <li>Markdown support in-game to match github markdown, with custom css themed with the game.<ul>
@@ -346,8 +350,11 @@ it could behave more and more strangely if we continued restarting games.</li>
 <li>Added in-game access to these changelogs, using a new "changelogs" button in the main menu.</li>
 <li>Removed unused fonts.</li>
 <li>Added missing credits.</li>
-<li>Small CSS clean-up.</li>
+<li>Small CSS clean-up.<ul>
+<li>Main colors now use css variables, to have a more consistent palette. (CSS only)</li>
+<li>Scenes now have a common class that reduces duplicates.</li></ul></li>
 <li>Translation fixes.</li>
+<li>range_bar_track.svg has been renamed to wood_stick.svg</li>
 <li>BUG FIX: The winner was not displayed at the end of a game.</li>
 <li>BUG FIX: No grid was displayed when going back to main menu, then launching a new game.</li>
 <li>BUG FIX: The flower aura bonus wasn't accurate.</li>
