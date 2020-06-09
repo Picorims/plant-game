@@ -42,6 +42,7 @@ body {
     --light-blue: #61ccff;
     --cyan: #2d9ab6;
     --dark-cyan: #237083;
+    --lighter-brown: #efa463;
     --light-brown: #e49550;
     --dark-brown: #864710;
     --dark-soft-brown: #75471f;
@@ -126,7 +127,7 @@ button, select {
 
 
 .light_blur_background {
-    background-color: rgba(205, 231, 203, 0.2);
+    background-color: rgba(156, 199, 152, 0.2);
     backdrop-filter: blur(10px);
 }
 
@@ -868,13 +869,11 @@ a:active {
     left: 20px;
     top: 20px;
     margin-left: 20px;
+    
     font-size: 27px;
     font-weight: bold;
-    color: transparent;
-    background-color: rgb(189,89,7);
-    text-shadow: 0px 0px 1px rgba(241, 193, 132, 0.8);
-    -webkit-background-clip: text;
-    background-clip:text;
+    color: var(--lighter-brown);
+    
     transform: rotate(-4deg);
 }
 
@@ -1183,11 +1182,7 @@ input:checked+.slider:before {
     font-size: 27px;
     font-weight: bold;
 
-    color: transparent;
-    background-color: rgb(189,89,7);
-    text-shadow: 0px 0px 1px rgba(241, 193, 132, 0.8);
-    -webkit-background-clip: text;
-    background-clip:text;
+    color: var(--lighter-brown);
 }
 
 
