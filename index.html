@@ -121,7 +121,7 @@ and you should see README.txt as well for other information. -->
     <!--TUTORIAL SCENE-->
     <div id="tutorial" class="scene">
         <!-- Main div for slides and text -->
-        <div id="slideshow">
+        <div id="slideshow" class="light_blur_background">
             <!-- Each div contains different slide and text -->
             <div class="slide">
                 <img src="711493.jpg">
@@ -154,19 +154,19 @@ and you should see README.txt as well for other information. -->
             </div>
 
             <!-- Buttons to switch page -->
-            <button id="prev_slide_button" onclick="NextSlide(-1)">&laquo;</button>
-            <button id="next_slide_button" onclick="NextSlide(1)">&raquo;</button>
+            <button id="prev_slide_button" class="leave_button small_leave_button" onclick="NextSlide(-1)">&laquo;</button>
+            <button id="next_slide_button" class="leave_button small_leave_button" onclick="NextSlide(1)">&raquo;</button>
 
         </div>
         </br>
 
         <!-- Div which contains clickable objects to go on a specific page -->
         <div id="dot_container">
-            <span class="slide_dot log_circle" onclick="SelectSlide(1)"></span>
-            <span class="slide_dot log_circle" onclick="SelectSlide(2)"></span>
-            <span class="slide_dot log_circle" onclick="SelectSlide(3)"></span>
-            <span class="slide_dot log_circle" onclick="SelectSlide(4)"></span>
-            <span class="slide_dot log_circle" onclick="SelectSlide(5)"></span>
+            <span class="slide_dot log_circle yellow_outline" onclick="SelectSlide(1)"></span>
+            <span class="slide_dot log_circle yellow_outline" onclick="SelectSlide(2)"></span>
+            <span class="slide_dot log_circle yellow_outline" onclick="SelectSlide(3)"></span>
+            <span class="slide_dot log_circle yellow_outline" onclick="SelectSlide(4)"></span>
+            <span class="slide_dot log_circle yellow_outline" onclick="SelectSlide(5)"></span>
         </div>
 
 
@@ -238,7 +238,7 @@ and you should see README.txt as well for other information. -->
     <div id="credits" class="scene overlay_scene">
         <div id="credits_window" class="light_blur_background">
             <div id="game_version">Beta 0.1.0(b6)</div>
-            <div id="close_credits_button" onclick="CloseCredits();">X</div><!--window closer-->
+            <div id="close_credits_button" class="yellow_outline" onclick="CloseCredits();">X</div><!--window closer-->
 
 
             <div class="credits_title_container">

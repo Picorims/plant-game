@@ -426,13 +426,13 @@ function ShowSlide(n) { //Function to show the page of index "n"
     if (n == 1) { //Disable Previous button on first page
         HTML.tutorial.button.previous_slide.style.display = "none";
     } else {
-        HTML.tutorial.button.previous_slide.style.display = "block";
+        HTML.tutorial.button.previous_slide.style.display = "inline";
     }
 
     if (n == slides.length) { //Disable Next button on last page
         HTML.tutorial.button.next_slide.style.display = "none";
     } else {
-        HTML.tutorial.button.next_slide.style.display = "block";
+        HTML.tutorial.button.next_slide.style.display = "inline";
     }
 
     //HIDE ALL SLIDES
@@ -441,10 +441,10 @@ function ShowSlide(n) { //Function to show the page of index "n"
     }
     //SHOW THE ASKED SLIDE
     for (i = 0; i < dots.length; i++) { //Set default background color on change
-        dots[i].style.backgroundColor = "#eeeeee";
+        dots[i].style.filter = "";
     }
     slides[tuto_slide_page - 1].style.display = "block"; //Show the current slide / -1 is to get the good page index (page counts start from 1 and not 0)
-    dots[tuto_slide_page - 1].style.backgroundColor = "#777777"; //Indicates the dot corresponding to the selected slide
+    dots[tuto_slide_page - 1].style.filter = "url('#yellow_outline')"; //Indicates the dot corresponding to the selected slide
 }
 
 

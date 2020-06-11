@@ -373,8 +373,10 @@ ex : main_layer_canvas.line(args...);
 - Graphical changes:
 	- Buttons redesign.
 	- Options menu improvements.
+	- Tutorial menu improvements.
 	- Credits menu improvements.
-	- Quit menu improvements
+	- Quit menu improvements.
+	- Small loading screen improvements.
 	- Customized scroll bars.
 	- New textures.
 	- Decreased the leaves particles spawn rate.
