@@ -376,6 +376,7 @@ ex : main_layer_canvas.line(args...);
 	- Credits menu improvements.
 	- Quit menu improvements
 	- Customized scroll bars.
+	- New textures.
 	- Decreased the leaves particles spawn rate.
 	- Small color changes.
 - Internal updates:

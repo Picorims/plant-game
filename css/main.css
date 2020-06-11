@@ -197,6 +197,15 @@ button, select {
 
 
 
+.log_circle {
+    background-image: url("../assets/textures/wood_log.svg");
+    background-size: 100% 100%;
+}
+
+
+
+
+
 
 a {
     color: var(--light-blue);
@@ -793,11 +802,9 @@ a:active {
 /* Dots */
 .slide_dot {
     cursor: pointer;
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     margin: 0 2px;
-    background-color: var(--lighter-white);
-    border-radius: 50%;
     display: inline-block;
 }
 .slide_dot:hover {
@@ -939,24 +946,19 @@ a:active {
 .slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
+    height: 25px;
+    width: 25px;
     left: 0px;
-    background-color: white;
+    background-image: url("../assets/textures/wood_log.svg");
+    background-size: 100% 100%;
+
     transition: 0.4s;
 }
 
 
 input:checked+.slider:before {
     transform: translate(28px, -5px);
-}
-
-
-.slider.round {
-    border-radius: 34px;
-}
-.slider.round:before {
-    border-radius: 50%;
+    transition: 0.4s;
 }
 
 
@@ -986,7 +988,8 @@ input:checked+.slider:before {
     -webkit-appearance: none;
     width: 25px;
     height: 25px;
-    background: #4CAF50;
+    background-image: url("../assets/textures/wood_log.svg");
+    background-size: 100% 100%;
     cursor: pointer;
 }
 
