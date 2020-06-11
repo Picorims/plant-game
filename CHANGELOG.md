@@ -403,6 +403,7 @@ ex : main_layer_canvas.line(args...);
 - BUG FIX: The winner was not displayed at the end of a game.
 - BUG FIX: No grid was displayed when going back to main menu, then launching a new game.
 - BUG FIX: The flower aura bonus wasn't accurate.
+- BUG FIX: Translations not properly updated on game launch if the language json files have been updated.
 
 
 

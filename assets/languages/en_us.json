@@ -18,6 +18,8 @@
             }
         },
         "tutorial":{
+            "previous":"Previous",
+            "next":"Next",
             "back":"MAIN MENU"
         },
         "options":{

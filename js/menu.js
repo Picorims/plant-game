@@ -553,8 +553,16 @@ function LoadSettings() {//loads the settings from JSON user file, or load defau
     else {//load saved options
         console.log("options.json not empty, loading it's data...");
         
-        ApplyLanguage(options.language);
-
+        //the stored language translations are always updated to match the updated game files.
+        switch(options.language.language_id) {
+            case "en_us":
+                ApplyLanguage(languages.en_us);
+                break;
+            case "fr_fr":
+                ApplyLanguage(languages.fr_fr);
+                break;
+        
+        }
         
         //UPDATE VISUALLY THE OPTIONS
         //language
@@ -619,6 +627,8 @@ function ApplyLanguage(selected_language) {
     HTML.quit_warning_menu.button.cancel.innerHTML          = options.language.UI.main_menu.quit.cancel;
     
     //tutorial
+    HTML.tutorial.button.previous_slide.innerHTML           = options.language.UI.tutorial.previous;
+    HTML.tutorial.button.next_slide.innerHTML               = options.language.UI.tutorial.next;
     HTML.tutorial.button.back_to_main_menu.innerHTML        = options.language.UI.tutorial.back;
 
     //options
