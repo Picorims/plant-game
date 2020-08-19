@@ -376,13 +376,14 @@ ex : main_layer_canvas.line(args...);
 	- Tutorial menu improvements.
 	- Credits menu improvements.
 	- Quit menu improvements.
+	- Changelog improvements.
 	- Small loading screen improvements.
 	- Customized scroll bars.
 	- New textures.
 	- Decreased the leaves particles spawn rate.
 	- Small color changes.
 - Internal updates:
-	- Updated Electron.js to v8.3.0:
+	- Updated Electron.js to v8.5.0:
 		- Upgraded to Chromium 80.0.3987.86;
 		- Upgraded to Node 12.13.0;
 		- Upgraded to V8 8.0;
@@ -392,6 +393,7 @@ ex : main_layer_canvas.line(args...);
 - Markdown support in-game to match github markdown, with custom css themed with the game.
 	- The license do not receive mardown flavor, and is displayed as a text file only.
 - Added in-game access to these changelogs, using a new "changelogs" button in the main menu.
+- Detached windows now have size limits.
 - Removed unused fonts.
 - Added missing credits.
 - Small CSS clean-up.

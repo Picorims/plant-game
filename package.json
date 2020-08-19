@@ -10,8 +10,8 @@
   "author": "Picorims<picorims.contact@gmail.com> and Cirno",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "electron": "^8.3.0",
-    "electron-packager": "^13.0.1"
+    "electron": "^8.5.0",
+    "electron-packager": "^13.1.1"
   },
   "dependencies": {
     "showdown": "^1.9.1"
