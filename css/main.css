@@ -50,7 +50,13 @@ body {
     --main-black: #222222;
 
     --blur-div-border-radius: 8px;
+    --blur-div-blur-level: 10px;
     --common-text-size: 20px;
+
+    /*set in JS*/
+    --grid-size: 0;
+    --grid-x: 0;
+    --grid-y: 0;
 }
 
 
@@ -94,6 +100,15 @@ button, select {
 
 
 
+::selection {
+    color: var(--lighter-white);
+    background: var(--light-blue);
+}
+
+
+
+
+
 #fps_display {
     position: fixed;
     top: 10px;
@@ -129,7 +144,7 @@ button, select {
 
 .light_blur_background {
     background-color: rgba(156, 199, 152, 0.2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur-div-blur-level);
 }
 
 
@@ -1004,6 +1019,7 @@ input:checked+.slider:before {
 #controls_title_container {
     position: absolute;
     top: -70px;
+    width: 100%;
 }
 
 
@@ -1158,10 +1174,12 @@ input:checked+.slider:before {
 
 
 .credits_title_container {
-    width: 100%;
+    width: 90%;
     height: 80px;
 
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 5px;
 
     background-image: url("../assets/textures/wood_stick.svg");
@@ -1244,53 +1262,143 @@ input:checked+.slider:before {
     float: left;
     position: relative;
     z-index: 20;
+
+    margin-top: 5%;
+
+    backdrop-filter: var(--blur-div-blur-level);
+    background-color: rgba(60, 152, 30, 0.20);
 }
+
+
+
+/*canvas wood stick borders*/
+.grid_border {
+    --border-extra-width: 50px;
+    --border-width: calc(var(--grid-size) + var(--border-extra-width));
+    --border-height: calc(var(--grid-size) / 20);
+    --width-offset: calc(var(--border-extra-width) / 2);
+
+    position: absolute;
+    z-index: 400;
+    width: var(--border-width);
+    height: var(--border-height);
+    top: 0;
+    left: 0;
+
+    background-image: url("../assets/textures/wood_stick.svg");
+    background-size: var(--border-width) var(--border-height);
+}
+.border_top {
+    top: calc(var(--grid-y) - var(--border-height) / 1.5);
+    left: calc(var(--grid-x) - var(--width-offset));
+}
+.border_bottom {
+    top: calc(var(--grid-y) + var(--grid-size) - var(--border-height) / 2.5);
+    left: calc(var(--grid-x) - var(--width-offset));
+    transform: scale(-1,1);
+}
+.border_left {
+    top: calc(var(--grid-y) + var(--border-width) / 2 - var(--width-offset) - var(--border-height) / 2);/*rotation implies repositioning, done by border-width/2 - width-offset*/
+    left: calc(var(--grid-x) - var(--border-width) / 2 - var(--width-offset)  + var(--border-height) * 0.9);/*which gives (pos - pos-fix +- offset)*/
+    transform: rotate(90deg);
+}
+.border_right {
+    top: calc(var(--grid-y) + var(--border-width) / 2 - var(--width-offset) - var(--border-height) / 2);/*rotation implies repositioning, done by border-width/2 - width-offset*/
+    left: calc(var(--grid-x) - var(--border-width) / 2 - var(--width-offset) + var(--grid-size)  + var(--border-height) * 1.1);/*which gives (pos - pos-fix +- offset)*/
+    transform: rotate(-90deg);
+}
+
+
+
+/*canvas wood log corners*/
+.grid_corner {
+    position: absolute;
+    z-index: 400;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+
+    background-image: url("../assets/textures/wood_log.svg");
+    background-size: 100% 100%;
+}
+.corner_top_L {
+    top: calc(var(--grid-y) - 13px);
+    left: calc(var(--grid-x) - 15px);
+}
+.corner_top_R {
+    top: calc(var(--grid-y) - 14px);
+    left: calc(var(--grid-x) + var(--grid-size) - 6px);
+}
+.corner_bottom_L {
+    top: calc(var(--grid-y) + var(--grid-size) - 7px);
+    left: calc(var(--grid-x) - 13px);
+}
+.corner_bottom_R {
+    top: calc(var(--grid-y) + var(--grid-size) - 5px);
+    left: calc(var(--grid-x) + var(--grid-size) - 5px);
+}
+
+
+
+
+
+
+
+
 
 
 
 .interface {
     float: left;
     width: 300px;
-    background-color: rgba(250,250,250,0.8);
+    margin: 0px 60px;
+
     text-align: center;
+    font-weight: bold;
+
+    border-radius: var(--blur-div-border-radius);
 }
 
 
 .player1_interface {
-    color: #35e252;
+    color: var(--light-flash-green);
     margin-left:0;/*defined in JS*/
+
+    margin-top: 5%;
 }
 
 .player2_interface {
-    color: #35bfe2;
+    color: var(--light-blue);
+
+    margin-top: 5%;
 }
 
 
 .player1_playing {
-    box-shadow: 0px 0px 20px #35e252;
-    filter: drop-shadow(0px 0px 0px #35e252);
+    box-shadow: 0px 0px 20px var(--light-flash-green);
+    filter: drop-shadow(0px 0px 0px var(--light-flash-green));
 }
 
 .player2_playing {
-    box-shadow: 0px 0px 20px #35bfe2;
-    filter: drop-shadow(0px 0px 0px #35bfe2);
+    box-shadow: 0px 0px 20px var(--light-blue);
+    filter: drop-shadow(0px 0px 0px var(--light-blue));
 }
 
 
 .interface_title {
-    font-size: 30px
+    font-size: 40px
 }
 
 
 .interface_subtitle {
-    font-size: 20px;
-    color: #999999;
+    font-size: 27px;
+    color: var(--main-white);
 }
 
 
 .interface_data_display {
-    font-size: 20px;
-    font-weight: bolder;
+    font-size: 27px;
 }
 
 
@@ -1305,33 +1413,35 @@ input:checked+.slider:before {
 
 
 
-
-
-
 #bottom_interface {
-    float: left;
-    width: 100%;
-    height: 200px;
-    background-color: rgba(220,220,220,0.8);
+    position: absolute;
+    float: none;
+    width: 90%;
+    height: 300px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: 10%;
+    left: 5%; /*(100-90)/2*/
+
+    color: var(--main-black);
 }
 
 
-.bottom_interface_button {
-    width: 200px;
-    height: 50px;
-    margin-top: 10px;
-    background-color: var(--lighter-white);
-    font-weight: bold;
-    font-size: 18px;
-    color: #999999;
-    border: 2px solid #cccccc;
-}
 
 
-#menu {
-    width:100%;
-    text-align:center;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 #bottom {

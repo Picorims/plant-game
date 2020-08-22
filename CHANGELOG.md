@@ -372,6 +372,7 @@ ex : main_layer_canvas.line(args...);
 
 - Graphical changes:
 	- Buttons redesign.
+	- Game UI improvements.
 	- Options menu improvements.
 	- Tutorial menu improvements.
 	- Credits menu improvements.
@@ -387,7 +388,9 @@ ex : main_layer_canvas.line(args...);
 		- Upgraded to Chromium 80.0.3987.86;
 		- Upgraded to Node 12.13.0;
 		- Upgraded to V8 8.0;
+	- Updated p5.js from v0.6.1 to v1.1.9 (release instead of beta).
 - The quit warning menu is now a scene.
+- Changed the color format for canvas drawing.
 - README.txt, NOTICE.txt, LICENSE.txt CHANGELOG.txt have been converted to README.md, NOTICE.md, LICENSE.md CHANGELOG.md
 	- The license content remained untouched.
 - Markdown support in-game to match github markdown, with custom css themed with the game.

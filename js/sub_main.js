@@ -121,6 +121,7 @@ function GlobalInit() {//initialization
             player1_interface_title: document.getElementById("interface1_title"),
             player2_interface:       document.getElementById("player2_interface"),
             player2_interface_title: document.getElementById("interface2_title"),
+            bottom_interface:        document.getElementById("bottom_interface"),
             display:{
                 player1:{
                     score:       document.getElementById("player1_score"),//displays score

@@ -89,7 +89,8 @@ function GameInit() {//initialization of the game
         y_start:        0,                      //y pos of new line start
         x_preview:      0,                      //x pos of preview
         y_preview:      0,                      //y pos of preview
-        rgb:            {r:100,g:231,b:124},    //color theme (green)
+        rgb:            "rgb(75, 243, 75)",     //color theme (green)
+        rgb_obj:        {r:75, g: 243, b:75},   //format for transparency support
         score:          0,                      //score in number of cases taken
         
         path: {//path to draw in grid
@@ -122,7 +123,8 @@ function GameInit() {//initialization of the game
         y_start:        0,                          //y pos of new line start
         x_preview:      0,                          //x pos of preview
         y_preview:      0,                          //y pos of preview
-        rgb:            {r:100,g:217,b:231},        //color theme (blue)
+        rgb:            "rgb(97, 204, 255)",        //color theme (blue)
+        rgb_obj:        {r:97, g: 204, b:255},      //format for transparency support
         score:          0,                          //score in number of cases taken
         
         path: {//path to draw in grid
@@ -163,8 +165,9 @@ function GameInit() {//initialization of the game
     
     //GRID STYLE
     grid = {
-        line_color:         200,    //color of the lines of the grid (rgb)
-        background_color:   250,    //color of the background of the grid(rgb)
+        line_color:             "rgba(209, 255, 204, 0.2)",   //color of the lines of the grid (rgba)
+        background_color:       "rgba(156, 199, 152, 0.2)",   //color of the background of the grid (rgba)
+        bonus_background_color: "rgba(211, 255, 207, 0.3)",   //color of the background of the bonus tiles (rgba)
         //grid_size, grid_border, and case_size are appart because they've to be defined when p5 initialization run (setup() and draw()), but they relates to the same family of variables.
     };
     
@@ -172,7 +175,8 @@ function GameInit() {//initialization of the game
     
     //LINES STYLE
     preview_line = {
-        color:  150,    //preview line display color (rgb)
+        color:  "rgba(255, 255, 255, 0.7)",    //preview line display color (rgb)
+        aura_color: "rgba(156, 199, 152, 0.5)",
         weight: 4,      //weight of the line
     };
     player_line_weight = 4; //weight of the player stems
@@ -181,30 +185,21 @@ function GameInit() {//initialization of the game
     
     //POSSIBLE START POINT INDICATOR STYLE
     start_point = {
-        weight:     5,
+        weight: 5,
         
-        p1_color: {
-            r: player1.rgb.r-50,
-            g: player1.rgb.g-50,
-            b: player1.rgb.b-50,
-        },
-        
-        p2_color: {
-            r: player2.rgb.r-50,
-            g: player2.rgb.g-50,
-            b: player2.rgb.b-50,
-        },
+        p1_color: "rgb(25, 193, 25)",        
+        p2_color: "rgb(47, 154, 205)",
     };
     
 
     
     //FLOWER STYLE
     flower = {
-        radius:             18,                     //radius for the weight of petals and the center of the flower
-        preview_rgb_center: {r:100,g:100,b:100},    //color of the center of the flower for preview
-        preview_rgb_petal:  {r:200,g:200,b:200},    //color of the petals of the flower for preview
-        draw_rgb_center:    {r:234,g:220,b:66},     //color of the center of the flower for drawing
-        aura_opacity:       0.3,                    //opacity of the aura of the flower.
+        radius:             18,                             //radius for the weight of petals and the center of the flower
+        preview_rgb_center: "rgba(255, 252, 223, 0.4)",     //color of the center of the flower for preview
+        preview_rgb_petal:  "rgba(255, 255, 255, 0.7)",     //color of the petals of the flower for preview
+        draw_rgb_center:    "rgb(234, 220, 66)",             //color of the center of the flower for drawing
+        aura_opacity:       0.3,                            //opacity of the aura of the flower.
     }
     
     
@@ -335,7 +330,7 @@ function GameInit() {//initialization of the game
     
     HTML.game.player1_interface.style.height = canvas_height+"px";//vvvvvvvvvvvvvvvvvvvvvv
     HTML.game.player1_interface.className = HTML.game.player1_interface.className.replace(" player1_playing","");
-    HTML.game.player1_interface.style.marginLeft = (   (window.innerWidth - HTML.game.player1_interface.offsetWidth*2 - canvas_width) / 2   ) + "px";
+    HTML.game.player1_interface.style.marginLeft = (   (window.innerWidth - HTML.game.player1_interface.offsetWidth*2 - canvas_width) / 2   ) - (2*30) + "px"; //4*30 -> 4* margin on interfaces.
 
     HTML.game.player2_interface.style.height = canvas_height+"px";//same height as main_layer_canvas
     HTML.game.player2_interface.className = HTML.game.player2_interface.className.replace(" player2_playing","");
@@ -373,6 +368,17 @@ function GameInit() {//initialization of the game
     starts_graph.elt.style.position =       "absolute";
     starts_graph.elt.style.top =            0+"px";
     starts_graph.elt.style.left =           0+"px";
+
+
+
+
+
+    //BORDER CREATION
+    document.body.style.setProperty("--grid-size", `${grid_size * case_size}px`);
+    var rect = HTML.game.layers_handler.getBoundingClientRect();
+    console.log(rect);
+    document.body.style.setProperty("--grid-x", `${rect.left}px`);
+    document.body.style.setProperty("--grid-y", `${rect.top}px`);
 
     
 
@@ -474,17 +480,27 @@ function OnKeyDown(e) {//On key down, if the event can be tested (events not blo
 
 function FirstTerrainDraw() {//what to draw on the first frame of a new game
     //DRAW GRID
+    var case_size = canvas_width/grid_size;
+
     main_layer_canvas.stroke(grid.line_color);//color grid
     main_layer_canvas.strokeWeight(grid_border);//border of grid width
-    main_layer_canvas.fill(grid.background_color,grid.background_color,grid.background_color);//background color
-    main_layer_canvas.rect(0,0,canvas_width,canvas_height);//background with anti-aliasing
     
-    for (line1=0; line1<canvas_width; line1=line1+(canvas_width/grid_size)){//horizontal lines
-        main_layer_canvas.line(0,line1,canvas_width,line1);
+    //background
+    main_layer_canvas.fill(grid.background_color);//background color
+    main_layer_canvas.rect(0, case_size, canvas_width, canvas_height-case_size);//background with anti-aliasing
+
+    //bonus cases
+    main_layer_canvas.fill(grid.bonus_background_color);//background color
+    main_layer_canvas.rect(0, 0, canvas_width, case_size);//background with anti-aliasing
+    main_layer_canvas.rect(0,  canvas_height-case_size, canvas_width, canvas_height);//background with anti-aliasing
+    
+    //lines x axis
+    for (i=0; i<canvas_width; i = i + case_size){//horizontal lines
+        main_layer_canvas.line(0, i, canvas_width, i);
     }
-    
-    for (line2=0; line2<canvas_width; line2=line2+(canvas_width/grid_size)){//vertical lines
-        main_layer_canvas.line(line2,0,line2,canvas_width);
+    //lines y axis
+    for (j=0; j<canvas_width; j = j + case_size){//vertical lines
+        main_layer_canvas.line(j, 0, j, canvas_width);
     }
         
 
@@ -495,14 +511,14 @@ function FirstTerrainDraw() {//what to draw on the first frame of a new game
     main_layer_canvas.strokeWeight(player_line_weight);
             
     //p1
-    main_layer_canvas.stroke(player1.rgb.r, player1.rgb.g, player1.rgb.b);//player 1 color
+    main_layer_canvas.stroke(player1.rgb);//player 1 color
     player1.score = player1.score + 3;
     main_layer_canvas.line( x(player1.x),                         y(player1.y+1),   x(player1.x),                          y(player1.y));//center ||| initial line from outside the canvas to initial pos
     main_layer_canvas.line( x(Math.floor(  player1.x * 1/2  )),   y(player1.y+1),   x(Math.floor(  player1.x * 1/2  )),    y(player1.y));//left
     main_layer_canvas.line( x(Math.ceil(  player1.x * 3/2  )),    y(player1.y+1),   x(Math.ceil(  player1.x * 3/2  )),     y(player1.y));//right
     
     //p2
-    main_layer_canvas.stroke(player2.rgb.r, player2.rgb.g, player2.rgb.b);//player 2 color
+    main_layer_canvas.stroke(player2.rgb);//player 2 color
     player2.score = player2.score + 3;
     main_layer_canvas.line( x(player2.x),                         y(player2.y-1),   x(player2.x),                          y(player2.y));//center ||| initial line from outside the canvas to initial pos
     main_layer_canvas.line( x(Math.floor(  player2.x * 1/2  )),   y(player2.y-1),   x(Math.floor(  player2.x * 1/2  )),    y(player2.y));//left
@@ -664,13 +680,13 @@ function DisplayStarts() {//displays where the player can start from at his turn
             
             //depending of the player who will play, points are drawn accordingly
             if (turn.player_turn == 1     &&     tilemap[i][j].available_movement.p1.global==true) {//if a movement is possible on this case
-                starts_graph.stroke( start_point.p1_color.r,  start_point.p1_color.g,  start_point.p1_color.b );
+                starts_graph.stroke( start_point.p1_color);
                 starts_graph.strokeWeight(start_point.weight);
                 starts_graph.point(x(i+1),y(j+1));
 
             }
             if (turn.player_turn == 2     &&     tilemap[i][j].available_movement.p2.global==true) {
-                starts_graph.stroke( start_point.p2_color.r,  start_point.p2_color.g,  start_point.p2_color.b );
+                starts_graph.stroke( start_point.p2_color);
                 starts_graph.strokeWeight(start_point.weight);
                 starts_graph.point(x(i+1),y(j+1));
             
@@ -1101,7 +1117,7 @@ function DoMovement(player) {//draw the final player action that have been previ
 
     //set stroke
     main_layer_canvas.strokeWeight(player_line_weight);//set line stroke weight
-    main_layer_canvas.stroke(player.rgb.r,  player.rgb.g,  player.rgb.b);//set line color
+    main_layer_canvas.stroke(player.rgb);//set line color
     
     //do movement
     Move(player.path.draw, "draw");//draw final path
@@ -1544,7 +1560,7 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
                 //draw aura tile.
                 push();
                 main_layer_canvas.strokeWeight(0.5);
-                main_layer_canvas.fill(`rgba(${player.rgb.r}, ${player.rgb.g}, ${player.rgb.b},${flower.aura_opacity})`);
+                main_layer_canvas.fill(`rgba(${player.rgb_obj.r}, ${player.rgb_obj.g}, ${player.rgb_obj.b},${flower.aura_opacity})`);
                 main_layer_canvas.rect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);//-0.5 to draw rect from top-left-corner
                 pop();
 
@@ -1553,7 +1569,7 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
                 //draw aura tile.
                 push();
                 preview_graph.strokeWeight(0.5);
-                preview_graph.fill("rgba("+preview_line.color+","+preview_line.color+","+preview_line.color+",0.4)");
+                preview_graph.fill(preview_line.aura_color);
                 preview_graph.rect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);//-0.5 to draw rect from top-left-corner
                 pop();
 
@@ -2000,28 +2016,14 @@ function DrawFlower(X,Y,r,rgb1,rgb2,cvs) {//(WARNING : reset stroke and strokeWe
     if (isFinite(X)==false) {console.error("[Plant]{DrawFlower} Invalid argument for parameter 'X' : expected a number, got "+X); return;}
     if (isFinite(Y)==false) {console.error("[Plant]{DrawFlower} Invalid argument for parameter 'Y' : expected a number, got "+Y); return;}
     
-    if (typeof rgb1 !== 'object'
-        || rgb1==null
-        || rgb1.constructor === Array
-        || Object.keys(rgb1).length!=3
-        || isFinite(rgb1.r)==false
-        || isFinite(rgb1.g)==false
-        || isFinite(rgb1.b)==false
-        ) {
-            console.error("[Plant]{DrawFlower} Invalid argument for parameter 'rgb1' : expected an object as following : '{r:number,g:number,b:number}', got ");
+    if (typeof rgb1 !== 'string' || rgb1==null) {
+            console.error("[Plant]{DrawFlower} Invalid argument for parameter 'rgb1' : expected a color string, got ");
             console.log(rgb1);
             return;
     }
 
-    if (typeof rgb2 !== 'object'
-        || rgb2==null
-        || rgb2.constructor === Array
-        || Object.keys(rgb2).length!=3
-        || isFinite(rgb2.r)==false
-        || isFinite(rgb2.g)==false
-        || isFinite(rgb2.b)==false
-        ) {
-            console.error("[Plant]{DrawFlower} Invalid argument for parameter 'rgb2' : expected an object as following : '{r:number,g:number,b:number}', got ");
+    if (typeof rgb2 !== 'string' || rgb2==null) {
+            console.error("[Plant]{DrawFlower} Invalid argument for parameter 'rgb2' : expected a color string, got ");
             console.log(rgb2);
             return;
     }
@@ -2044,14 +2046,14 @@ function DrawFlower(X,Y,r,rgb1,rgb2,cvs) {//(WARNING : reset stroke and strokeWe
     cvs.noStroke();
 
     //petals
-    cvs.fill(rgb2.r,rgb2.g,rgb2.b);
-    cvs.ellipse(X-(r/4),Y-(r/4),r/2,r/2);
-    cvs.ellipse(X-(r/4),Y+(r/4),r/2,r/2);
-    cvs.ellipse(X+(r/4),Y-(r/4),r/2,r/2);
-    cvs.ellipse(X+(r/4),Y+(r/4),r/2,r/2);
+    cvs.fill(rgb2);
+    cvs.ellipse(X-(r/4), Y-(r/4), r/2, r/2);
+    cvs.ellipse(X-(r/4), Y+(r/4), r/2, r/2);
+    cvs.ellipse(X+(r/4), Y-(r/4), r/2, r/2);
+    cvs.ellipse(X+(r/4), Y+(r/4), r/2, r/2);
 
     //center
-    cvs.fill(rgb1.r,rgb1.g,rgb1.b);
+    cvs.fill(rgb1);
     cvs.ellipse(X,Y,r/1.5,r/1.5);
 
     pop();

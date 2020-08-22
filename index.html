@@ -293,30 +293,54 @@ and you should see README.txt as well for other information. -->
     
     <!--GAME SCENE-->
     <div id="game_content" class="scene">
-        <div id="player1_interface" class="interface player1_interface">
+
+        <div id="player1_interface" class="interface player1_interface light_blur_background">
+
             <h1 id="interface1_title" class="interface_title"></h1>
+
             <label class="interface_subtitle score_subtitle" for="player1_score"></label><span class="interface_data_display" id="player1_score"></span>
             </br><label class="interface_subtitle movements_subtitle" for="player1_movements"></label><span class="interface_data_display" id="player1_movements"></span><button id='player1_movements_button' class="side_interface_button player1_interface get_button" onclick="GetRandomMovement(1);"></button>
             </br><label class="interface_subtitle victories_subtitle" for="player1_wins"></label><span class="interface_data_display" id="player1_wins"></span>
             <p class="interface_data_display" id="player1_game_result"></p>
+
         </div>
+
         <div id="game_layers_handler">
             <!-- P5.JS CANVAS CREATION GOES HERE -->
         </div>
-        <div id="player2_interface" class="interface player2_interface">
+        <div class="grid_border border_top"></div>
+        <div class="grid_border border_left"></div>
+        <div class="grid_border border_right"></div>
+        <div class="grid_border border_bottom"></div>
+        <div class="grid_corner corner_top_L"></div>
+        <div class="grid_corner corner_top_R"></div>
+        <div class="grid_corner corner_bottom_L"></div>
+        <div class="grid_corner corner_bottom_R"></div>
+
+
+
+        <div id="player2_interface" class="interface player2_interface light_blur_background">
+
             <h1 id="interface2_title" class="interface_title"></h1>
+
             <label class="interface_subtitle score_subtitle" for="player2_score"></label><span class="interface_data_display" id="player2_score"></span>
             </br><label class="interface_subtitle movements_subtitle" for="player2_movements"></label><span class="interface_data_display" id="player2_movements"></span><button id='player2_movements_button' class="side_interface_button player2_interface get_button" onclick="GetRandomMovement(2);"></button>
             </br><label class="interface_subtitle victories_subtitle" for="player2_wins"></label><span class="interface_data_display" id="player2_wins"></span>
             <p class="interface_data_display" id="player2_game_result"></p>
+
         </div>
-        <div id="bottom_interface" class="interface">
-            <button id="start_game_button" class="bottom_interface_button" onclick="StartGame()"></button>
-            <button id="new_game_button" class="bottom_interface_button" onclick="ResetGame()"></button>
-            <button id="back_to_menu_button" class="bottom_interface_button" onclick="ToMenu()"></button>
+
+        <div id="bottom_interface" class="interface light_blur_background">
+
+            <button id="start_game_button" class="leave_button big_leave_button" onclick="StartGame()"></button>
+            <button id="new_game_button" class="leave_button big_leave_button" onclick="ResetGame()"></button>
+            <button id="back_to_menu_button" class="leave_button big_leave_button" onclick="ToMenu()"></button>
+
             </br><label class="interface_subtitle turn_subtitle" for="turn"></label><span class="interface_data_display" id="turn"></span>
             </br><label class="interface_subtitle msg_subtitle" for="message"></label><span class="interface_data_display" id="message"></span>
+        
         </div>
+
     </div>
     
     
