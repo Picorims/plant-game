@@ -12,7 +12,7 @@ and you should see README.txt as well for other information. -->
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Plant Beta 0.1.0(b6)</title>
+    <title>Plant Beta 0.1.0(b7)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="all" type="text/css" href="css/main.css" />
     <script src="js/libraries/p5/p5.min.js" type="text/javascript"></script>
@@ -89,10 +89,8 @@ and you should see README.txt as well for other information. -->
     <!--MAIN MENU SCENE-->
     <div id="main_menu" class="scene">
         <div id="game_logo_container">
-            <object>
-                <object id="game_logo_object" type="image/svg+xml" data="assets/textures/plant_logo.svg">
-                    plant_logo.svg
-                </object>
+            <object id="game_logo_object" type="image/svg+xml" data="assets/textures/plant_logo.svg">
+                plant_logo.svg
             </object>
         </div>
         
@@ -237,7 +235,7 @@ and you should see README.txt as well for other information. -->
     <!--CREDITS SCENE-->
     <div id="credits" class="scene overlay_scene">
         <div id="credits_window" class="light_blur_background">
-            <div id="game_version">Beta 0.1.0(b6)</div>
+            <div id="game_version">Beta 0.1.0(b7)</div>
             <div id="close_credits_button" class="yellow_outline" onclick="CloseCredits();">X</div><!--window closer-->
 
 
@@ -306,6 +304,7 @@ and you should see README.txt as well for other information. -->
         </div>
 
         <div id="game_layers_handler">
+            <div id="tiles_container"></div>
             <!-- P5.JS CANVAS CREATION GOES HERE -->
         </div>
         <div class="grid_border border_top"></div>

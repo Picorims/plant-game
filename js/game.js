@@ -324,27 +324,6 @@ function GameInit() {//initialization of the game
     //|  HTML ELEMENTS CSS DEFINITION  |
     //+--------------------------------+
     
-    //ALL ELEMENTS BUT CANVAS
-    HTML.game.layers_handler.style.width = canvas_width+"px";//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-    HTML.game.layers_handler.style.height = canvas_height+"px";//HTML.game.layers_handler adapt it's size to main_layer_canvas
-    
-    HTML.game.player1_interface.style.height = canvas_height+"px";//vvvvvvvvvvvvvvvvvvvvvv
-    HTML.game.player1_interface.className = HTML.game.player1_interface.className.replace(" player1_playing","");
-    HTML.game.player1_interface.style.marginLeft = (   (window.innerWidth - HTML.game.player1_interface.offsetWidth*2 - canvas_width) / 2   ) - (2*30) + "px"; //4*30 -> 4* margin on interfaces.
-
-    HTML.game.player2_interface.style.height = canvas_height+"px";//same height as main_layer_canvas
-    HTML.game.player2_interface.className = HTML.game.player2_interface.className.replace(" player2_playing","");
-    
-    HTML.game.button.start_game.style.display = "initial";
-    HTML.game.button.player1.give_random_movement.style.display = "none";
-    HTML.game.button.player2.give_random_movement.style.display = "none";
-    
-    HTML.game.display.player1.movements.style.display = "initial";
-    HTML.game.display.player2.movements.style.display = "initial";
-    HTML.game.button.new_game.style.display = "none";
-    HTML.game.button.back_to_menu.style.display = "none";
-
-    
     
     //CANVAS ELEMENTS CSS DEFINITION (children[0] is main_layer_canvas, children[1] is preview_graph, children[2] is starts_graph)
     
@@ -373,8 +352,39 @@ function GameInit() {//initialization of the game
 
 
 
+
+    //ALL ELEMENTS BUT CANVAS
+    HTML.game.layers_handler.style.width = canvas_width+"px";//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    HTML.game.layers_handler.style.height = canvas_height+"px";//HTML.game.layers_handler adapt it's size to main_layer_canvas
+    
+    HTML.game.player1_interface.style.height = canvas_height+"px";//vvvvvvvvvvvvvvvvvvvvvv
+    HTML.game.player1_interface.className = HTML.game.player1_interface.className.replace(" player1_playing","");
+    HTML.game.player1_interface.style.marginLeft = (   (window.innerWidth - HTML.game.player1_interface.offsetWidth*2 - canvas_width) / 2   ) - (2*30) + "px"; //4*30 -> 4* margin on interfaces.
+
+    HTML.game.player2_interface.style.height = canvas_height+"px";//same height as main_layer_canvas
+    HTML.game.player2_interface.className = HTML.game.player2_interface.className.replace(" player2_playing","");
+    
+    HTML.game.button.start_game.style.display = "initial";
+    HTML.game.button.player1.give_random_movement.style.display = "none";
+    HTML.game.button.player2.give_random_movement.style.display = "none";
+    
+    HTML.game.display.player1.movements.style.display = "initial";
+    HTML.game.display.player2.movements.style.display = "initial";
+    HTML.game.button.new_game.style.display = "none";
+    HTML.game.button.back_to_menu.style.display = "none";
+    
+    HTML.game.display.player1.game_result.innerHTML = "";
+    HTML.game.display.player2.game_result.innerHTML = "";
+
+
+
+
+
+
+
     //BORDER CREATION
     document.body.style.setProperty("--grid-size", `${grid_size * case_size}px`);
+    document.body.style.setProperty("--tile-size", `${case_size}px`);
     var rect = HTML.game.layers_handler.getBoundingClientRect();
     console.log(rect);
     document.body.style.setProperty("--grid-x", `${rect.left}px`);
@@ -382,17 +392,6 @@ function GameInit() {//initialization of the game
 
     
 
-
-
-
-
-
-
-
-
-    //+--------------------------------+
-    //|  HTML ELEMENTS CSS DEFINITION  |
-    //+--------------------------------+
     
     //CANVAS ERASED
     main_layer_canvas.clear();
@@ -402,10 +401,6 @@ function GameInit() {//initialization of the game
     //CANVAS ELEMENTS HTML EVENTS
     HTML.game.layers_handler.onclick = function(e) {if (can_test_event) PreviewClick(e);};
 
-    //SET innerHTML OF ELEMENTS
-    HTML.game.display.player1.game_result.innerHTML = "";
-    HTML.game.display.player2.game_result.innerHTML = "";
-    
     //CREATE KEYBOARD LISTENER
     can_test_event = false;
     document.addEventListener("keydown", OnKeyDown);//arrows and enter detection
@@ -1491,15 +1486,21 @@ function CreateFlowerFor(player, type) {//creates a flower for the given player 
         petal_color = flower.preview_rgb_petal;
         X = player.x_preview;
         Y = player.y_preview;
+        //display preview
+        DrawFlower(x(X), y(Y), flower.radius, center_color, petal_color, cvs);
     }
     
 
     //CREATION
     //create the flower
-    DrawFlower(x(X), y(Y), flower.radius, center_color, petal_color, cvs);
+
     SetFlowerAura(player, X, Y, cvs);
     
     if (type === "draw") {
+        //display
+        var tile = NewTile(X, Y);
+        tile.data = "assets/textures/tiles/tile-flower.svg";
+        tile.parentElement.style.filter = (player === player1)? "" : "" ;
         //update tilemap
         tilemap[X-1][Y-1].item_type = "flower";
 
@@ -1578,6 +1579,28 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
 
 
     }
+}
+
+
+
+
+//returns a new tile setup and ready for use.
+function NewTile(X,Y) {
+    
+    //tile creation
+    var container = document.createElement("div");
+    HTML.game.tiles_container.appendChild(container);
+    container.classList.add("tile_parent");
+    container.style.left = (x(X) - case_size/2)+"px";
+    container.style.top = (y(Y) - case_size/2)+"px";
+
+    var tile = document.createElement("object");
+    container.appendChild(tile);
+    tile.classList.add("tile");
+
+    tile.type = "image/svg+xml";
+
+    return tile;
 }
 
 

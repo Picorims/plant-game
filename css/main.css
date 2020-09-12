@@ -57,6 +57,7 @@ body {
     --grid-size: 0;
     --grid-x: 0;
     --grid-y: 0;
+    --tile-size: 0;
 }
 
 
@@ -1339,6 +1340,28 @@ input:checked+.slider:before {
     left: calc(var(--grid-x) + var(--grid-size) - 5px);
 }
 
+
+
+
+
+
+#tiles_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.tile_parent {
+    position: absolute;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    top: 0; /*defined in JS*/
+    left: 0; /*defined in JS*/
+}
+.tile {
+    width: var(--tile-size);
+    height: var(--tile-size);
+}
 
 
 

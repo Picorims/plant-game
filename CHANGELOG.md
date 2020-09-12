@@ -368,7 +368,7 @@ ex : main_layer_canvas.line(args...);
 
 
 
-## 0.1.0(b6) | ?
+## 0.1.0(b6) | August, 24th 2020
 
 - Graphical changes:
 	- Buttons redesign.
@@ -410,6 +410,15 @@ ex : main_layer_canvas.line(args...);
 - BUG FIX: The flower aura bonus wasn't accurate.
 - BUG FIX: Translations not properly updated on game launch if the language json files have been updated.
 
+
+
+## 0.1.0(b7) | ???
+
+- Graphical changes:
+	- Stems redesign
+- Technical changes:
+	- stems are drawn differently, (svg instead of canvas)
+- Removed useless object container for the game logo.
 
 
 # RELEASE

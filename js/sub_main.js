@@ -150,6 +150,7 @@ function GlobalInit() {//initialization
                 back_to_menu: document.getElementById("back_to_menu_button"),//button to go back to main menu
             },
             layers_handler: document.getElementById("game_layers_handler"),// html element that contains all canvas layers for the game only
+            tiles_container: document.getElementById("tiles_container"),//div with svg tiles inside.
         }
     };
 
