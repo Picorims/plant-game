@@ -19,6 +19,7 @@ var turn;//infos about turn, value + who's turn to play
 var rules;//rules parameters database
 var can_test_event; //if key press can be analized. true if can, false if can't.
 var game_init_ended = false;//if setup() and GameInit() has ended to init. true when done and ready.
+var tiles_to_update;//list of tiles to create after a move. Array of objects with coordinates
 
 var temp_load;//var that stores on preload() all textures etc so they can THEN BE REASSIGNED IN OTHER DATABASES. DO NOT USE AS A DATABASE ITSELF! (even if it is permanent)
 
@@ -81,6 +82,7 @@ function GameInit() {//initialization of the game
 
     //PLAYERS DATABASE
     player1 = {
+        id:             1,                      //player number
         x:              (grid_size+1)/2,        //x pos
         y:              grid_size,              //y pos
         x_init:         (grid_size+1)/2,        //first starting x pos
@@ -115,6 +117,7 @@ function GameInit() {//initialization of the game
     };
 
     player2 = {
+        id:             2,                          //player number
         x:              (grid_size+1)/2,            //x pos
         y:              1,                          //y pos
         x_init:         (grid_size+1)/2,            //first starting x pos
@@ -173,7 +176,7 @@ function GameInit() {//initialization of the game
     
 
     
-    //LINES STYLE
+    //LINES STYLE (debug drawings only)
     preview_line = {
         color:  "rgba(255, 255, 255, 0.7)",    //preview line display color (rgb)
         aura_color: "rgba(156, 199, 152, 0.5)",
@@ -193,13 +196,14 @@ function GameInit() {//initialization of the game
     
 
     
-    //FLOWER STYLE
+    //FLOWER STYLE (debug drawings only, except aura_opacity)
     flower = {
         radius:             18,                             //radius for the weight of petals and the center of the flower
         preview_rgb_center: "rgba(255, 252, 223, 0.4)",     //color of the center of the flower for preview
         preview_rgb_petal:  "rgba(255, 255, 255, 0.7)",     //color of the petals of the flower for preview
-        draw_rgb_center:    "rgb(234, 220, 66)",             //color of the center of the flower for drawing
-        aura_opacity:       0.3,                            //opacity of the aura of the flower.
+        draw_rgb_center:    "rgb(234, 220, 66)",            //color of the center of the flower for drawing
+        aura_conflict_color:"rgba(255, 24, 237, 0.3)",      //color of the aura when both players overlap.
+        aura_opacity:       0.5,                            //opacity of the aura of the flower.
     }
     
     
@@ -333,13 +337,24 @@ function GameInit() {//initialization of the game
     main_layer_canvas.elt.style.position =  "absolute";
     main_layer_canvas.elt.style.top =       0+"px";
     main_layer_canvas.elt.style.left =      0+"px";
-    
+    main_layer_canvas.elt.style.zIndex =    21;
+
+    //vvvvvvvvvvvvvvvvvvv main_layer_canvas css definition to be correctely displayed
+    aura_canvas.elt.style.border =    `${(grid_border/2)}px solid rgb(${grid.line_color}, ${grid.line_color}, ${grid.line_color})`;//fixs cut lines on layer canvas border. set p5 layer canvas border to line_size/2 with grid rgb
+    aura_canvas.elt.style.display =   "initial";
+    aura_canvas.elt.style.position =  "absolute";
+    aura_canvas.elt.style.top =       0+"px";
+    aura_canvas.elt.style.left =      0+"px";
+    aura_canvas.elt.style.zIndex =    23;
+    aura_canvas.elt.style.filter =    "blur(3px)";
+
     //vvvvvvvvvvvvvvvvvvv preview_graph to be perfectly over main_layer_canvas
     preview_graph.elt.style.border =        `${(grid_border/2)}px solid rgb(${grid.line_color}, ${grid.line_color}, ${grid.line_color})`;//fixs cut lines on layer canvas border. set p5 layer canvas border to line_size/2 with grid rgb
     preview_graph.elt.style.display =       "initial";
     preview_graph.elt.style.position =      "absolute";
     preview_graph.elt.style.top =           0+"px";
     preview_graph.elt.style.left =          0+"px";
+    preview_graph.elt.style.zIndex =        24;
     
     //vvvvvvvvvvvvvvvvvvv starts_graph to be perfectly over main_layer_canvas
     starts_graph.elt.style.border =         `${(grid_border/2)}px solid rgb(${grid.line_color}, ${grid.line_color}, ${grid.line_color})`;//fixs cut lines on layer canvas border. set p5 layer canvas border to line_size/2 with grid rgb
@@ -347,8 +362,9 @@ function GameInit() {//initialization of the game
     starts_graph.elt.style.position =       "absolute";
     starts_graph.elt.style.top =            0+"px";
     starts_graph.elt.style.left =           0+"px";
+    starts_graph.elt.style.zIndex =         25;
 
-
+    document.getElementById("tiles_container").style.zIndex = 22;
 
 
 
@@ -395,8 +411,13 @@ function GameInit() {//initialization of the game
     
     //CANVAS ERASED
     main_layer_canvas.clear();
+    aura_canvas.clear();
     preview_graph.clear();
     starts_graph.clear();
+
+    //TILES ERASED
+    var tiles = document.getElementsByClassName("tile_parent");
+    for (let i = tiles.length-1; i >= 0; i--) tiles.item(i).remove();
 
     //CANVAS ELEMENTS HTML EVENTS
     HTML.game.layers_handler.onclick = function(e) {if (can_test_event) PreviewClick(e);};
@@ -434,13 +455,14 @@ function CreateTilemap() {//setup the tilemap database
         for (var y = 0; y < grid_size; y++) {
             
             tilemap[x][y] = {
-                x:              x+1,                    //DEBUG ONLY - coordinates
-                y:              y+1,                    //DEBUG ONLY - coordinates
-                player:         0,                      //case owner
-                item_type:      "none",                 //case type
-                connect:        {u:0,d:0,l:0,r:0},      //stems connections with other cases
-                analyzed:       false,                  //analyzed for collisions
-                forbidden:      {p1:false,p2:false},    //unaccessible to a player
+                x:                  x+1,                    //DEBUG ONLY - coordinates
+                y:                  y+1,                    //DEBUG ONLY - coordinates
+                player:             0,                      //case owner
+                item_type:          "none",                 //case type
+                connect:            {u:0,d:0,l:0,r:0},      //stems connections with other cases
+                connect_prev_disp:  {u:0,d:0,l:0,r:0},      //display only data for preview stem rendering.      
+                analyzed:           false,                  //analyzed for collisions
+                forbidden:          {p1:false,p2:false},    //unaccessible to a player
                 
                 available_movement:{
                     p1: {global:true, up:true,   left:true, right:true}, //set to true because if this is initially to false,
@@ -503,22 +525,37 @@ function FirstTerrainDraw() {//what to draw on the first frame of a new game
     
     
     //INITIAL LINES FOR THE PLAYERS
+    //canvas.line for DEBUGGING only!
     main_layer_canvas.strokeWeight(player_line_weight);
             
     //p1
     main_layer_canvas.stroke(player1.rgb);//player 1 color
     player1.score = player1.score + 3;
-    main_layer_canvas.line( x(player1.x),                         y(player1.y+1),   x(player1.x),                          y(player1.y));//center ||| initial line from outside the canvas to initial pos
-    main_layer_canvas.line( x(Math.floor(  player1.x * 1/2  )),   y(player1.y+1),   x(Math.floor(  player1.x * 1/2  )),    y(player1.y));//left
-    main_layer_canvas.line( x(Math.ceil(  player1.x * 3/2  )),    y(player1.y+1),   x(Math.ceil(  player1.x * 3/2  )),     y(player1.y));//right
+    
+    //main_layer_canvas.line( x(player1.x),                         y(player1.y+1),   x(player1.x),                          y(player1.y));//center ||| initial line from outside the canvas to initial pos
+    NewTile(player1.x,                       player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 1);
+    
+    //main_layer_canvas.line( x(Math.floor(  player1.x * 1/2  )),   y(player1.y+1),   x(Math.floor(  player1.x * 1/2  )),    y(player1.y));//left
+    NewTile(Math.floor(  player1.x * 1/2  ), player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 2);
+    
+    //main_layer_canvas.line( x(Math.ceil(  player1.x * 3/2  )),    y(player1.y+1),   x(Math.ceil(  player1.x * 3/2  )),     y(player1.y));//right
+    NewTile(Math.ceil(  player1.x * 3/2  ),  player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 3);
+    
+    
+    
     
     //p2
     main_layer_canvas.stroke(player2.rgb);//player 2 color
     player2.score = player2.score + 3;
-    main_layer_canvas.line( x(player2.x),                         y(player2.y-1),   x(player2.x),                          y(player2.y));//center ||| initial line from outside the canvas to initial pos
-    main_layer_canvas.line( x(Math.floor(  player2.x * 1/2  )),   y(player2.y-1),   x(Math.floor(  player2.x * 1/2  )),    y(player2.y));//left
-    main_layer_canvas.line( x(Math.ceil(  player2.x * 3/2  )),    y(player2.y-1),   x(Math.ceil(  player2.x * 3/2  )),     y(player2.y));//right
-
+    
+    //main_layer_canvas.line( x(player2.x),                         y(player2.y-1),   x(player2.x),                          y(player2.y));//center ||| initial line from outside the canvas to initial pos
+    NewTile(player2.x,                       player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 4);
+    
+    //main_layer_canvas.line( x(Math.floor(  player2.x * 1/2  )),   y(player2.y-1),   x(Math.floor(  player2.x * 1/2  )),    y(player2.y));//left
+    NewTile(Math.floor(  player2.x * 1/2  ), player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 5);
+    
+    //main_layer_canvas.line( x(Math.ceil(  player2.x * 3/2  )),    y(player2.y-1),   x(Math.ceil(  player2.x * 3/2  )),     y(player2.y));//right
+    NewTile(Math.ceil(  player2.x * 3/2  ),  player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 6);
     
     
     
@@ -610,7 +647,18 @@ function SetLineStart(player,X,Y) {//set the new line start being drawed in prev
     player.path.last_preview_movement = "unset";
     
     //prepare for preview line drawing, and place a point where the preview start
+    //clear
     preview_graph.clear();
+    
+    var tiles = document.getElementsByClassName("preview");
+    for (let i = tiles.length-1; i >= 0; i--) tiles.item(i).remove();
+    
+    //reset display connections
+    for (let i=0; i<grid_size; i++) {
+        for (let j=0; j<grid_size; j++) tilemap[i][j].connect_prev_disp = {u:0,d:0,l:0,r:0};
+    }
+
+    //draw
     preview_graph.stroke(preview_line.color);
     preview_graph.strokeWeight(preview_line.weight*3);
     preview_graph.point(x(X),y(Y));
@@ -1109,6 +1157,8 @@ function DoMovement(player) {//draw the final player action that have been previ
     
     //erase preview
     preview_graph.clear();//clear preview line from grid
+    var tiles = document.getElementsByClassName("preview");
+    for (let i = tiles.length-1; i >= 0; i--) tiles.item(i).remove();
 
     //set stroke
     main_layer_canvas.strokeWeight(player_line_weight);//set line stroke weight
@@ -1229,7 +1279,10 @@ function Move(path, type) {//draw the path as a stem starting from the player co
     //get owner
     var is_player1_path = (path[0].split("")[1] == 1); //take the first action of the path, look at his second character which gives
     var is_player2_path = (path[0].split("")[1] == 2); //the player acting this action, and see to who it belongs
+    var player = (is_player1_path)? player1 : player2;
 
+    //clear queue for tiles
+    tiles_to_update = [];
 
     //UPDATE DATA
     //===========
@@ -1239,28 +1292,21 @@ function Move(path, type) {//draw the path as a stem starting from the player co
         //Reset data about the player preview start, because at this point,
         //it becomes obsolete and can create problems for further analysis (on stem length count for example)
                 
-        if (is_player1_path) {//path belongs to player 1
-            //reset preview start coordinates, and last bonus data
-            ResetPreviewAndBonusFor(player1);
-
-        } else if (is_player2_path) {//path belongs to player 2
-            ResetPreviewAndBonusFor(player2);
-        }
-    
+        //reset preview start coordinates, and last bonus data
+        ResetPreviewAndBonusFor(player);
     }
     
 
 
 
 
-    //DRAW THE PATH
-    //=============
+    //GENERATE THE PATH
+    //=================
     
     for (var i=0; i<path.length; i++) {
 
         //UPDATE SCORE
-        if (is_player1_path && type === "draw") player1.score++;
-        if (is_player2_path && type === "draw") player2.score++;
+        if (type === "draw") player.score++;
 
 
         //CREATE STEM PART
@@ -1297,12 +1343,8 @@ function Move(path, type) {//draw the path as a stem starting from the player co
         //FLOWER CREATION IF STEM LENGHT = rules.max_stem_length 
         var use_preview = (type === "preview")? true : false;
 
-        if (is_player1_path    &&    (GetStemLength(player1, use_preview) == rules.max_stem_length) ) { //false => do not take preview in count
-            CreateFlowerFor(player1, type);
-        }
-
-        if (is_player2_path    &&    (GetStemLength(player2, use_preview) == rules.max_stem_length) ) {
-            CreateFlowerFor(player2, type);
+        if (GetStemLength(player, use_preview) == rules.max_stem_length) { //false => do not take preview in count
+            CreateFlowerFor(player, type, path.length+1);
         }
 
         
@@ -1329,6 +1371,43 @@ function Move(path, type) {//draw the path as a stem starting from the player co
     
     
     }
+    //require tile updating for the final pos
+    if (type === "draw") tiles_to_update.push({x: player.x, y:player.y});
+    else if (type === "preview") tiles_to_update.push({x: player.x_preview, y:player.y_preview});
+
+    
+    //DRAW THE PATH
+    //=============
+
+
+    for (let i=0; i<tiles_to_update.length; i++) {
+        let X = tiles_to_update[i].x;
+        let Y = tiles_to_update[i].y;
+    
+        //delete obsolete deletable tiles in the same coordinates
+        var tiles_to_remove = document.getElementsByClassName(`${X}-${Y} can_delete ${type}`);
+
+        for (let j=tiles_to_remove.length-1; j>=0; j--) {
+            tiles_to_remove.item(j).remove();
+        }
+
+        //create the tile
+        var u,d,l,r;
+        if (type === "draw") {
+            u = tilemap[X-1][Y-1].connect.u;
+            d = tilemap[X-1][Y-1].connect.d;
+            l = tilemap[X-1][Y-1].connect.l;
+            r = tilemap[X-1][Y-1].connect.r;    
+        } else if (type === "preview") { //if the position has connections, take it into account. If not, look at the preview connections, for accurate tile previewing.
+            u = (tilemap[X-1][Y-1].connect.u)? tilemap[X-1][Y-1].connect.u : tilemap[X-1][Y-1].connect_prev_disp.u;
+            d = (tilemap[X-1][Y-1].connect.d)? tilemap[X-1][Y-1].connect.d : tilemap[X-1][Y-1].connect_prev_disp.d;
+            l = (tilemap[X-1][Y-1].connect.l)? tilemap[X-1][Y-1].connect.l : tilemap[X-1][Y-1].connect_prev_disp.l;
+            r = (tilemap[X-1][Y-1].connect.r)? tilemap[X-1][Y-1].connect.r : tilemap[X-1][Y-1].connect_prev_disp.r;    
+        }
+        var p = player.id;
+        NewTile(X, Y, `assets/textures/tiles/tile-u${u}-d${d}-l${l}-r${r}-player${p}-rand0.svg`, player, true, type, i);
+    }
+    
 
 
 
@@ -1407,9 +1486,12 @@ function CreateStemPartFor(player, player_id, direction, type) {//do one movemen
                 player.y--;
                 //set new connection on destination case
                 tilemap[new_X-1][new_Y-1].connect.d = 1;
+            } else if (type === "preview") {
+                //prev_disp is not used in anywhere but for tile displaying
+                tilemap[X-1][Y-1].connect_prev_disp.u = 1;
+                player.y_preview--
+                tilemap[new_X-1][new_Y-1].connect_prev_disp.d = 1;
             }
-            //update the player preview coordinates if in preview mode
-            if (type === "preview") {player.y_preview--};
             break
 
         
@@ -1420,8 +1502,11 @@ function CreateStemPartFor(player, player_id, direction, type) {//do one movemen
                 tilemap[X-1][Y-1].connect.d = 1;
                 player.y++;
                 tilemap[new_X-1][new_Y-1].connect.u = 1;
+            } else if (type === "preview") {
+                tilemap[X-1][Y-1].connect_prev_disp.d = 1;
+                player.y_preview++;
+                tilemap[new_X-1][new_Y-1].connect_prev_disp.u = 1;
             }
-            if (type === "preview") {player.y_preview++};
             break
             
         
@@ -1432,8 +1517,11 @@ function CreateStemPartFor(player, player_id, direction, type) {//do one movemen
                 tilemap[X-1][Y-1].connect.l = 1;
                 player.x--;
                 tilemap[new_X-1][new_Y-1].connect.r = 1;
+            } else if (type === "preview") {
+                tilemap[X-1][Y-1].connect_prev_disp.l = 1;
+                player.x_preview--;
+                tilemap[new_X-1][new_Y-1].connect_prev_disp.r = 1;
             }
-            if (type === "preview") {player.x_preview--};
             break
 
         
@@ -1444,14 +1532,18 @@ function CreateStemPartFor(player, player_id, direction, type) {//do one movemen
                 tilemap[X-1][Y-1].connect.r = 1;
                 player.x++;
                 tilemap[new_X-1][new_Y-1].connect.l = 1;
+            } else if (type === "preview") {
+                tilemap[X-1][Y-1].connect_prev_disp.r = 1;
+                player.x_preview++;
+                tilemap[new_X-1][new_Y-1].connect_prev_disp.l = 1;
             }
-            if (type === "preview") {player.x_preview++};
             break
 
     }
 
     //draw the stem
-    cvs.line(x(X), y(Y), x(new_X), y(new_Y));
+    //cvs.line(x(X), y(Y), x(new_X), y(new_Y)); //DEBUG ONLY
+    tiles_to_update.push({x: X, y: Y});
     
     //claim the destination case
     if (type === "draw") {
@@ -1464,7 +1556,7 @@ function CreateStemPartFor(player, player_id, direction, type) {//do one movemen
 
 
 
-function CreateFlowerFor(player, type) {//creates a flower for the given player in the given condition (type)
+function CreateFlowerFor(player, type, tile_animation_delay) {//creates a flower for the given player in the given condition (type)
     
     //DEFINITIONS
     var cvs;
@@ -1478,7 +1570,7 @@ function CreateFlowerFor(player, type) {//creates a flower for the given player 
         center_color = flower.draw_rgb_center;
         petal_color = player.rgb;
         X = player.x;
-        Y = player.y
+        Y = player.y;
 
     } else if (type === "preview") {
         cvs = "preview_graph";
@@ -1486,21 +1578,20 @@ function CreateFlowerFor(player, type) {//creates a flower for the given player 
         petal_color = flower.preview_rgb_petal;
         X = player.x_preview;
         Y = player.y_preview;
-        //display preview
-        DrawFlower(x(X), y(Y), flower.radius, center_color, petal_color, cvs);
     }
     
 
     //CREATION
     //create the flower
 
+    //display flower
+    //DrawFlower(x(X), y(Y), flower.radius, center_color, petal_color, cvs); //DEBUG ONLY
     SetFlowerAura(player, X, Y, cvs);
+    //display
+    NewTile(X, Y, `assets/textures/tiles/tile-flower-player${player.id}-rand0.svg`, player, false, type, tile_animation_delay);
+
     
     if (type === "draw") {
-        //display
-        var tile = NewTile(X, Y);
-        tile.data = "assets/textures/tiles/tile-flower.svg";
-        tile.parentElement.style.filter = (player === player1)? "" : "" ;
         //update tilemap
         tilemap[X-1][Y-1].item_type = "flower";
 
@@ -1541,18 +1632,22 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
         if (aura[i]=="#" && WithinTerrain(X+aura_x,Y+aura_y) == true) {//if there is an aura to the map index AND if it's coordinate is within the terrain limits
             
             if (cvs=="draw_canvas") {
+                var aura_tile = tilemap[X+aura_x-1][Y+aura_y-1];
 
                 //forbid case to opponent
-                if (player == player1) {tilemap[X+aura_x-1][Y+aura_y-1].forbidden.p2 = true;}
-                else {tilemap[X+aura_x-1][Y+aura_y-1].forbidden.p1=true;}
+                if (player == player1) {
+                    aura_tile.forbidden.p2 = true;
+                } else {
+                    aura_tile.forbidden.p1 = true;
+                }
                 
                 //if the aura touch the opponent's plant he steal points as defined by rules.stolen_point_by_aura.
-                if ( (tilemap[X+aura_x-1][Y+aura_y-1].player == 2) && (player == player1) ) {
+                if ( (aura_tile.player == 2) && (player == player1) ) {
                     player1.score                     += rules.stolen_point_by_aura;
                     player1.last_bonus.stolen_by_aura += rules.stolen_point_by_aura;
                     player2.score                     -= rules.stolen_point_by_aura;
                 }
-                else if ( (tilemap[X+aura_x-1][Y+aura_y-1].player == 1) && (player == player2) ) {
+                else if ( (aura_tile.player == 1) && (player == player2) ) {
                     player2.score                     += rules.stolen_point_by_aura;
                     player2.last_bonus.stolen_by_aura += rules.stolen_point_by_aura;
                     player1.score                     -= rules.stolen_point_by_aura;
@@ -1560,9 +1655,20 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
 
                 //draw aura tile.
                 push();
-                main_layer_canvas.strokeWeight(0.5);
-                main_layer_canvas.fill(`rgba(${player.rgb_obj.r}, ${player.rgb_obj.g}, ${player.rgb_obj.b},${flower.aura_opacity})`);
-                main_layer_canvas.rect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);//-0.5 to draw rect from top-left-corner
+                aura_canvas.strokeWeight(0);
+                if (aura_tile.forbidden.p1 && aura_tile.forbidden.p2) {
+                    
+                    //clear previous aura
+                    aura_canvas.elt.getContext("2d").clearRect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);
+                    
+                    //draw new one
+                    aura_canvas.fill(flower.aura_conflict_color);
+                    aura_canvas.rect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);//-0.5 to draw rect from top-left-corner
+                } else {
+                    aura_canvas.fill(`rgba(${player.rgb_obj.r}, ${player.rgb_obj.g}, ${player.rgb_obj.b},${flower.aura_opacity})`);
+                    aura_canvas.rect(x(X+aura_x-0.5), y(Y+aura_y-0.5), case_size, case_size);//-0.5 to draw rect from top-left-corner
+
+                }
                 pop();
 
             } else if (cvs=="preview_graph") {
@@ -1584,8 +1690,8 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
 
 
 
-//returns a new tile setup and ready for use.
-function NewTile(X,Y) {
+//creates a stem tile using the given properties. animation_delay is an integer, setting how much times the delay is applied.
+function NewTile(X,Y, svg_path, player, can_delete, type, animation_delay) {
     
     //tile creation
     var container = document.createElement("div");
@@ -1597,10 +1703,24 @@ function NewTile(X,Y) {
     var tile = document.createElement("object");
     container.appendChild(tile);
     tile.classList.add("tile");
-
     tile.type = "image/svg+xml";
 
-    return tile;
+    //properties
+    container.classList.add(`${X}-${Y}`);
+    if (can_delete) container.classList.add("can_delete");
+    container.classList.add(`${type}`);
+    tile.data = svg_path;
+    container.style.filter = (player === player1)? "url(#duotone-green)" : "url(#duotone-blue)" ;
+    if (type === "preview") container.style.filter = "url(#preview_tile)"; //overwrites the line below
+
+    //animation
+    if (type === "draw") {
+        container.style.transform = "scale(0)";
+        container.style.animation = `0.5s ease-in-out ${0.2*animation_delay}s tilePopIn`;
+        container.addEventListener("animationend", function(e) {
+            this.style.transform = "scale(1)";
+        });
+    }
 }
 
 
@@ -2549,8 +2669,11 @@ function ResetGame() {//reset the game for a new game
     
     //CLEAR CANVAS
     main_layer_canvas.clear();
+    aura_canvas.clear();
     preview_graph.clear();
     starts_graph.clear();
+    var tiles = document.getElementsByClassName("tile_parent");
+    for (let i = tiles.length-1; i >= 0; i--) tiles.item(i).remove();
     
     //REINIT
     document.removeEventListener("keydown", OnKeyDown);//remove existing listener so they do not stack.

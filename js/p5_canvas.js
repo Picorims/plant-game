@@ -12,6 +12,8 @@
 // - BACKGROUND
 // - LAYERS SUPERPOSED TO THE MAIN CANVAS, THAT ACT FOR DISPLAYING GAME ELEMENTS, OR VISUALS... (main = "main_layer_canvas", then preview_graph, start_graph are for gameplay. Others are graphical only)
 var main_layer_canvas;//p5 main layer canvas for the game. ALSO PRINCIPAL CANVAS OF P5
+var aura_canvas;//p5 canvas for aura display
+//THE VARIABLE BELOW IS DEFINED HERE BECAUSE IT NEEDS TO BE SETUP BEFORE GAME INITIALISATION !
 var preview_graph;//p5 canvas over the first one to draw previews without overwriting grid.
 //THE VARIABLE BELOW IS DEFINED HERE BECAUSE IT NEEDS TO BE SETUP BEFORE GAME INITIALISATION !
 var starts_graph;//p5 canvas over the preview_graph to show where the player can start from.
@@ -39,11 +41,13 @@ function setup() {//p5 setup, canvas related init
     canvas_width = (grid_size*case_size);//width and height for canvas being layers on the main_layer_canvas
     canvas_height = (grid_size*case_size);
     main_layer_canvas = createGraphics(canvas_width, canvas_height);
+    aura_canvas = createGraphics(canvas_width, canvas_height);
     preview_graph = createGraphics(canvas_width, canvas_height);
     starts_graph = createGraphics(canvas_width, canvas_height);
     
     // Move the canvas to their destination (<div>)
     main_layer_canvas.parent('game_layers_handler');
+    aura_canvas.parent('game_layers_handler');
     preview_graph.parent('game_layers_handler');
     starts_graph.parent('game_layers_handler');
     

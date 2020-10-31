@@ -34,6 +34,9 @@ var showdown  = require('showdown'),
     changelog_md, readme_md, notice_md, license_md;
 converter.setFlavor('github');
 
+//working directory to script path
+process.chdir(__dirname);
+
 
 
 app.on('ready', ElectronInit);

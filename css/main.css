@@ -145,7 +145,7 @@ button, select {
 
 .light_blur_background {
     background-color: rgba(156, 199, 152, 0.2);
-    backdrop-filter: var(--blur-div-blur-level);
+    backdrop-filter: blur(var(--blur-div-blur-level));
 }
 
 
@@ -1266,7 +1266,7 @@ input:checked+.slider:before {
 
     margin-top: 5%;
 
-    backdrop-filter: var(--blur-div-blur-level);
+    backdrop-filter: blur(var(--blur-div-blur-level));
     background-color: rgba(60, 152, 30, 0.20);
 }
 
@@ -1344,7 +1344,7 @@ input:checked+.slider:before {
 
 
 
-
+/* stem tiles */
 #tiles_container {
     position: relative;
     width: 100%;
@@ -1363,6 +1363,10 @@ input:checked+.slider:before {
     height: var(--tile-size);
 }
 
+@keyframes tilePopIn {
+    from {transform: scale(0)}
+    to {transform: scale(1);}
+}
 
 
 
