@@ -7,50 +7,50 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="tile-3-0.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 105.83333 105.83334"
+   width="400"
    height="400"
-   width="400">
+   viewBox="0 0 105.83333 105.83334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="tile-u0-d0-l1-r1-player1-rand0.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="-8"
-     inkscape:window-height="1017"
-     inkscape:window-width="1920"
-     inkscape:guide-bbox="true"
-     showguides="true"
-     units="px"
-     showgrid="true"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="197.54728"
-     inkscape:cx="239.067"
-     inkscape:zoom="1.4"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#2b2b2b"
-     id="base">
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2535632"
+     inkscape:cx="239.067"
+     inkscape:cy="197.54728"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="958"
+     inkscape:window-height="1008"
+     inkscape:window-x="953"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
     <inkscape:grid
-       empopacity="0.25098039"
-       empcolor="#00a6ff"
+       type="xygrid"
        id="grid10"
-       type="xygrid" />
+       empcolor="#00a6ff"
+       empopacity="0.25098039" />
     <sodipodi:guide
-       id="guide12"
+       position="52.916665,105.83334"
        orientation="1,0"
-       position="52.916665,105.83334" />
+       id="guide12" />
     <sodipodi:guide
-       id="guide14"
+       position="0,52.91667"
        orientation="0,-1"
-       position="0,52.91667" />
+       id="guide14" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -65,12 +65,22 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1">
     <path
-       style="fill:none;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000;stop-opacity:1"
+       sodipodi:nodetypes="csscsscc"
+       id="path834-2"
+       d="m 60.854167,50.270833 c 0,0 2.645833,-5.291667 5.291666,-5.291667 2.645834,0 10.583334,0 21.544643,-9.638394 9.93471,-8.735696 12.851194,-24.757439 12.851194,-24.757439 0,0 -13.040181,0.944939 -23.623514,11.528272 C 66.334823,32.694938 63.5,39.6875 63.5,42.333333 c 3e-6,2.645833 -5.291664,5.291667 -5.291664,5.291667 z"
+       style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 44.979167,50.270833 c 0,0 -2.645833,5.29167 -5.291666,5.29167 -2.645834,0 -10.96131,1.700895 -21.544643,9.638394 -10.5833343,7.9375 -15.4970245,24.757439 -15.4970245,24.757439 0,0 15.6860115,-0.944939 26.2693445,-11.528272 10.583333,-10.583333 13.418156,-17.575895 13.418156,-20.221728 -3e-6,-2.645833 5.291664,-5.291667 5.291664,-5.291667 z"
+       id="path834-6"
+       sodipodi:nodetypes="csscsscc" />
+    <path
+       id="path834"
        d="m 0,52.916663 c 5.2916666,0 21.166669,-7.937497 37.041666,-7.937497 15.874997,0 26.458333,13.229167 39.6875,13.229167 13.229166,0 21.166666,-5.29167 29.104164,-5.29167"
-       id="path834" />
+       style="fill:none;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000;stop-opacity:1" />
   </g>
 </svg>

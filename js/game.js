@@ -25,7 +25,7 @@ var temp_load;//var that stores on preload() all textures etc so they can THEN B
 
 
 
-
+//NOTE: case means tile in variable names most of the time, I made an english mistake when I started the project out at high school. Sorry!
 
 
 
@@ -188,10 +188,10 @@ function GameInit() {//initialization of the game
     
     //POSSIBLE START POINT INDICATOR STYLE
     start_point = {
-        weight: 5,
+        weight: 2,
         
-        p1_color: "rgb(25, 193, 25)",        
-        p2_color: "rgb(47, 154, 205)",
+        p1_color: "rgba(182, 242, 182, 0.75)",        
+        p2_color: "rgba(194, 235, 255, 0.75)",
     };
     
 
@@ -203,7 +203,7 @@ function GameInit() {//initialization of the game
         preview_rgb_petal:  "rgba(255, 255, 255, 0.7)",     //color of the petals of the flower for preview
         draw_rgb_center:    "rgb(234, 220, 66)",            //color of the center of the flower for drawing
         aura_conflict_color:"rgba(255, 24, 237, 0.3)",      //color of the aura when both players overlap.
-        aura_opacity:       0.5,                            //opacity of the aura of the flower.
+        aura_opacity:       0.4,                            //opacity of the aura of the flower.
     }
     
     
@@ -337,7 +337,7 @@ function GameInit() {//initialization of the game
     main_layer_canvas.elt.style.position =  "absolute";
     main_layer_canvas.elt.style.top =       0+"px";
     main_layer_canvas.elt.style.left =      0+"px";
-    main_layer_canvas.elt.style.zIndex =    21;
+    main_layer_canvas.elt.style.zIndex =    30;
 
     //vvvvvvvvvvvvvvvvvvv main_layer_canvas css definition to be correctely displayed
     aura_canvas.elt.style.border =    `${(grid_border/2)}px solid rgb(${grid.line_color}, ${grid.line_color}, ${grid.line_color})`;//fixs cut lines on layer canvas border. set p5 layer canvas border to line_size/2 with grid rgb
@@ -345,7 +345,7 @@ function GameInit() {//initialization of the game
     aura_canvas.elt.style.position =  "absolute";
     aura_canvas.elt.style.top =       0+"px";
     aura_canvas.elt.style.left =      0+"px";
-    aura_canvas.elt.style.zIndex =    23;
+    aura_canvas.elt.style.zIndex =    40;
     aura_canvas.elt.style.filter =    "blur(3px)";
 
     //vvvvvvvvvvvvvvvvvvv preview_graph to be perfectly over main_layer_canvas
@@ -354,7 +354,7 @@ function GameInit() {//initialization of the game
     preview_graph.elt.style.position =      "absolute";
     preview_graph.elt.style.top =           0+"px";
     preview_graph.elt.style.left =          0+"px";
-    preview_graph.elt.style.zIndex =        24;
+    preview_graph.elt.style.zIndex =        60;
     
     //vvvvvvvvvvvvvvvvvvv starts_graph to be perfectly over main_layer_canvas
     starts_graph.elt.style.border =         `${(grid_border/2)}px solid rgb(${grid.line_color}, ${grid.line_color}, ${grid.line_color})`;//fixs cut lines on layer canvas border. set p5 layer canvas border to line_size/2 with grid rgb
@@ -362,9 +362,9 @@ function GameInit() {//initialization of the game
     starts_graph.elt.style.position =       "absolute";
     starts_graph.elt.style.top =            0+"px";
     starts_graph.elt.style.left =           0+"px";
-    starts_graph.elt.style.zIndex =         25;
+    starts_graph.elt.style.zIndex =         70;
 
-    document.getElementById("tiles_container").style.zIndex = 22;
+    HTML.game.tiles_container.style.zIndex = 50;
 
 
 
@@ -533,13 +533,13 @@ function FirstTerrainDraw() {//what to draw on the first frame of a new game
     player1.score = player1.score + 3;
     
     //main_layer_canvas.line( x(player1.x),                         y(player1.y+1),   x(player1.x),                          y(player1.y));//center ||| initial line from outside the canvas to initial pos
-    NewTile(player1.x,                       player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 1);
+    NewTile(player1.x,                       player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, 0, player1, true, "draw", 1);
     
     //main_layer_canvas.line( x(Math.floor(  player1.x * 1/2  )),   y(player1.y+1),   x(Math.floor(  player1.x * 1/2  )),    y(player1.y));//left
-    NewTile(Math.floor(  player1.x * 1/2  ), player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 2);
+    NewTile(Math.floor(  player1.x * 1/2  ), player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, 0, player1, true, "draw", 2);
     
     //main_layer_canvas.line( x(Math.ceil(  player1.x * 3/2  )),    y(player1.y+1),   x(Math.ceil(  player1.x * 3/2  )),     y(player1.y));//right
-    NewTile(Math.ceil(  player1.x * 3/2  ),  player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, player1, true, "draw", 3);
+    NewTile(Math.ceil(  player1.x * 3/2  ),  player1.y, `assets/textures/tiles/tile-u0-d1-l0-r0-player1-rand0.svg`, 0, player1, true, "draw", 3);
     
     
     
@@ -549,13 +549,13 @@ function FirstTerrainDraw() {//what to draw on the first frame of a new game
     player2.score = player2.score + 3;
     
     //main_layer_canvas.line( x(player2.x),                         y(player2.y-1),   x(player2.x),                          y(player2.y));//center ||| initial line from outside the canvas to initial pos
-    NewTile(player2.x,                       player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 4);
+    NewTile(player2.x,                       player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, 0, player2, true, "draw", 4);
     
     //main_layer_canvas.line( x(Math.floor(  player2.x * 1/2  )),   y(player2.y-1),   x(Math.floor(  player2.x * 1/2  )),    y(player2.y));//left
-    NewTile(Math.floor(  player2.x * 1/2  ), player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 5);
+    NewTile(Math.floor(  player2.x * 1/2  ), player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, 0, player2, true, "draw", 5);
     
     //main_layer_canvas.line( x(Math.ceil(  player2.x * 3/2  )),    y(player2.y-1),   x(Math.ceil(  player2.x * 3/2  )),     y(player2.y));//right
-    NewTile(Math.ceil(  player2.x * 3/2  ),  player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, player2, true, "draw", 6);
+    NewTile(Math.ceil(  player2.x * 3/2  ),  player2.y, `assets/textures/tiles/tile-u1-d0-l0-r0-player2-rand0.svg`, 0, player2, true, "draw", 6);
     
     
     
@@ -723,15 +723,33 @@ function DisplayStarts() {//displays where the player can start from at his turn
             
             //depending of the player who will play, points are drawn accordingly
             if (turn.player_turn == 1     &&     tilemap[i][j].available_movement.p1.global==true) {//if a movement is possible on this case
+                //POINT DESIGN
+                // starts_graph.stroke( start_point.p1_color);
+                // starts_graph.strokeWeight(start_point.weight);
+                // starts_graph.point(x(i+1),y(j+1));
+
+                //SQUARE DESIGN
                 starts_graph.stroke( start_point.p1_color);
                 starts_graph.strokeWeight(start_point.weight);
-                starts_graph.point(x(i+1),y(j+1));
+                starts_graph.noFill();
+                //(x-left, y-top, size, rounded-corners)
+                // + or - stroke weight is to make the square + stroke fit in the tile.
+                starts_graph.square(x(i+1 - 0.5) + start_point.weight, y(j+1 - 0.5) + start_point.weight, case_size - 2*start_point.weight, case_size/5);
 
             }
             if (turn.player_turn == 2     &&     tilemap[i][j].available_movement.p2.global==true) {
+                //POINT DESIGN
+                // starts_graph.stroke( start_point.p2_color);
+                // starts_graph.strokeWeight(start_point.weight);
+                // starts_graph.point(x(i+1),y(j+1));
+
+                //SQUARE DESIGN
                 starts_graph.stroke( start_point.p2_color);
                 starts_graph.strokeWeight(start_point.weight);
-                starts_graph.point(x(i+1),y(j+1));
+                starts_graph.noFill();
+                //(x-left, y-top, size, rounded-corners)
+                // + or - stroke weight is to make the square + stroke fit in the tile.
+                starts_graph.square(x(i+1 - 0.5) + start_point.weight, y(j+1 - 0.5) + start_point.weight, case_size - 2*start_point.weight, case_size/5);
             
             }
 
@@ -1405,7 +1423,7 @@ function Move(path, type) {//draw the path as a stem starting from the player co
             r = (tilemap[X-1][Y-1].connect.r)? tilemap[X-1][Y-1].connect.r : tilemap[X-1][Y-1].connect_prev_disp.r;    
         }
         var p = player.id;
-        NewTile(X, Y, `assets/textures/tiles/tile-u${u}-d${d}-l${l}-r${r}-player${p}-rand0.svg`, player, true, type, i);
+        NewTile(X, Y, `assets/textures/tiles/tile-u${u}-d${d}-l${l}-r${r}-player${p}-rand0.svg`, 0, player, true, type, i);
     }
     
 
@@ -1560,9 +1578,10 @@ function CreateFlowerFor(player, type, tile_animation_delay) {//creates a flower
     
     //DEFINITIONS
     var cvs;
-    var center_color;
-    var petal_color;
+    // var center_color; DEBUG
+    // var petal_color;
     var X, Y;
+    var rotation;
 
     //adapt the process to the given type
     if (type === "draw") {
@@ -1572,23 +1591,44 @@ function CreateFlowerFor(player, type, tile_animation_delay) {//creates a flower
         X = player.x;
         Y = player.y;
 
+        //find orientation (only one connection is enabled in the case of a flower)
+        if (tilemap[X-1][Y-1].connect.d) {
+            rotation = 0;
+        } else if (tilemap[X-1][Y-1].connect.l) {
+            rotation = 90;
+        } else if (tilemap[X-1][Y-1].connect.u) {
+            rotation = 180;
+        } else if (tilemap[X-1][Y-1].connect.r) {
+            rotation = 270;
+        }
+
     } else if (type === "preview") {
         cvs = "preview_graph";
         center_color = flower.preview_rgb_center;
         petal_color = flower.preview_rgb_petal;
         X = player.x_preview;
         Y = player.y_preview;
+
+        //find orientation (only one connection is enabled in the case of a flower)
+        if (tilemap[X-1][Y-1].connect_prev_disp.d) {
+            rotation = 0;
+        } else if (tilemap[X-1][Y-1].connect_prev_disp.l) {
+            rotation = 90;
+        } else if (tilemap[X-1][Y-1].connect_prev_disp.u) {
+            rotation = 180;
+        } else if (tilemap[X-1][Y-1].connect_prev_disp.r) {
+            rotation = 270;
+        }
     }
     
 
     //CREATION
-    //create the flower
 
     //display flower
     //DrawFlower(x(X), y(Y), flower.radius, center_color, petal_color, cvs); //DEBUG ONLY
     SetFlowerAura(player, X, Y, cvs);
     //display
-    NewTile(X, Y, `assets/textures/tiles/tile-flower-player${player.id}-rand0.svg`, player, false, type, tile_animation_delay);
+    NewTile(X, Y, `assets/textures/tiles/tile-flower-player${player.id}-rand0.svg`, rotation, player, false, type, tile_animation_delay);
 
     
     if (type === "draw") {
@@ -1691,7 +1731,7 @@ function SetFlowerAura(player,X,Y,cvs) {//(WARNING : reset stroke !!!) set flowe
 
 
 //creates a stem tile using the given properties. animation_delay is an integer, setting how much times the delay is applied.
-function NewTile(X,Y, svg_path, player, can_delete, type, animation_delay) {
+function NewTile(X,Y, svg_path, rotation, player, can_delete, type, animation_delay) {
     
     //tile creation
     var container = document.createElement("div");
@@ -1712,13 +1752,17 @@ function NewTile(X,Y, svg_path, player, can_delete, type, animation_delay) {
     tile.data = svg_path;
     container.style.filter = (player === player1)? "url(#duotone-green)" : "url(#duotone-blue)" ;
     if (type === "preview") container.style.filter = "url(#preview_tile)"; //overwrites the line below
+    container.style.transform = `rotate(${rotation}deg)`;
+    if (RegExp(/flower/g).test(svg_path)) { //put flowers over stems
+        container.style.zIndex = parseInt(HTML.game.tiles_container.style.zIndex) + 1;
+    }
 
     //animation
     if (type === "draw") {
-        container.style.transform = "scale(0)";
-        container.style.animation = `0.5s ease-in-out ${0.2*animation_delay}s tilePopIn`;
+        container.style.transform = `scale(0) rotate(${rotation}deg)`;
+        container.style.animation = `0.5s ease-in-out ${0.2*animation_delay}s tilePopIn${rotation}`;
         container.addEventListener("animationend", function(e) {
-            this.style.transform = "scale(1)";
+            this.style.transform = `scale(1) rotate(${rotation}deg)`;
         });
     }
 }

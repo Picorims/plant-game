@@ -416,9 +416,11 @@ ex : main_layer_canvas.line(args...);
 
 - Graphical changes:
 	- Stems redesign
+	- aura redesign
+	- small color changes
 - Technical changes:
 	- stems are drawn differently, (svg instead of canvas)
-- Removed useless object container for the game logo.
+
 
 
 # RELEASE

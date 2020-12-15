@@ -25,8 +25,9 @@ body {
     backdrop-filter: blur(30px);
     font-family: "candela", Verdana, Geneva, Tahoma, sans-serif;
 
-    --main-white: #dddddd;
-    --lighter-white: #eeeeee;
+    /*must match main.css!*/
+    --main-white:#dad6bb;
+    --lighter-white: #eeead1; /*Must be changed on the fill_main_white svg filter as well, in index.html*/
     --light-flash-green: #4bf34b;
     --light-green: #5bc15b;
     --green: #4caf50;
@@ -39,7 +40,7 @@ body {
     --light-brown: #e49550;
     --dark-brown: #864710;
     --dark-soft-brown: #75471f;
-    --main-black: #222222;
+    --main-black: #222222; /*FLEUR BLEUE, FEUILLES*/
 
     --blur-div-border-radius: 8px;
     --common-text-size: 20px;

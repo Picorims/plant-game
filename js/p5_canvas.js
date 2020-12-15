@@ -25,6 +25,12 @@ var case_size; //(case_size x case_size) case size
 var framerate;//game framerate
 var first_draw;//if draw run first time
 
+
+
+//NOTE: case means tile in variable names most of the time, I made an english mistake when I started the project out at high school. Sorry!
+
+
+
 function setup() {//p5 setup, canvas related init
     //FRAMERATE DEFINITION
     framerate = 30;//displaying and updating framerate

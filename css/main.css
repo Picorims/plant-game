@@ -33,8 +33,9 @@ body {
     background-repeat: no-repeat;
     overflow: hidden;
 
-    --main-white: #dddddd;
-    --lighter-white: #eeeeee;
+    /*must match md.css!*/
+    --main-white:#dad6bb;
+    --lighter-white: #eeead1; /*Must be changed on the fill_main_white svg filter as well, in index.html*/
     --light-flash-green: #4bf34b;
     --light-green: #5bc15b;
     --green: #4caf50;
@@ -612,6 +613,7 @@ a:active {
 
 #game_logo_object {
     width: 650px;
+    filter: url("#fill_main_lighter_white");
 }
 
 
@@ -1267,7 +1269,7 @@ input:checked+.slider:before {
     margin-top: 5%;
 
     backdrop-filter: blur(var(--blur-div-blur-level));
-    background-color: rgba(60, 152, 30, 0.20);
+    background-color:rgba(255, 249, 182, 0.2);
 }
 
 
@@ -1363,9 +1365,21 @@ input:checked+.slider:before {
     height: var(--tile-size);
 }
 
-@keyframes tilePopIn {
-    from {transform: scale(0)}
-    to {transform: scale(1);}
+@keyframes tilePopIn0 {
+    from {transform: scale(0) rotate(0deg)}
+    to {transform: scale(1) rotate(0deg)}
+}
+@keyframes tilePopIn90 {
+    from {transform: scale(0) rotate(90deg)}
+    to {transform: scale(1) rotate(90deg)}
+}
+@keyframes tilePopIn180 {
+    from {transform: scale(0) rotate(180deg)}
+    to {transform: scale(1) rotate(180deg)}
+}
+@keyframes tilePopIn270 {
+    from {transform: scale(0) rotate(270deg)}
+    to {transform: scale(1) rotate(270deg)}
 }
 
 

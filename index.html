@@ -92,9 +92,9 @@ and you should see README.txt as well for other information. -->
     
                 <!-- Map the grayscale result to the gradient map provided in tableValues -->
                 <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
-                    <feFuncR type="table" tableValues="0.011764705882352941  0.07058823529411765  0.6274509803921569"></feFuncR> <!--black / white-->
-                    <feFuncG type="table" tableValues="0.10980392156862745  0.9019607843137255  0.9686274509803922"></feFuncG> <!--3, 28, 23 | 18, 230, 75 | 160, 247, 141-->
-                    <feFuncB type="table" tableValues="0.09019607843137255  0.29411764705882354  0.5529411764705883"></feFuncB>
+                    <feFuncR type="table" tableValues="0.011764705882352941  0.29411764705882354  0.9882352941176471"></feFuncR> <!--black / white-->
+                    <feFuncG type="table" tableValues="0.10980392156862745  0.9529411764705882  0.9490196078431372"></feFuncG> <!--3, 28, 23 | 18, 230, 75 | 160, 247, 141-->
+                    <feFuncB type="table" tableValues="0.09019607843137255  0.29411764705882354  0.7411764705882353"></feFuncB>
                     <feFuncA type="table" tableValues="0 1"></feFuncA>
                 </feComponentTransfer>
             </filter>
@@ -110,8 +110,8 @@ and you should see README.txt as well for other information. -->
     
                 <!-- Map the grayscale result to the gradient map provided in tableValues -->
                 <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
-                    <feFuncR type="table" tableValues="0.0196078431372549  0.21176470588235294  0.6392156862745098"></feFuncR> <!--black / white-->
-                    <feFuncG type="table" tableValues="0.08627450980392157  0.7098039215686275  0.8980392156862745"></feFuncG> <!--5, 22, 51 | 54, 181, 255 | 163, 229, 255-->
+                    <feFuncR type="table" tableValues="0.0196078431372549  0.21176470588235294  0.9607843137254902"></feFuncR> <!--black / white-->
+                    <feFuncG type="table" tableValues="0.08627450980392157  0.7098039215686275  1"></feFuncG> <!--5, 22, 51 | 54, 181, 255 | 163, 229, 255-->
                     <feFuncB type="table" tableValues="0.2                  1                   1"></feFuncB>
                     <feFuncA type="table" tableValues="0 1"></feFuncA>
                 </feComponentTransfer>
@@ -129,6 +129,13 @@ and you should see README.txt as well for other information. -->
                 0 1 0 0 0,
                 0 0 1 0 0,
                 0 0 0 0.7 0"></feColorMatrix><!--4th value of last line equals output opacity-->
+            </filter>
+
+            <filter id="fill_main_lighter_white">
+                <!-- COLOR -->
+                <feFlood flood-color="#eeead1" result="COLOR"></feFlood>
+                <!-- FILLED -->
+                <feComposite in="COLOR" in2="SourceAlpha" operator="in"></feComposite>
             </filter>
 
         </defs>
