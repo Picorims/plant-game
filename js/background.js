@@ -77,6 +77,8 @@ function GraphicInit() {//graphical process initialization. All var explanation 
     blur_background.elt.style.filter = "blur("+blur_background_data.blur+"px)";//elt = element. blur_background is an object.
     CreateBlurBackgroundParticles(blur_background_data.count);
     blur_background.noStroke();
+    //pre-render in case of low graphics enabled
+    BlurBackgroundUpdate();
 
     //FALLING PARTICLES BACKGROUND
     fall_ptcl_data = {
@@ -174,6 +176,8 @@ function GraphicInit() {//graphical process initialization. All var explanation 
     HTML.svg_filter.horizontal_blur.children[0].setAttribute("stdDeviation",god_rays_data.blur+",0");
     CreateGodRays(god_rays_data.count);
     god_rays.noStroke();
+    //pre-render in case of low graphics
+    RaysUpdate();
 
     //fix all canvas outside window, because of HTML.shadow_effect with window size, and canvas placed after it.
     for (var i=0; i<HTML.background_graphism_handler.children.length; i++) {
@@ -265,7 +269,7 @@ function GraphicUpdate() {//graphical process update loop per frame
         FloatingParticlesUpdate();
         if (!options.low_graphics_enabled) FallingParticlesUpdate();
         if (!options.low_graphics_enabled) BlurBackgroundUpdate();//static if low graphics enabled
-        RaysUpdate();
+        if (!options.low_graphics_enabled) RaysUpdate();
     }
     if (options.low_graphics_enabled && request_clear) {//clear useless canvas on low graphics enabled.
         falling_particles_back.clear();

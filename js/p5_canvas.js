@@ -40,7 +40,7 @@ function setup() {//p5 setup, canvas related init
     //GRID DEFINITION
     grid_size = 17;//must be odd (odd=impair | even=pair)
     grid_border = 2; //taken on case_size (case_size - grid_border), so it won't interact in any way with any algorithm, it's the esthetic border of cases.
-    case_size = 30;
+    case_size = 2*Math.floor( window.innerWidth/3 / grid_size / 2); // 2*... /2 -> round to even
     first_draw = true;
     
     //GAME CANVAS CREATION

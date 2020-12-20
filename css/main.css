@@ -55,21 +55,18 @@ body {
     --common-text-size: 20px;
 
     /*set in JS*/
-    --grid-size: 0;
-    --grid-x: 0;
-    --grid-y: 0;
     --tile-size: 0;
 }
 
 
-body, button, select {
+body, button, select, input {
     font-family: "candela";
     outline: 0;
     user-select: none;
 }
 
 
-button, select {
+button, select, input {
     cursor: pointer;
 }
 
@@ -610,6 +607,9 @@ a:active {
     nothing special
 } */
 
+#game_logo_container {
+    margin-top: 10vh;
+}
 
 #game_logo_object {
     width: 650px;
@@ -643,6 +643,24 @@ a:active {
         stroke-width: 0px;
     }
 }
+
+
+
+#main_menu_buttons_container {
+    width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.main_menu_btn_left {
+    grid-column: 1;
+    margin: 0 auto;
+}
+.main_menu_btn_right {
+    grid-column: 2;
+    margin: 0 auto;
+}
+
 
 
 
@@ -747,7 +765,7 @@ a:active {
 /* Slideshow container */
 #slideshow {
     position: relative;
-    width: 70%;
+    width: 80%;
     height: 70%;
     margin: auto;
     margin-top: 3%;
@@ -760,8 +778,21 @@ a:active {
 
 
 /* Next and previous buttons */
+#slide_buttons {
+    width: 40%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 0 auto;
+}
 #prev_slide_button, #next_slide_button {
     position: relative;
+    margin: 0 auto;
+}
+#prev_slide_button {
+    grid-column: 1;
+}
+#next_slide_button {
+    grid-column: 2;
 }
 
 
@@ -800,7 +831,6 @@ a:active {
 /* Dot Container */
 #dot_container {
     text-align: center;
-    margin-bottom: 15px;
 }
 
 
@@ -863,7 +893,9 @@ a:active {
 
 
 #options_menu {
-    padding-top: 4%;
+    box-sizing: border-box;
+    padding: 4% 0;
+    overflow-y: scroll;
 }
 
 
@@ -1247,9 +1279,12 @@ input:checked+.slider:before {
 */
 
 
-/* #game_content {
-    nothing special
-} */
+#game_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 
 
@@ -1259,14 +1294,14 @@ input:checked+.slider:before {
 
 
 
-
+#game_frame {
+    position: relative;
+}
 
 #game_layers_handler {
     float: left;
     position: relative;
     z-index: 20;
-
-    margin-top: 5%;
 
     backdrop-filter: blur(var(--blur-div-blur-level));
     background-color:rgba(255, 249, 182, 0.2);
@@ -1276,38 +1311,35 @@ input:checked+.slider:before {
 
 /*canvas wood stick borders*/
 .grid_border {
-    --border-extra-width: 50px;
-    --border-width: calc(var(--grid-size) + var(--border-extra-width));
-    --border-height: calc(var(--grid-size) / 20);
-    --width-offset: calc(var(--border-extra-width) / 2);
-
     position: absolute;
     z-index: 400;
-    width: var(--border-width);
-    height: var(--border-height);
+    width: 112%;
+    height: 6%;
     top: 0;
     left: 0;
 
     background-image: url("../assets/textures/wood_stick.svg");
-    background-size: var(--border-width) var(--border-height);
+    background-size: 100% 100%;
 }
 .border_top {
-    top: calc(var(--grid-y) - var(--border-height) / 1.5);
-    left: calc(var(--grid-x) - var(--width-offset));
+    top: -4%;
+    left: -6%;
 }
 .border_bottom {
-    top: calc(var(--grid-y) + var(--grid-size) - var(--border-height) / 2.5);
-    left: calc(var(--grid-x) - var(--width-offset));
+    top: 98%;
+    left: -6%;
     transform: scale(-1,1);
 }
 .border_left {
-    top: calc(var(--grid-y) + var(--border-width) / 2 - var(--width-offset) - var(--border-height) / 2);/*rotation implies repositioning, done by border-width/2 - width-offset*/
-    left: calc(var(--grid-x) - var(--border-width) / 2 - var(--width-offset)  + var(--border-height) * 0.9);/*which gives (pos - pos-fix +- offset)*/
+    top: -9%;
+    left: -1%;
+    transform-origin: left;
     transform: rotate(90deg);
 }
 .border_right {
-    top: calc(var(--grid-y) + var(--border-width) / 2 - var(--width-offset) - var(--border-height) / 2);/*rotation implies repositioning, done by border-width/2 - width-offset*/
-    left: calc(var(--grid-x) - var(--border-width) / 2 - var(--width-offset) + var(--grid-size)  + var(--border-height) * 1.1);/*which gives (pos - pos-fix +- offset)*/
+    top: 104%;
+    left: 101%;
+    transform-origin: left;
     transform: rotate(-90deg);
 }
 
@@ -1317,8 +1349,8 @@ input:checked+.slider:before {
 .grid_corner {
     position: absolute;
     z-index: 400;
-    width: 20px;
-    height: 20px;
+    width: 5%;
+    height: 5%;
     top: 0;
     left: 0;
 
@@ -1326,20 +1358,20 @@ input:checked+.slider:before {
     background-size: 100% 100%;
 }
 .corner_top_L {
-    top: calc(var(--grid-y) - 13px);
-    left: calc(var(--grid-x) - 15px);
+    top: -3%;
+    left: -4%;
 }
 .corner_top_R {
-    top: calc(var(--grid-y) - 14px);
-    left: calc(var(--grid-x) + var(--grid-size) - 6px);
+    top: -3.5%;
+    left: 98.5%;
 }
 .corner_bottom_L {
-    top: calc(var(--grid-y) + var(--grid-size) - 7px);
-    left: calc(var(--grid-x) - 13px);
+    top: 98.5%;
+    left: -4%;
 }
 .corner_bottom_R {
-    top: calc(var(--grid-y) + var(--grid-size) - 5px);
-    left: calc(var(--grid-x) + var(--grid-size) - 5px);
+    top: 99%;
+    left: 99%;
 }
 
 
@@ -1391,9 +1423,9 @@ input:checked+.slider:before {
 
 
 .interface {
-    float: left;
-    width: 300px;
-    margin: 0px 60px;
+    width: 25vw;
+    margin: 0px 4vw;
+    flex: 0 0 auto;
 
     text-align: center;
     font-weight: bold;
@@ -1404,15 +1436,10 @@ input:checked+.slider:before {
 
 .player1_interface {
     color: var(--light-flash-green);
-    margin-left:0;/*defined in JS*/
-
-    margin-top: 5%;
 }
 
 .player2_interface {
     color: var(--light-blue);
-
-    margin-top: 5%;
 }
 
 
@@ -1455,18 +1482,40 @@ input:checked+.slider:before {
 
 
 #bottom_interface {
-    position: absolute;
-    float: none;
-    width: 90%;
-    height: 300px;
-    padding-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90vw;
+    height: 33vh;
+    margin-bottom: 1vh;
 
-    bottom: 10%;
-    left: 5%; /*(100-90)/2*/
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
     color: var(--main-black);
+}
+
+.bottom_interface_side {
+    height: 100%;
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.bottom_interface_side_left {
+    width: 30%;
+}
+.bottom_interface_side_right {
+    width: 70%;
+}
+
+#turn_container {
+    width: 100%;
+    flex: 0 0 auto;
+}
+#turn, #message {
+    margin: 0 10px;
 }
 
 
@@ -1490,10 +1539,14 @@ input:checked+.slider:before {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;
     text-align:center;
     font-size: var(--common-text-size);
     color: var(--light-green);
+}
+
+#bottom p {
+    margin: 0;
+    margin-bottom: 5px;
 }
 
 

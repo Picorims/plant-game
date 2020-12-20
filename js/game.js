@@ -375,7 +375,6 @@ function GameInit() {//initialization of the game
     
     HTML.game.player1_interface.style.height = canvas_height+"px";//vvvvvvvvvvvvvvvvvvvvvv
     HTML.game.player1_interface.className = HTML.game.player1_interface.className.replace(" player1_playing","");
-    HTML.game.player1_interface.style.marginLeft = (   (window.innerWidth - HTML.game.player1_interface.offsetWidth*2 - canvas_width) / 2   ) - (2*30) + "px"; //4*30 -> 4* margin on interfaces.
 
     HTML.game.player2_interface.style.height = canvas_height+"px";//same height as main_layer_canvas
     HTML.game.player2_interface.className = HTML.game.player2_interface.className.replace(" player2_playing","");
@@ -392,19 +391,14 @@ function GameInit() {//initialization of the game
     HTML.game.display.player1.game_result.innerHTML = "";
     HTML.game.display.player2.game_result.innerHTML = "";
 
+    
 
 
 
 
 
-
-    //BORDER CREATION
-    document.body.style.setProperty("--grid-size", `${grid_size * case_size}px`);
+    //CSS GRID VARIABLES
     document.body.style.setProperty("--tile-size", `${case_size}px`);
-    var rect = HTML.game.layers_handler.getBoundingClientRect();
-    console.log(rect);
-    document.body.style.setProperty("--grid-x", `${rect.left}px`);
-    document.body.style.setProperty("--grid-y", `${rect.top}px`);
 
     
 

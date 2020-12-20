@@ -15,7 +15,10 @@ and you should see README.md as well for other information. */
 }
 
 
-
+* {
+    overflow-wrap: break-word;
+    user-select: none;
+}
 
 
 body {
@@ -114,6 +117,13 @@ h2 {
     padding-left: 50px;
 }
 
+pre {
+    overflow-x: scroll;
+    background-color: rgba(156, 199, 152, 0.2);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+}
 code {
     font-size: 14px;
 }

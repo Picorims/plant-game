@@ -152,13 +152,14 @@ and you should see README.txt as well for other information. -->
             </object>
         </div>
         
-        <button id="play_button" class="main_menu_button leave_button big_leave_button" onclick="Play();"></button></br>
-        <button id="tutorial_and_rules_button" class="main_menu_button leave_button big_leave_button" onclick="TutorialAndRules();"></button></br>
-        <button id="options_button" class="main_menu_button leave_button big_leave_button" onclick="Options();"></button></br>
-        <button id="credits_button" class="main_menu_button leave_button big_leave_button" onclick="Credits();"></button></br>
-        <button id="changelog_button" class="main_menu_button leave_button big_leave_button" onclick="Changelogs();"></button></br>
-        <button id="exit_button" class="main_menu_button leave_button big_leave_button" onclick="ConfirmQuit();"></button></br>
-
+        <div id="main_menu_buttons_container">
+            <button id="play_button" class="main_menu_button leave_button big_leave_button main_menu_btn_left" onclick="Play();"></button>
+            <button id="tutorial_and_rules_button" class="main_menu_button leave_button big_leave_button main_menu_btn_right" onclick="TutorialAndRules();"></button>
+            <button id="options_button" class="main_menu_button leave_button big_leave_button main_menu_btn_left" onclick="Options();"></button>
+            <button id="credits_button" class="main_menu_button leave_button big_leave_button main_menu_btn_right" onclick="Credits();"></button>
+            <button id="changelog_button" class="main_menu_button leave_button big_leave_button main_menu_btn_left" onclick="Changelogs();"></button>
+            <button id="exit_button" class="main_menu_button leave_button big_leave_button main_menu_btn_right" onclick="ConfirmQuit();"></button>
+        </div>
     </div>
 
 
@@ -167,8 +168,8 @@ and you should see README.txt as well for other information. -->
     <div id="quit_warning_menu" class="scene overlay_scene">
         <div id="warning_menu_container" class="light_blur_background">
             <span id="quit_msg"></span></br>
-            <button id="quit_confirm_button" class="quit_button leave_button small_leave_button" onclick="Quit();"></button>
             <button id="quit_cancel_button" class="quit_button leave_button small_leave_button" onclick="CancelQuit();"></button>    
+            <button id="quit_confirm_button" class="quit_button leave_button small_leave_button" onclick="Quit();"></button>
         </div>
     </div>
 
@@ -210,8 +211,10 @@ and you should see README.txt as well for other information. -->
             </div>
 
             <!-- Buttons to switch page -->
-            <button id="prev_slide_button" class="leave_button small_leave_button" onclick="NextSlide(-1)"></button>
-            <button id="next_slide_button" class="leave_button small_leave_button" onclick="NextSlide(1)"></button>
+            <div id="slide_buttons">
+                <button id="prev_slide_button" class="leave_button small_leave_button" onclick="NextSlide(-1)"></button>
+                <button id="next_slide_button" class="leave_button small_leave_button" onclick="NextSlide(1)"></button>    
+            </div>
 
         </div>
         </br>
@@ -266,19 +269,19 @@ and you should see README.txt as well for other information. -->
             </div>
             <div id="controls_container">
                 <span id="control_left_msg" class="controls_name controls_grid_left"></span>
-                <input id="control_left" type="button" value="Q" class="leave_button small_leave_button controls_button controls_grid_right"/>
+                <button id="control_left" class="leave_button small_leave_button controls_button controls_grid_right"></button>
                 <hr class="horizontal_separator controls_grid_full"/>
                 <span id="control_right_msg" class="controls_name controls_grid_left"></span>
-                <input id="control_right" type="button" value="D" class="leave_button small_leave_button controls_button controls_grid_right"/>
+                <button id="control_right" class="leave_button small_leave_button controls_button controls_grid_right"></button>
                 <hr class="horizontal_separator controls_grid_full"/>
                 <span id="control_down_msg" class="controls_name controls_grid_left"></span>
-                <input id="control_down" type="button" value="S" class="leave_button small_leave_button controls_button controls_grid_right"/>
+                <button id="control_down" class="leave_button small_leave_button controls_button controls_grid_right"></button>
                 <hr class="horizontal_separator controls_grid_full"/>
                 <span id="control_up_msg" class="controls_name controls_grid_left"></span>
-                <input id="control_up" type="button" value="Z" class="leave_button small_leave_button controls_button controls_grid_right"/>
+                <button id="control_up" class="leave_button small_leave_button controls_button controls_grid_right"></button>
                 <hr class="horizontal_separator controls_grid_full"/>
                 <span id="control_validate_msg" class="controls_name controls_grid_left"></span>
-                <input id="control_validate" type="button" value=" " class="leave_button small_leave_button controls_button controls_grid_right"/>
+                <button id="control_validate" class="leave_button small_leave_button controls_button controls_grid_right"></button>
                 <hr class="horizontal_separator controls_grid_full"/>
 
                 <button id="default_controls" class="leave_button small_leave_button controls_grid_full"></button>
@@ -286,6 +289,7 @@ and you should see README.txt as well for other information. -->
         </div>
 
         <button id="options_to_main_button" class="main_menu_button leave_button big_leave_button" onclick="QuitOptions();"></button>
+        <button id="reset_settings_button" class="main_menu_button leave_button big_leave_button" onclick="ResetSettings();"></button>
     </div>
 
     
@@ -361,20 +365,20 @@ and you should see README.txt as well for other information. -->
 
         </div>
 
-        <div id="game_layers_handler">
-            <div id="tiles_container"></div>
-            <!-- P5.JS CANVAS CREATION GOES HERE -->
+        <div id="game_frame">
+            <div id="game_layers_handler">
+                <div id="tiles_container"></div>
+                <!-- P5.JS CANVAS CREATION GOES HERE -->
+            </div>
+            <div class="grid_border border_top"></div>
+            <div class="grid_border border_left"></div>
+            <div class="grid_border border_right"></div>
+            <div class="grid_border border_bottom"></div>
+            <div class="grid_corner corner_top_L"></div>
+            <div class="grid_corner corner_top_R"></div>
+            <div class="grid_corner corner_bottom_L"></div>
+            <div class="grid_corner corner_bottom_R"></div>
         </div>
-        <div class="grid_border border_top"></div>
-        <div class="grid_border border_left"></div>
-        <div class="grid_border border_right"></div>
-        <div class="grid_border border_bottom"></div>
-        <div class="grid_corner corner_top_L"></div>
-        <div class="grid_corner corner_top_R"></div>
-        <div class="grid_corner corner_bottom_L"></div>
-        <div class="grid_corner corner_bottom_R"></div>
-
-
 
         <div id="player2_interface" class="interface player2_interface light_blur_background">
 
@@ -389,12 +393,19 @@ and you should see README.txt as well for other information. -->
 
         <div id="bottom_interface" class="interface light_blur_background">
 
-            <button id="start_game_button" class="leave_button big_leave_button" onclick="StartGame()"></button>
-            <button id="new_game_button" class="leave_button big_leave_button" onclick="ResetGame()"></button>
-            <button id="back_to_menu_button" class="leave_button big_leave_button" onclick="ToMenu()"></button>
-
-            </br><label class="interface_subtitle turn_subtitle" for="turn"></label><span class="interface_data_display" id="turn"></span>
-            </br><label class="interface_subtitle msg_subtitle" for="message"></label><span class="interface_data_display" id="message"></span>
+            <div class="bottom_interface_side bottom_interface_side_left">
+                <button id="start_game_button" class="leave_button big_leave_button" onclick="StartGame()"></button>
+                <button id="new_game_button" class="leave_button big_leave_button" onclick="ResetGame()"></button>
+                <button id="back_to_menu_button" class="leave_button big_leave_button" onclick="ToMenu()"></button> 
+                
+                <div id="turn_container">
+                    <label class="interface_subtitle turn_subtitle" for="turn"></label><span class="interface_data_display" id="turn"></span>
+                </div>
+            </div>
+            <div class="bottom_interface_side bottom_interface_side_right">
+                <label class="interface_subtitle msg_subtitle" for="message"></label>
+                <span class="interface_data_display" id="message"></span>
+            </div>
         
         </div>
 

@@ -34,9 +34,31 @@
                 "down":"Bas",
                 "up":"Haut",
                 "validate":"Valider",
-                "default":"Par Défaut"
+                "set": "Choisissez",
+                "default":"Par Défaut",
+                "key":{
+                    "space":"Espace",
+                    "capslock":"Verr Maj",
+                    "numlock":"Verr Num",
+                    "scrolllock":"Arrêt Défil",
+                    "enter":"Entrée",
+                    "arrowdown":"Flèche Bas",
+                    "arrowup":"Flèche Haut",
+                    "arrowleft":"Flèche Gauche",
+                    "arrowright":"Flèche Droite",
+                    "end":"Fin",
+                    "home":"Début",
+                    "pagedown":"Page Bas",
+                    "pageup":"Page Haut",
+                    "backspace":"Retour Arr.",
+                    "insert":"Inser",
+                    "delete":"Suppr",
+                    "contextmenu":"Menu Context.",
+                    "escape":"Échap"
+                }
             },
-            "back":"MENU PRINCIPAL"
+            "back":"MENU PRINCIPAL",
+            "reset":"PAR DÉFAUT"
         },
         "credits":{
             "development":"Développement",

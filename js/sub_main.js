@@ -113,6 +113,7 @@ function GlobalInit() {//initialization
             sound_slider: document.getElementById('sound_slider'),
             button: {
                 back_to_main_menu: document.getElementById("options_to_main_button"),
+                reset_settings:    document.getElementById("reset_settings_button"),
             },
         },
         
@@ -202,7 +203,6 @@ function GlobalInit() {//initialization
 
     //main_menu
     InitSceneSize(scene.main_menu);
-    scene.main_menu.style.paddingTop = (window.innerHeight/40)+"px"; //avoid the logo to touch the upper screen border
     ShowScene(scene.main_menu);
 
     //quit_warning_menu

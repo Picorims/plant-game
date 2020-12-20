@@ -113,8 +113,8 @@ ipcMain.on('rules_window', function(){
 
 function CreateChangelogWindow() {//creates a window displaying the changelogs
     changelog_window = new BrowserWindow({
-        width: 1300,
-        minWidth: 1300,
+        width: 1000,
+        minWidth: 1000,
         maxWidth: 1300,
         height: 800,
         minHeight: 600,
@@ -176,8 +176,8 @@ ipcMain.on('changelog_window', function(){
 
 function CreateReadMeWindow() {//creates a window displaying README.md
     readme_window = new BrowserWindow({
-        width: 1300,
-        minWidth: 1300,
+        width: 1000,
+        minWidth: 1000,
         maxWidth: 1300,
         height: 800,
         minHeight: 600,
@@ -238,8 +238,8 @@ ipcMain.on('readme_window', function(){
 
 function CreateNoticeWindow() {//creates a window displaying NOTICE.md
     notice_window = new BrowserWindow({
-        width: 1300,
-        minWidth: 1300,
+        width: 1000,
+        minWidth: 1000,
         maxWidth: 1300,
         height: 800,
         minHeight: 600,
@@ -300,9 +300,9 @@ ipcMain.on('notice_window', function(){
 
 function CreateLicenseWindow() {//creates a window displaying LICENSE.txt
     license_window = new BrowserWindow({
-        width: 800,
-        minWidth: 800,
-        maxWidth: 800,
+        width: 900,
+        minWidth: 900,
+        maxWidth: 900,
         height: 800,
         minHeight: 600,
         titles: 'LICENSE.md',

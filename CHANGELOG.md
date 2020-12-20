@@ -415,12 +415,20 @@ ex : main_layer_canvas.line(args...);
 ## 0.1.0(b7) | ???
 
 - Graphical changes:
-	- Stems redesign
-	- aura redesign
-	- small color changes
+	- Stems redesign,
+	- aura redesign,
+	- small color changes,
+	- improved responsive user interface.
 - Technical changes:
-	- stems are drawn differently, (svg instead of canvas)
-
+	- stems are drawn differently (svg instead of canvas).
+- Improvements and fixes to the settings menu:
+	- God rays not animated anymore in low graphics mode.
+	- Added a button to reset settings back to default.
+	- Improved key display in controls (now translated as well for common keys).
+- BUG FIX: No blur background when low graphics enabled.
+- BUG FIX: Controls buttons display issues.
+- BUG FIX: Selecting another key button while a key was not picked in options menu lead to unassigned key.
+- BUG FIX: Issues while selecting Space, Enter or Tab keys.
 
 
 # RELEASE

@@ -127,7 +127,7 @@ function LoadingScreen() {//function that handle all the starting process of the
         setTimeout(function()
         {
             scene.loading_screen.style.animation = transition_length_fadein+"ms FadeIn";
-            scene.loading_screen.style.backgroundColor = "#eeeeee";
+            scene.loading_screen.style.backgroundColor = "#dad6bb";
             PrepareMainMenuAnimation();
 
             
@@ -144,7 +144,7 @@ function LoadingScreen() {//function that handle all the starting process of the
                 //END ANIMATION
                 setTimeout(function ()
                 {
-                    HideLoadingScreen();
+                    HideScene(scene.loading_screen);
                 },transition_length_fadeout);
             
             
@@ -327,13 +327,6 @@ function LetterAnimation(data) {//animation for one letter with the given parame
     }, (data.animation_delay + data.animation_length - 100) );//-100 to avoid the letter to clip for a split second.
 }
 
-
-
-
-function HideLoadingScreen() {//hide the loading screen so the player can finally interact with the game (the loadinc screen element cover the screen, so buttons aren't triggerable even if it is invisble).
-    scene.loading_screen.style.left = window.innerWidth+"px";
-}
-
 //#################################################################################################################################################################################
 //#################################################################################################################################################################################
 
@@ -350,7 +343,7 @@ function ShowScene(scene, offset) {
     scene.style.left = (offset !== undefined) ?    offset : 0;
 }
 function HideScene(scene) {
-    scene.style.left = `${window.innerWidth}px`
+    scene.style.left = `${window.innerWidth}px`;
 }
 
 
@@ -479,6 +472,7 @@ function OptionsInit() {//initialization of the options menu.
         up: false,
         down: false,
         validate: false,
+        is_active: false,
     }
     //language database
     languages = {
@@ -535,9 +529,9 @@ function LoadSettings() {//loads the settings from JSON user file, or load defau
                 right:"D",
                 up:"Z",
                 down:"S",
-                validate:" ",//" " MEANS SPACE BAR !
+                validate: " ",//Space
             },
-            language: null,//contains all the translations of the language selected by the user.
+            language: null,//contains all the translations of the language selected by the user. ApplyLanguage() will replace null.
             low_graphics_enabled: false,//if low graphics are enabled for performance gain.
             volume:{//game volume
                 music: 1,
@@ -563,27 +557,27 @@ function LoadSettings() {//loads the settings from JSON user file, or load defau
                 break;
         
         }
-        
-        //UPDATE VISUALLY THE OPTIONS
-        //language
-        console.log("loading language: ",options.language.language_id)
-        if      (options.language.language_id == "en_us") {HTML.options.language_selector.value = 1}
-        else if (options.language.language_id == "fr_fr") {HTML.options.language_selector.value = 2}
-        
-        //graphics checkbox
-        if (options.low_graphics_enabled) HTML.options.graphics_checkbox.checked = true;
-        
-        //volume ranges
-        HTML.options.music_slider.value = options.volume.music;
-        HTML.options.sound_slider.value = options.volume.sound;
-        
-        //controls
-        HTML.options.controls.left.value        = options.controls.left;
-        HTML.options.controls.right.value       = options.controls.right;
-        HTML.options.controls.up.value          = options.controls.up;
-        HTML.options.controls.down.value        = options.controls.down;
-        HTML.options.controls.validate.value    = options.controls.validate;
     }
+
+    //UPDATE VISUALLY THE OPTIONS
+    //language
+    console.log("loaded language: ",options.language.language_id)
+    if      (options.language.language_id == "en_us") {HTML.options.language_selector.value = 1}
+    else if (options.language.language_id == "fr_fr") {HTML.options.language_selector.value = 2}
+    
+    //graphics checkbox
+    HTML.options.graphics_checkbox.checked = options.low_graphics_enabled;
+    
+    //volume ranges
+    HTML.options.music_slider.value = options.volume.music;
+    HTML.options.sound_slider.value = options.volume.sound;
+    
+    //controls
+    HTML.options.controls.left.innerHTML        = FormatKeyDisplay(options.controls.left);
+    HTML.options.controls.right.innerHTML       = FormatKeyDisplay(options.controls.right);
+    HTML.options.controls.down.innerHTML        = FormatKeyDisplay(options.controls.down);
+    HTML.options.controls.up.innerHTML          = FormatKeyDisplay(options.controls.up);
+    HTML.options.controls.validate.innerHTML    = FormatKeyDisplay(options.controls.validate);
 
 }
 
@@ -645,9 +639,17 @@ function ApplyLanguage(selected_language) {
         HTML.options.controls.up_msg.innerHTML                  = options.language.UI.options.controls.up;
         HTML.options.controls.validate_msg.innerHTML            = options.language.UI.options.controls.validate;
         HTML.options.controls.default.innerHTML                 = options.language.UI.options.controls.default;
+
+        //controls
+        HTML.options.controls.left.innerHTML        = FormatKeyDisplay(options.controls.left);
+        HTML.options.controls.right.innerHTML       = FormatKeyDisplay(options.controls.right);
+        HTML.options.controls.down.innerHTML        = FormatKeyDisplay(options.controls.down);
+        HTML.options.controls.up.innerHTML          = FormatKeyDisplay(options.controls.up);
+        HTML.options.controls.validate.innerHTML    = FormatKeyDisplay(options.controls.validate);
         //##########################################################################################################
 
     HTML.options.button.back_to_main_menu.innerHTML         = options.language.UI.options.back;
+    HTML.options.button.reset_settings.innerHTML            = options.language.UI.options.reset;
     
     //credits
     HTML.credits.title.dev.innerHTML                        = options.language.UI.credits.development;
@@ -689,50 +691,58 @@ function SwitchGraphics() {//function to control low/high graphics option
 
 
 function ChangeControl(control) {//select the control to change
-    console.log(`Changing control key to the following : ${control}`);
+    if (!listener.is_active) {
+        console.log(`Changing control key to the following : ${control}`);
 
-    for (let event in listener) {//for all controls
-        if ( listener.hasOwnProperty(event) ) {
+        for (let event in listener) {//for all controls
+            if ( listener.hasOwnProperty(event) ) {
 
-            if (event === control) listener[event] = true;//only change the control we want
-            else listener[event] = false;//not the others
-                    
+                if (event === control) listener[event] = true;//only change the control we want
+                else listener[event] = false;//not the others
+                        
+            }
         }
-    }
 
-    ApplyKey(control);//bind the key now that the control is selected
-    SaveOptions();
+        listener.is_active = true;
+        document.activeElement.blur(); //prevent keys like Space,Enter or Tab to retrigger the event.
+        ApplyKey(control);//bind the key now that the control is selected
+        SaveOptions();
+    }
 }
 
 
 function ApplyKey(control) {//bind the new key to the appropriate control
-    document.getElementById(`control_${control}`).value = "Select a key";
+    document.getElementById(`control_${control}`).innerHTML = options.language.UI.options.controls.set;
     
     //waiting for the user to select a key. Apply it when it is selected
     document.onkeydown = function (e) {
         var key_to_bind = e.key;
         console.log("selected key for the control: ",key_to_bind);
+
+        //display
+        var key_to_display = FormatKeyDisplay(key_to_bind);
+        
         
         //apply to the right control
         if (listener.left) {
             options.controls.left = key_to_bind;//change key
-            HTML.options.controls.left.value = key_to_bind;//update display
+            HTML.options.controls.left.innerHTML = key_to_display;//update display
 
         } else if (listener.right) {
             options.controls.right = key_to_bind;
-            HTML.options.controls.right.value = key_to_bind;
+            HTML.options.controls.right.innerHTML = key_to_display;
 
         } else if (listener.down) {
             options.controls.down = key_to_bind;
-            HTML.options.controls.down.value = key_to_bind;
+            HTML.options.controls.down.innerHTML = key_to_display;
 
         } else if (listener.up) {
             options.controls.up = key_to_bind;
-            HTML.options.controls.up.value = key_to_bind;
+            HTML.options.controls.up.innerHTML = key_to_display;
 
         } else if (listener.validate) {
             options.controls.validate = key_to_bind;
-            HTML.options.controls.validate.value = key_to_bind;
+            HTML.options.controls.validate.innerHTML = key_to_display;
         }
 
         //disable the control listener (to not change it by inadvertance when quitting the menu for example).
@@ -746,24 +756,56 @@ function ApplyKey(control) {//bind the new key to the appropriate control
         }
         
         //unload the key listener
+        listener.is_active = false;
         document.onkeydown = null;
     }
 }
 
 
+function FormatKeyDisplay(key) {
+    var lowercase = new RegExp(/^[a-z]$/,"g");
+    if (lowercase.test(key)) key = key.toUpperCase();
+    switch(key) {
+        case " ":           key = options.language.UI.options.controls.key.space; break;
+        case "AltGraph":    key = "Alt Gr"; break;
+        case "CapsLock":    key = options.language.UI.options.controls.key.capslock; break;
+        case "NumLock":     key = options.language.UI.options.controls.key.numlock; break;
+        case "ScrollLock":  key = options.language.UI.options.controls.key.scrolllock; break;
+        case "Control":     key = "Ctrl"; break;
+        case "Enter":       key = options.language.UI.options.controls.key.enter; break;
+        case "ArrowDown":   key = options.language.UI.options.controls.key.arrowdown; break;
+        case "ArrowUp":     key = options.language.UI.options.controls.key.arrowup; break;
+        case "ArrowLeft":   key = options.language.UI.options.controls.key.arrowleft; break;
+        case "ArrowRight":  key = options.language.UI.options.controls.key.arrowright; break;
+        case "End":         key = options.language.UI.options.controls.key.end; break;
+        case "Home":        key = options.language.UI.options.controls.key.home; break;
+        case "PageDown":    key = options.language.UI.options.controls.key.pagedown; break;
+        case "PageUp":      key = options.language.UI.options.controls.key.pageup; break;
+        case "BackSpace":   key = options.language.UI.options.controls.key.backspace; break;
+        case "Insert":      key = options.language.UI.options.controls.key.insert; break;
+        case "Delete":      key = options.language.UI.options.controls.key.delete; break;
+        case "ContextMenu": key = options.language.UI.options.controls.key.contextmenu; break;
+        case "Escape":      key = options.language.UI.options.controls.key.escape; break;
+    }
+    return key;
+}
+
+
 function ResetKeys() {//reset controls to default
-    //internal change
-    options.controls.left       = "Q";
-    options.controls.right      = "D";
-    options.controls.down       = "S";
-    options.controls.up         = "Z";
-    options.controls.validate   = " ";
-    //update display
-    HTML.options.controls.left.value        = options.controls.left.toUpperCase();
-    HTML.options.controls.right.value       = options.controls.right.toUpperCase();
-    HTML.options.controls.down.value        = options.controls.down.toUpperCase();
-    HTML.options.controls.up.value          = options.controls.up.toUpperCase();
-    HTML.options.controls.validate.value    = options.controls.validate.toUpperCase();
+    if (!listener.is_active) {
+        //internal change
+        options.controls.left       = "Q";
+        options.controls.right      = "D";
+        options.controls.down       = "S";
+        options.controls.up         = "Z";
+        options.controls.validate   = " ";
+        //update display
+        HTML.options.controls.left.innerHTML        = FormatKeyDisplay(options.controls.left);
+        HTML.options.controls.right.innerHTML       = FormatKeyDisplay(options.controls.right);
+        HTML.options.controls.down.innerHTML        = FormatKeyDisplay(options.controls.down);
+        HTML.options.controls.up.innerHTML          = FormatKeyDisplay(options.controls.up);
+        HTML.options.controls.validate.innerHTML    = FormatKeyDisplay(options.controls.validate);
+    }
 }
 
 
@@ -776,6 +818,12 @@ function SaveOptions() {//save options into a file
 function QuitOptions() {//function to quit the options menu to go back to the main menu.
     HideScene(scene.options_menu);
     ShowScene(scene.main_menu);
+}
+
+
+function ResetSettings() {
+    options.empty = true;
+    LoadSettings();
 }
 
 

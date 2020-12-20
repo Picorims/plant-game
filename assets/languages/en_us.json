@@ -34,9 +34,31 @@
                 "down":"Down",
                 "up":"Up",
                 "validate":"Validate",
-                "default":"Default"
+                "set": "Select a key",
+                "default":"Default",
+                "key":{
+                    "space":"Space",
+                    "capslock":"Caps Lock",
+                    "numlock":"Num Lock",
+                    "scrolllock":"Scroll Lock",
+                    "enter":"Enter",
+                    "arrowdown":"Arrow Down",
+                    "arrowup":"Arrow Up",
+                    "arrowleft":"Arrow Left",
+                    "arrowright":"Arrow Right",
+                    "end":"End",
+                    "home":"Home",
+                    "pagedown":"Page Down",
+                    "pageup":"Page Up",
+                    "backspace":"Backspace",
+                    "insert":"Insert",
+                    "delete":"Delete",
+                    "contextmenu":"Context Menu",
+                    "escape":"Esc"
+                }
             },
-            "back":"MAIN MENU"
+            "back":"MAIN MENU",
+            "reset":"RESET SETTINGS"
         },
         "credits":{
             "development":"Development",
