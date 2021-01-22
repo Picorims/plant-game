@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -10,65 +8,68 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="217.3968mm"
-   height="59.877815mm"
-   viewBox="0 0 217.39681 59.877814"
-   version="1.1"
-   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    sodipodi:docname="leave_particle_rotated.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 217.39681 59.877814"
+   height="59.877815mm"
+   width="217.3968mm">
+  <title
+     id="title16">Plant texture</title>
   <defs
      id="defs2">
     <linearGradient
-       id="linearGradient4607"
-       inkscape:collect="always">
+       inkscape:collect="always"
+       id="linearGradient4607">
       <stop
-         id="stop4601"
+         style="stop-color:#2ea224;stop-opacity:1"
          offset="0"
-         style="stop-color:#2ea224;stop-opacity:1" />
+         id="stop4601" />
       <stop
-         style="stop-color:#48f33a;stop-opacity:0.90196079"
+         id="stop4603"
          offset="0.58333331"
-         id="stop4603" />
+         style="stop-color:#48f33a;stop-opacity:0.90196079" />
       <stop
-         id="stop4605"
+         style="stop-color:#32bf26;stop-opacity:1"
          offset="1"
-         style="stop-color:#32bf26;stop-opacity:1" />
+         id="stop4605" />
     </linearGradient>
     <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4607"
-       id="linearGradient4578"
-       x1="5.2916665"
-       y1="255.98958"
-       x2="21.166666"
-       y2="244.08333"
+       gradientTransform="rotate(32.435405,93.586927,192.64153)"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="rotate(32.435405,93.586927,192.64153)" />
+       y2="244.08333"
+       x2="21.166666"
+       y1="255.98958"
+       x1="5.2916665"
+       id="linearGradient4578"
+       xlink:href="#linearGradient4607"
+       inkscape:collect="always" />
   </defs>
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="288.43076"
-     inkscape:cy="129.1919"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="true"
-     inkscape:window-width="1600"
-     inkscape:window-height="837"
-     inkscape:window-x="-8"
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="1"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-x="-8"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="129.1919"
+     inkscape:cx="288.43076"
+     inkscape:zoom="1"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base">
     <inkscape:grid
-       type="xygrid"
-       id="grid4518"
+       originy="-64.600463"
        originx="14.287313"
-       originy="-64.600463" />
+       id="grid4518"
+       type="xygrid" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -78,31 +79,58 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Plant texture</dc:title>
+        <dc:date>2021</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Picorims(picorims.contact@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Plant textures by Picorims(picorims.contact@gmail.com) are licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-nd/4.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Calque 1"
-     inkscape:groupmode="layer"
+     transform="translate(14.287313,-172.52173)"
      id="layer1"
-     transform="translate(14.287313,-172.52173)">
+     inkscape:groupmode="layer"
+     inkscape:label="Calque 1">
     <path
-       style="fill:url(#linearGradient4578);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 6.2928268,194.98267 c -5.75064376,-0.1704 -9.6569304,-1.28072 -19.0747988,0.41777 -1.460869,0.3256 -2.20788,6.43414 -0.605105,5.88524 9.141454,-2.8317 15.140492,-3.0135 20.4938921,-2.65085 z"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
        id="path4570"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+       d="m 6.2928268,194.98267 c -5.75064376,-0.1704 -9.6569304,-1.28072 -19.0747988,0.41777 -1.460869,0.3256 -2.20788,6.43414 -0.605105,5.88524 9.141454,-2.8317 15.140492,-3.0135 20.4938921,-2.65085 z"
+       style="fill:url(#linearGradient4578);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       style="fill:#48cc4b;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 6.2928276,194.98267 c -5.75064372,-0.1704 -9.6569303,-1.28072 -19.0747996,0.41777 -1.460869,0.3256 -2.20788,6.43414 -0.605104,5.88524 9.1414538,-2.8317 15.1404919,-3.0135 20.4938919,-2.65085 z"
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
        id="path4570-8"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+       d="m 6.2928276,194.98267 c -5.75064372,-0.1704 -9.6569303,-1.28072 -19.0747996,0.41777 -1.460869,0.3256 -2.20788,6.43414 -0.605104,5.88524 9.1414538,-2.8317 15.1404919,-3.0135 20.4938919,-2.65085 z"
+       style="fill:#48cc4b;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       style="fill:#48cc4b;fill-opacity:1;fill-rule:evenodd;stroke:#48cc4b;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 4.8737409,197.21575 C 88.659927,258.49481 168.71799,224.19877 198.52819,188.52084 153.51983,203.83853 54.52293,142.49607 4.8737409,197.21575 Z"
-       id="path4520"
+       sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccc" />
+       id="path4520"
+       d="M 4.8737409,197.21575 C 88.659927,258.49481 168.71799,224.19877 198.52819,188.52084 153.51983,203.83853 54.52293,142.49607 4.8737409,197.21575 Z"
+       style="fill:#48cc4b;fill-opacity:1;fill-rule:evenodd;stroke:#48cc4b;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

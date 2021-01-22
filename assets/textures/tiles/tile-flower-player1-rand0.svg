@@ -7,50 +7,52 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="400"
-   height="400"
-   viewBox="0 0 105.83333 105.83334"
-   version="1.1"
-   id="svg8"
+   sodipodi:docname="tile-flower-player1-rand0.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="tile-flower-player1-rand0.svg">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 105.83333 105.83334"
+   height="400"
+   width="400">
+  <title
+     id="title14">Plant texture</title>
   <defs
      id="defs2" />
   <sodipodi:namedview
-     id="base"
-     pagecolor="#2b2b2b"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="114.78651"
-     inkscape:cy="112.61161"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="true"
-     units="px"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
+     inkscape:window-maximized="1"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-x="-8"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     units="px"
+     showgrid="true"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="112.61161"
+     inkscape:cx="114.78651"
+     inkscape:zoom="1.4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#2b2b2b"
+     id="base">
     <inkscape:grid
-       type="xygrid"
-       id="grid10"
+       empopacity="0.25098039"
        empcolor="#00a6ff"
-       empopacity="0.25098039" />
+       id="grid10"
+       type="xygrid" />
     <sodipodi:guide
-       position="52.916665,105.83334"
+       id="guide12"
        orientation="1,0"
-       id="guide12" />
+       position="52.916665,105.83334" />
     <sodipodi:guide
-       position="0,52.91667"
+       id="guide14"
        orientation="0,-1"
-       id="guide14" />
+       position="0,52.91667" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -60,33 +62,59 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Plant texture</dc:title>
+        <cc:license
+           rdf:resource="https://creativecommons.org/licenses/by-nc-nd/4.0" />
+        <dc:date>2021</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Picorims(picorims.contact@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Plant textures by Picorims(picorims.contact@gmail.com) are licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
     <path
-       sodipodi:nodetypes="ccccc"
-       id="path836"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 52.916663,7.9374999 C 44.979167,13.229167 37.041668,34.395834 37.041667,55.5625 L 52.916664,63.5 68.791667,55.5625 c 10e-7,-21.166666 -7.9375,-42.333333 -15.875004,-47.6250001 z"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       id="path836"
+       sodipodi:nodetypes="ccccc" />
     <path
-       sodipodi:nodetypes="cccc"
-       id="path839"
+       style="fill:#dfdfdf;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 52.916666,60.854166 C 55.5625,47.625 52.916667,13.229167 79.374999,7.9374999 76.729167,13.229167 84.666667,37.041667 76.729166,47.624999 71.4375,52.916664 66.145833,60.854167 52.916666,60.854166 Z"
-       style="fill:#dfdfdf;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       id="path839"
+       sodipodi:nodetypes="cccc" />
     <path
-       sodipodi:nodetypes="cccc"
-       id="path841"
+       style="fill:#dddddd;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 52.916663,60.854166 C 39.6875,60.854167 34.395833,52.916667 29.104166,47.624999 21.166667,37.041667 29.104167,13.229167 26.458333,7.9374999 52.916664,13.229167 50.270833,47.625 52.916663,60.854166 Z"
-       style="fill:#dddddd;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       id="path841"
+       sodipodi:nodetypes="cccc" />
     <path
-       sodipodi:nodetypes="ccccccc"
-       id="path834"
+       style="fill:#595959;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 52.916664,76.729167 C 52.916664,66.145834 58.208334,66.145833 63.5,63.5 68.791667,60.854166 76.729167,50.270833 76.729167,47.625 74.083334,50.270833 66.145833,58.208333 52.916663,58.208332 39.6875,58.208333 31.750001,50.270833 29.104167,47.625 c 0,2.645833 7.937499,13.229166 13.229166,15.875 5.291667,2.645833 10.583331,2.645834 10.583331,13.229167 z"
-       style="fill:#595959;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+       id="path834"
+       sodipodi:nodetypes="ccccccc" />
   </g>
 </svg>

@@ -7,50 +7,52 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="tile-u1-d1-l0-r0-player2-rand0.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 105.83333 105.83334"
+   width="400"
    height="400"
-   width="400">
+   viewBox="0 0 105.83333 105.83334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="tile-u1-d1-l0-r0-player2-rand0.svg">
+  <title
+     id="title15">Plant texture</title>
   <defs
      id="defs2" />
   <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="-7"
-     inkscape:window-height="1008"
-     inkscape:window-width="958"
-     inkscape:guide-bbox="true"
-     showguides="true"
-     units="px"
-     showgrid="true"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="197.54728"
-     inkscape:cx="101.567"
-     inkscape:zoom="0.65123967"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#2b2b2b"
-     id="base">
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.65123967"
+     inkscape:cx="101.567"
+     inkscape:cy="197.54728"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="958"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0">
     <inkscape:grid
-       empopacity="0.25098039"
-       empcolor="#00a6ff"
+       type="xygrid"
        id="grid10"
-       type="xygrid" />
+       empcolor="#00a6ff"
+       empopacity="0.25098039" />
     <sodipodi:guide
-       id="guide12"
+       position="52.916665,105.83334"
        orientation="1,0"
-       position="52.916665,105.83334" />
+       id="guide12" />
     <sodipodi:guide
-       id="guide14"
+       position="0,52.91667"
        orientation="0,-1"
-       position="0,52.91667" />
+       id="guide14" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -60,38 +62,64 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Plant texture</dc:title>
+        <dc:date>2021</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Picorims(picorims.contact@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Plant textures by Picorims(picorims.contact@gmail.com) are licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-nd/4.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1">
     <path
-       sodipodi:nodetypes="csscsscc"
-       id="path836"
+       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 58.208332,2.645833 c 0,0 5.291667,5.2916673 7.9375,5.2916673 2.645833,0 5.291668,-1e-6 9.260417,6.0476187 4.105895,6.256604 6.614585,12.473214 11.906251,20.410714 C 82.020834,29.104166 74.640527,26.272827 69.169642,21.166666 63.5,15.874999 63.499999,13.229167 63.499999,10.583333 c 0,-2.6458327 -7.9375,-5.291666 -7.9375,-5.291666 z"
-       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 65.263888,60.200066 c 0,0 6.599869,3.527779 9.13178,2.759756 2.531911,-0.768022 5.063824,-1.536046 10.61717,3.099146 5.74525,4.79537 9.950458,10.016097 17.318352,16.075789 C 95.731319,78.606976 87.846915,78.039874 81.129393,74.741638 74.167825,71.323577 73.399802,68.791667 72.631779,66.259755 71.863757,63.727845 63.5,63.5 63.5,63.5 Z"
-       id="path836-5"
-       sodipodi:nodetypes="csscsscc" />
-    <path
-       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 39.6875,31.75 c 0,0 -5.291667,5.291668 -7.9375,5.291668 -2.645833,0 -5.10268,-0.188989 -9.071429,5.85863 C 18.572676,49.156902 15.875,55.5625 13.229167,63.5 18.520833,55.5625 23.255305,54.999018 28.72619,49.892857 34.395832,44.60119 34.395833,42.333334 34.395833,39.6875 c 0,-2.645832 7.9375,-5.291666 7.9375,-5.291666 z"
-       id="path836-0"
+       id="path836"
        sodipodi:nodetypes="csscsscc" />
     <path
        sodipodi:nodetypes="csscsscc"
-       id="path836-0-3"
-       d="m 52.874057,76.678114 c 0,0 -6.152307,4.260589 -8.75553,3.787659 -2.603223,-0.47293 -4.986723,-1.098025 -9.972539,4.142805 -5.158109,5.421935 -8.957309,11.242182 -12.979321,18.578922 6.625235,-6.86381 11.384179,-6.57196 17.67966,-10.617993 6.524194,-4.193026 6.929563,-6.424359 7.402493,-9.027582 0.47293,-2.603222 8.755531,-3.787657 8.755531,-3.787657 z"
+       id="path836-5"
+       d="m 65.263888,60.200066 c 0,0 6.599869,3.527779 9.13178,2.759756 2.531911,-0.768022 5.063824,-1.536046 10.61717,3.099146 5.74525,4.79537 9.950458,10.016097 17.318352,16.075789 C 95.731319,78.606976 87.846915,78.039874 81.129393,74.741638 74.167825,71.323577 73.399802,68.791667 72.631779,66.259755 71.863757,63.727845 63.5,63.5 63.5,63.5 Z"
        style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       sodipodi:nodetypes="cssc"
-       id="path16"
+       sodipodi:nodetypes="csscsscc"
+       id="path836-0"
+       d="m 39.6875,31.75 c 0,0 -5.291667,5.291668 -7.9375,5.291668 -2.645833,0 -5.10268,-0.188989 -9.071429,5.85863 C 18.572676,49.156902 15.875,55.5625 13.229167,63.5 18.520833,55.5625 23.255305,54.999018 28.72619,49.892857 34.395832,44.60119 34.395833,42.333334 34.395833,39.6875 c 0,-2.645832 7.9375,-5.291666 7.9375,-5.291666 z"
+       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 52.874057,76.678114 c 0,0 -6.152307,4.260589 -8.75553,3.787659 -2.603223,-0.47293 -4.986723,-1.098025 -9.972539,4.142805 -5.158109,5.421935 -8.957309,11.242182 -12.979321,18.578922 6.625235,-6.86381 11.384179,-6.57196 17.67966,-10.617993 6.524194,-4.193026 6.929563,-6.424359 7.402493,-9.027582 0.47293,-2.603222 8.755531,-3.787657 8.755531,-3.787657 z"
+       id="path836-0-3"
+       sodipodi:nodetypes="csscsscc" />
+    <path
+       style="fill:none;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 52.916663,105.83333 c 3e-6,-10.583331 7.937503,-29.104164 7.937503,-37.041664 C 60.854167,55.5625 46.971632,42.336339 47.247023,31.183035 47.625,15.875 52.916667,15.875 52.916663,0"
-       style="fill:none;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+       id="path16"
+       sodipodi:nodetypes="cssc" />
   </g>
 </svg>

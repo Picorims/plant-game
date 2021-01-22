@@ -1,7 +1,7 @@
 # NOTICE
 
     Plant is a 2 players strategy game, where the goal is to take as much space as possible on the terrain with a plant by making it growing.
-    Copyright (c) 2020 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
+    Copyright (c) 2018-2021 Picorims<picorims.contact@gmail.com> and Cirno, France. All rights reserved.
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by

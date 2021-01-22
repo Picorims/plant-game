@@ -7,50 +7,52 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="400"
-   height="400"
-   viewBox="0 0 105.83333 105.83334"
-   version="1.1"
-   id="svg8"
+   sodipodi:docname="tile-u0-d0-l0-r1-player2-rand0.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="tile-u0-d0-l0-r1-player2-rand0.svg">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 105.83333 105.83334"
+   height="400"
+   width="400">
+  <title
+     id="title14">Plant texture</title>
   <defs
      id="defs2" />
   <sodipodi:namedview
-     id="base"
-     pagecolor="#2b2b2b"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="217.80687"
-     inkscape:cy="100.53565"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="true"
-     units="px"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     inkscape:window-width="958"
-     inkscape:window-height="1008"
-     inkscape:window-x="953"
+     inkscape:window-maximized="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0">
+     inkscape:window-x="946"
+     inkscape:window-height="1008"
+     inkscape:window-width="958"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     units="px"
+     showgrid="true"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="100.53565"
+     inkscape:cx="217.80687"
+     inkscape:zoom="1.4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#2b2b2b"
+     id="base">
     <inkscape:grid
-       type="xygrid"
-       id="grid10"
+       empopacity="0.25098039"
        empcolor="#00a6ff"
-       empopacity="0.25098039" />
+       id="grid10"
+       type="xygrid" />
     <sodipodi:guide
-       position="52.916665,105.83334"
+       id="guide12"
        orientation="1,0"
-       id="guide12" />
+       position="52.916665,105.83334" />
     <sodipodi:guide
-       position="0,52.91667"
+       id="guide14"
        orientation="0,-1"
-       id="guide14" />
+       position="0,52.91667" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -60,33 +62,59 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Plant texture</dc:title>
+        <dc:date>2021</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Picorims(picorims.contact@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Plant textures by Picorims(picorims.contact@gmail.com) are licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-nd/4.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
+    <path
+       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 97.895833,48.947917 c 0,0 -5.291673,-5.291668 -7.937506,-5.291668 -2.645833,0 -5.10268,0.188989 -9.071429,-5.85863 -4.105895,-6.256604 -4.157725,-12.662202 -9.449398,-20.599702 5.291673,5.291667 9.648156,7.367053 15.119041,12.473214 5.669642,5.291667 6.047619,8.693452 6.047619,11.339286 0,2.645832 7.9375,5.291666 7.9375,5.291666 z"
+       id="path836-0"
+       sodipodi:nodetypes="csscsscc" />
     <path
        sodipodi:nodetypes="csscsscc"
-       id="path836-0"
-       d="m 97.895833,48.947917 c 0,0 -5.291673,-5.291668 -7.937506,-5.291668 -2.645833,0 -5.10268,0.188989 -9.071429,-5.85863 -4.105895,-6.256604 -4.157725,-12.662202 -9.449398,-20.599702 5.291673,5.291667 9.648156,7.367053 15.119041,12.473214 5.669642,5.291667 6.047619,8.693452 6.047619,11.339286 0,2.645832 7.9375,5.291666 7.9375,5.291666 z"
+       id="path836"
+       d="m 75.40625,59.53125 c 0,0 -5.291667,5.291667 -7.9375,5.291667 -2.645833,0 -3.590776,-10e-7 -7.559525,6.047619 -4.105895,6.256604 -4.346722,11.150298 -9.638392,16.441964 7.937503,-5.291666 9.648163,-5.855148 15.119048,-10.961309 5.669642,-5.291667 4.724702,-6.236607 4.724702,-8.882441 0,-2.645833 7.9375,-5.291666 7.9375,-5.291666 z"
        style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 75.40625,59.53125 c 0,0 -5.291667,5.291667 -7.9375,5.291667 -2.645833,0 -3.590776,-10e-7 -7.559525,6.047619 -4.105895,6.256604 -4.346722,11.150298 -9.638392,16.441964 7.937503,-5.291666 9.648163,-5.855148 15.119048,-10.961309 5.669642,-5.291667 4.724702,-6.236607 4.724702,-8.882441 0,-2.645833 7.9375,-5.291666 7.9375,-5.291666 z"
-       id="path836"
-       sodipodi:nodetypes="csscsscc" />
-    <path
-       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 42.333333,50.270833 c 0,0 -5.291673,-5.291671 -7.937506,-5.291668 -1.322911,10e-7 -3.968744,-1.322915 -5.291667,-3.968749 -2.521423,-5.042823 -1.322911,-3.96875 -6.614577,-11.90625 5.291666,5.291667 6.224306,3.445256 11.906244,8.315477 2.645839,2.267857 2.645839,3.590773 2.645833,4.91369 -1.2e-5,2.645832 7.937503,5.291667 7.937503,5.291667 z"
+       sodipodi:nodetypes="csscsscc"
        id="path836-0-6"
-       sodipodi:nodetypes="csscsscc" />
+       d="m 42.333333,50.270833 c 0,0 -5.291673,-5.291671 -7.937506,-5.291668 -1.322911,10e-7 -3.968744,-1.322915 -5.291667,-3.968749 -2.521423,-5.042823 -1.322911,-3.96875 -6.614577,-11.90625 5.291666,5.291667 6.224306,3.445256 11.906244,8.315477 2.645839,2.267857 2.645839,3.590773 2.645833,4.91369 -1.2e-5,2.645832 7.937503,5.291667 7.937503,5.291667 z"
+       style="fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     <path
-       sodipodi:nodetypes="csc"
-       id="path834"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        d="m 44.979167,50.270833 c 10.583333,0 24.75744,5.291666 35.340773,5.291667 6.99256,0 17.575892,-2.645837 25.51339,-2.645837"
-       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#8c8c8c;stroke-width:15;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1" />
+       id="path834"
+       sodipodi:nodetypes="csc" />
   </g>
 </svg>
